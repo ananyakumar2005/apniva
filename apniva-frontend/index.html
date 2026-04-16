@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apniva — Sign In</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   APNIVA — AUTH PAGE (index.html)
+   Handles: Login / Signup for Customer & Seller role selection
+   Links to: customer.html or seller.html based on role
+   ============================================================ */
+
+/* ── Reset & Variables ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --saffron: #E8471A;       --saffron-light: #FDF0EB;  --saffron-mid: #F5845A;
+  --turmeric: #D4810A;      --turmeric-light: #FEF3E2;
+  --jade: #1A6B4A;          --jade-light: #E6F4EE;
+  --ivory: #FDFAF5;         --cream: #F7F2E8;
+  --warm-gray: #8C8070;     --ink: #1C1208;            --ink-mid: #3D3020;
+  --white: #FFFFFF;         --border: #EAE3D5;
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'DM Sans', sans-serif;
+  --radius: 12px;           --radius-sm: 8px;
+}
+body { font-family: var(--font-body); background: var(--ivory); color: var(--ink); min-height: 100vh; }
+button { font-family: var(--font-body); cursor: pointer; border: none; outline: none; }
+input  { font-family: var(--font-body); outline: none; border: none; }
+
+/* ── Layout ── */
+.page { display: flex; min-height: 100vh; }
+
+/* ── Left Branding Panel ── */
+.left {
+  width: 45%;
+  background: linear-gradient(145deg, #1C1208 0%, #3D2010 50%, #E8471A 100%);
+  padding: 60px;
+  display: flex; flex-direction: column; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.left::before {
+  content: ''; position: absolute; top: -60px; right: -60px;
+  width: 300px; height: 300px; border-radius: 50%;
+  background: rgba(232,71,26,.18); pointer-events: none;
+}
+.left::after {
+  content: ''; position: absolute; bottom: -40px; left: -40px;
+  width: 200px; height: 200px; border-radius: 50%;
+  background: rgba(212,129,10,.15); pointer-events: none;
+}
+.logo { font-family: var(--font-display); font-size: 42px; color: #FDFAF5; letter-spacing: 1px; margin-bottom: 12px; }
+.logo span { color: var(--saffron-mid); }
+.tagline { color: rgba(253,250,245,.65); font-size: 17px; line-height: 1.6; max-width: 300px; margin-bottom: 48px; }
+.feature { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+.feature-icon { width: 38px; height: 38px; border-radius: 50%; background: rgba(245,132,90,.25); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.feature span { color: rgba(253,250,245,.8); font-size: 14px; }
+
+/* ── Right Form Panel ── */
+.right { flex: 1; display: flex; align-items: center; justify-content: center; padding: 60px 48px; background: var(--ivory); }
+.form-wrap { width: 100%; max-width: 420px; }
+
+/* ── Role Selector ── */
+.role-selector { display: flex; gap: 12px; margin-bottom: 28px; }
+.role-card {
+  flex: 1; padding: 16px 12px; border-radius: var(--radius);
+  border: 2px solid var(--border); background: var(--white);
+  text-align: center; cursor: pointer; transition: .2s;
+}
+.role-card:hover { border-color: var(--saffron-mid); }
+.role-card.active { border-color: var(--saffron); background: var(--saffron-light); }
+.role-card .role-icon { font-size: 28px; display: block; margin-bottom: 6px; }
+.role-card .role-name { font-size: 14px; font-weight: 600; color: var(--ink); }
+.role-card .role-desc { font-size: 11px; color: var(--warm-gray); margin-top: 2px; }
+.role-card.active .role-name { color: var(--saffron); }
+
+/* ── Auth Tabs ── */
+.toggle { display: flex; background: var(--cream); border-radius: var(--radius); padding: 4px; margin-bottom: 24px; }
+.toggle button { flex: 1; padding: 10px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; background: transparent; color: var(--warm-gray); transition: .2s; }
+.toggle button.active { background: var(--white); color: var(--ink); box-shadow: 0 1px 4px rgba(28,18,8,.1); }
+
+/* ── Form Elements ── */
+.auth-title { font-family: var(--font-display); font-size: 26px; color: var(--ink); margin-bottom: 4px; }
+.auth-sub   { color: var(--warm-gray); font-size: 14px; margin-bottom: 24px; }
+.field { margin-bottom: 16px; }
+.field label { display: block; font-size: 13px; font-weight: 500; color: var(--ink-mid); margin-bottom: 6px; }
+.field input {
+  width: 100%; padding: 12px 14px;
+  background: var(--white); border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm); font-size: 15px; color: var(--ink); transition: .2s;
+}
+.field input:focus { border-color: var(--saffron); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+/* Seller-only fields */
+.seller-field { display: none; }
+.seller-mode .seller-field { display: block; }
+
+.btn-submit {
+  width: 100%; padding: 13px; background: var(--saffron); color: var(--white);
+  border-radius: var(--radius-sm); font-size: 15px; font-weight: 600; transition: .2s; margin-top: 4px;
+}
+.btn-submit:hover { background: #C03D13; }
+
+/* Role badge shown on submit button */
+.role-badge { display: inline-block; background: rgba(255,255,255,.2); border-radius: 4px; padding: 1px 8px; font-size: 13px; margin-left: 6px; }
+
+.divider { display: flex; align-items: center; gap: 12px; margin: 18px 0; }
+.divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.divider span { color: var(--warm-gray); font-size: 13px; white-space: nowrap; }
+.btn-social { width: 100%; padding: 11px; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; color: var(--ink-mid); transition: .2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+.btn-social:hover { border-color: var(--saffron); color: var(--saffron); }
+.form-meta { text-align: center; font-size: 13px; color: var(--warm-gray); margin-top: 14px; }
+.form-meta a { color: var(--saffron); cursor: pointer; font-weight: 500; }
+
+/* ── Toast ── */
+.toast { position: fixed; bottom: 24px; right: 24px; background: var(--ink); color: var(--white); padding: 12px 20px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; z-index: 9999; transform: translateY(80px); opacity: 0; transition: .3s; display: flex; align-items: center; gap: 8px; }
+.toast.show { transform: translateY(0); opacity: 1; }
+.toast-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--jade); flex-shrink: 0; }
+
+@media(max-width: 768px) { .left { display: none; } .right { padding: 40px 24px; } }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ══════════════════════════════════════
+       LEFT: Branding Panel
+  ══════════════════════════════════════ -->
+  <div class="left">
+    <div class="logo">apn<span>i</span>va</div>
+    <p class="tagline">India's most vibrant online marketplace — curated products, local artisans, unbeatable deals.</p>
+    <div class="feature"><div class="feature-icon">🛍️</div><span>10 lakh+ products from 50,000 sellers</span></div>
+    <div class="feature"><div class="feature-icon">🚚</div><span>Free delivery on orders above ₹499</span></div>
+    <div class="feature"><div class="feature-icon">🔒</div><span>Secure payments — UPI, Cards, EMI</span></div>
+    <div class="feature"><div class="feature-icon">🏪</div><span>Start selling — reach 2 crore+ buyers</span></div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       RIGHT: Auth Form
+  ══════════════════════════════════════ -->
+  <div class="right">
+    <div class="form-wrap">
+
+      <!-- Role Selector: Customer / Seller -->
+      <div class="role-selector">
+        <div class="role-card active" id="role-customer" onclick="selectRole('customer')">
+          <span class="role-icon">🛍️</span>
+          <div class="role-name">Customer</div>
+          <div class="role-desc">Shop & discover</div>
+        </div>
+        <div class="role-card" id="role-seller" onclick="selectRole('seller')">
+          <span class="role-icon">🏪</span>
+          <div class="role-name">Seller</div>
+          <div class="role-desc">List & sell goods</div>
+        </div>
+      </div>
+
+      <!-- Login / Signup Toggle -->
+      <div class="toggle">
+        <button class="active" id="btn-login" onclick="switchMode('login')">Sign In</button>
+        <button id="btn-signup" onclick="switchMode('signup')">Create Account</button>
+      </div>
+
+      <!-- ── LOGIN FORM ── -->
+      <div id="login-form">
+        <h2 class="auth-title" id="login-title">Welcome back!</h2>
+        <p class="auth-sub" id="login-sub">Sign in to continue shopping</p>
+        <div class="field"><label>Email or Mobile Number</label><input type="text" placeholder="email@example.com or 9876543210"></div>
+        <div class="field"><label>Password</label><input type="password" placeholder="Enter your password"><div style="text-align:right;margin-top:6px"><a style="font-size:13px;color:var(--saffron);cursor:pointer">Forgot password?</a></div></div>
+        <button class="btn-submit" onclick="doLogin()">Sign In <span class="role-badge" id="login-role-badge">as Customer</span></button>
+        <div class="divider"><span>or continue with</span></div>
+        <button class="btn-social" onclick="doLogin()">🇮🇳 Continue with Google</button>
+      </div>
+
+      <!-- ── SIGNUP FORM ── -->
+      <div id="signup-form" style="display:none">
+        <h2 class="auth-title" id="signup-title">Join Apniva!</h2>
+        <p class="auth-sub" id="signup-sub">Create your account in seconds</p>
+        <div class="form-row">
+          <div class="field"><label>First Name</label><input type="text" placeholder="Priya"></div>
+          <div class="field"><label>Last Name</label><input type="text" placeholder="Sharma"></div>
+        </div>
+        <div class="field"><label>Email Address</label><input type="email" placeholder="priya@example.com"></div>
+        <div class="field"><label>Mobile Number</label><input type="tel" placeholder="98765 43210"></div>
+        <div class="field"><label>Password</label><input type="password" placeholder="Min. 8 characters"></div>
+        <!-- Seller-only fields (shown when seller role is active) -->
+        <div class="field seller-field" id="sf-bizname"><label>Business / Shop Name</label><input type="text" placeholder="e.g. Sharma Silk House"></div>
+        <div class="field seller-field" id="sf-gst"><label>GST Number</label><input type="text" placeholder="e.g. 29ABCDE1234F1Z5"></div>
+        <div class="field seller-field" id="sf-state">
+          <label>State of Business</label>
+          <select style="width:100%;padding:12px 14px;background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:15px;color:var(--ink)">
+            <option value="">Select state…</option>
+            <option>Andhra Pradesh</option><option>Bihar</option><option>Delhi</option>
+            <option>Gujarat</option><option>Jammu & Kashmir</option><option>Karnataka</option>
+            <option>Kerala</option><option>Madhya Pradesh</option><option>Maharashtra</option>
+            <option>Odisha</option><option>Punjab</option><option>Rajasthan</option>
+            <option>Tamil Nadu</option><option>Telangana</option><option>Uttar Pradesh</option>
+            <option>West Bengal</option>
+          </select>
+        </div>
+        <button class="btn-submit" onclick="doLogin()">Create Account <span class="role-badge" id="signup-role-badge">as Customer</span></button>
+        <p class="form-meta">By creating an account you agree to our <a>Terms of Service</a> & <a>Privacy Policy</a></p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Toast notification -->
+<div class="toast" id="toast"><span class="toast-dot"></span><span id="toast-msg"></span></div>
+
+<script>
+/* ── State ── */
+let currentRole = 'customer'; // 'customer' | 'seller'
+let currentMode = 'login';    // 'login' | 'signup'
+
+/* ── Role Selection ── */
+function selectRole(role) {
+  currentRole = role;
+  document.getElementById('role-customer').classList.toggle('active', role === 'customer');
+  document.getElementById('role-seller').classList.toggle('active', role === 'seller');
+
+  // Show/hide seller-specific signup fields
+  document.getElementById('signup-form').classList.toggle('seller-mode', role === 'seller');
+
+  // Update titles & button labels
+  const isCustomer = role === 'customer';
+  document.getElementById('login-title').textContent   = isCustomer ? 'Welcome back!' : 'Seller Sign In';
+  document.getElementById('login-sub').textContent     = isCustomer ? 'Sign in to continue shopping' : 'Access your seller dashboard';
+  document.getElementById('signup-title').textContent  = isCustomer ? 'Join Apniva!' : 'Become a Seller';
+  document.getElementById('signup-sub').textContent    = isCustomer ? 'Create your account in seconds' : 'Start selling to crores of customers';
+  document.getElementById('login-role-badge').textContent  = isCustomer ? 'as Customer' : 'as Seller';
+  document.getElementById('signup-role-badge').textContent = isCustomer ? 'as Customer' : 'as Seller';
+}
+
+/* ── Toggle Login / Signup ── */
+function switchMode(mode) {
+  currentMode = mode;
+  document.getElementById('login-form').style.display  = mode === 'login'  ? 'block' : 'none';
+  document.getElementById('signup-form').style.display = mode === 'signup' ? 'block' : 'none';
+  document.getElementById('btn-login').classList.toggle('active',  mode === 'login');
+  document.getElementById('btn-signup').classList.toggle('active', mode === 'signup');
+}
+
+/* ── Login / Redirect ── */
+function doLogin() {
+  // In production: validate & call POST /api/auth/login or /api/auth/register
+  // For now: store role in localStorage and redirect
+  localStorage.setItem('apniva_role', currentRole);
+  localStorage.setItem('apniva_user', JSON.stringify({
+    name: currentRole === 'seller' ? 'Ramesh Textiles' : 'Priya Sharma',
+    email: currentRole === 'seller' ? 'ramesh@textiles.in' : 'priya.sharma@gmail.com',
+    role: currentRole,
+  }));
+
+  showToast('Signing in…');
+  setTimeout(() => {
+    window.location.href = currentRole === 'seller' ? 'seller.html' : 'customer.html';
+  }, 700);
+}
+
+/* ── Toast ── */
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  document.getElementById('toast-msg').textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+</script>
+</body>
+</html>
