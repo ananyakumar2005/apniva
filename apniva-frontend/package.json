@@ -1,0 +1,17 @@
+{
+  "name": "apniva-frontend",
+  "version": "1.0.0",
+  "description": "Apniva — India-themed online shopping platform frontend",
+  "scripts": {
+    "start": "npx http-server . -p 3000 -o --cors",
+    "dev": "npx live-server --port=3000 --open=index.html --watch=.",
+    "preview": "npx http-server . -p 5000 -o --cors"
+  },
+  "keywords": ["apniva", "ecommerce", "india", "mern"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "live-server": "^1.2.2"
+  }
+}
