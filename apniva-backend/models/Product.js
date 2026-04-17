@@ -1,130 +1,62 @@
-const mongoose = require('mongoose');
+const express = require('express');
+const router = express.Router();
+const Product = require('../models/Product');
 
-const productSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-    trim: true
-  },
-  description: {
-    type: String,
-    required: true
-  },
-  category: {
-    type: String,
-    required: true,
-    enum: ['Electronics', 'Fashion', 'Home & Kitchen', 'Beauty', 'Books', 'Groceries', 'Toys', 'Sports', 'Handcrafted']
-  },
-  emoji: {
-    type: String,
-    default: '📦'
-  },
+// GET /api/products
+// Query params: category, search, sort (low|high|rating|discount), page, limit
+router.get('/', async (req, res) => {
+  try {
+    const { category, search, sort, page = 1, limit = 20 } = req.query;
 
-  // Pricing
-  price: {
-    type: Number,
-    required: true
-  },
-  mrp: {
-    type: Number,
-    required: true
-  },
-  discount: {
-    type: Number,   // percentage, auto-calculated
-    default: 0
-  },
+    const filter = { status: 'approved' };
 
-  // Inventory
-  stock: {
-    type: Number,
-    required: true,
-    default: 0
-  },
-  sku: {
-    type: String,
-    trim: true
-  },
-  weightGrams: {
-    type: Number
-  },
+    if (category && category !== 'All') {
+      filter.category = category;
+    }
 
-  // Images
-  images: [{
-    type: String   // URLs from cloud storage later
-  }],
+    if (search) {
+      filter.$or = [
+        { name:     { $regex: search, $options: 'i' } },
+        { category: { $regex: search, $options: 'i' } },
+        { brand:    { $regex: search, $options: 'i' } },
+      ];
+    }
 
-  // Variants
-  colors: [String],
-  sizes: [String],
+    const sortMap = {
+      low:      { price: 1 },
+      high:     { price: -1 },
+      rating:   { rating: -1 },
+      discount: { discount: -1 },
+    };
+    const sortQuery = sortMap[sort] || { createdAt: -1 };
 
-  // Ratings
-  rating: {
-    type: Number,
-    default: 0
-  },
-  numReviews: {
-    type: Number,
-    default: 0
-  },
+    const skip = (Number(page) - 1) * Number(limit);
 
-  // India-specific
-  originState: {
-    type: String
-  },
-  giTag: {
-    type: String    // Geographical Indication number
-  },
-  handcraftedBadge: {
-    type: String,
-    enum: ['', 'Handcrafted — traditional method', 'Handcrafted — artisan collective', 'Organic / Natural'],
-    default: ''
-  },
-  badge: {
-    type: String,
-    enum: ['', 'hot', 'new'],
-    default: ''
-  },
+    const [products, total] = await Promise.all([
+      Product.find(filter).sort(sortQuery).skip(skip).limit(Number(limit)),
+      Product.countDocuments(filter),
+    ]);
 
-  // Seller reference
-  seller: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true
-  },
-  brand: {
-    type: String,
-    trim: true
-  },
-
-  // Listing status (set by admin after review)
-  status: {
-    type: String,
-    enum: ['draft', 'pending', 'approved', 'rejected'],
-    default: 'pending'
-  },
-  rejectionReason: {
-    type: String,
-    default: ''
-  },
-
-  // Shipping
-  dispatchDays: {
-    type: String,
-    default: '3–5 days'
-  },
-  returnPolicy: {
-    type: String,
-    default: '7-day return'
-  },
-
-}, { timestamps: true });
-
-// Auto-calculate discount before saving
-productSchema.pre('save', function (next) {
-  if (this.mrp > 0) {
-    this.discount = Math.round(((this.mrp - this.price) / this.mrp) * 100);
+    res.json({
+      products,
+      total,
+      page:  Number(page),
+      pages: Math.ceil(total / Number(limit)),
+    });
+  } catch (err) {
+    res.status(500).json({ message: 'Server error', error: err.message });
   }
-  next();
 });
 
-module.exports = mongoose.model('Product', productSchema);
+// GET /api/products/:id
+router.get('/:id', async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id);
+    if (!product) return res.status(404).json({ message: 'Product not found' });
+    res.json(product);
+  } catch (err) {
+    res.status(500).json({ message: 'Server error', error: err.message });
+  }
+});
+
+module.exports = router;

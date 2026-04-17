@@ -30,26 +30,30 @@ const userSchema = new mongoose.Schema({
   },
 
   // Customer fields
+  cart: [{
+    product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
+    qty:     { type: Number, default: 1, min: 1 }
+  }],
   wishlist: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Product'
   }],
   addresses: [{
-    label: String,       // 'Home', 'Office'
-    street: String,
-    city: String,
-    state: String,
-    pincode: String,
-    phone: String,
+    label:     String,
+    street:    String,
+    city:      String,
+    state:     String,
+    pincode:   String,
+    phone:     String,
     isDefault: { type: Boolean, default: false }
   }],
 
   // Seller fields
-  businessName: String,
-  gstNumber: String,
+  businessName:  String,
+  gstNumber:     String,
   businessState: String,
-  sellerRating: { type: Number, default: 0 },
-  totalReviews: { type: Number, default: 0 },
+  sellerRating:  { type: Number, default: 0 },
+  totalReviews:  { type: Number, default: 0 },
 
 }, { timestamps: true });
 
