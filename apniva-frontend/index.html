@@ -100,8 +100,10 @@ input  { font-family: var(--font-body); outline: none; border: none; }
 .btn-submit {
   width: 100%; padding: 13px; background: var(--saffron); color: var(--white);
   border-radius: var(--radius-sm); font-size: 15px; font-weight: 600; transition: .2s; margin-top: 4px;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
 }
-.btn-submit:hover { background: #C03D13; }
+.btn-submit:hover:not(:disabled) { background: #C03D13; }
+.btn-submit:disabled { opacity: .6; cursor: not-allowed; }
 
 /* Role badge shown on submit button */
 .role-badge { display: inline-block; background: rgba(255,255,255,.2); border-radius: 4px; padding: 1px 8px; font-size: 13px; margin-left: 6px; }
@@ -113,6 +115,15 @@ input  { font-family: var(--font-body); outline: none; border: none; }
 .btn-social:hover { border-color: var(--saffron); color: var(--saffron); }
 .form-meta { text-align: center; font-size: 13px; color: var(--warm-gray); margin-top: 14px; }
 .form-meta a { color: var(--saffron); cursor: pointer; font-weight: 500; }
+
+/* ── Error message ── */
+.error-msg {
+  background: #FDF0EF; border: 1px solid #F5C0BC;
+  color: #C0291C; border-radius: var(--radius-sm);
+  padding: 10px 14px; font-size: 13px; margin-bottom: 14px;
+  display: none;
+}
+.error-msg.show { display: block; }
 
 /* ── Toast ── */
 .toast { position: fixed; bottom: 24px; right: 24px; background: var(--ink); color: var(--white); padding: 12px 20px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; z-index: 9999; transform: translateY(80px); opacity: 0; transition: .3s; display: flex; align-items: center; gap: 8px; }
@@ -168,30 +179,45 @@ input  { font-family: var(--font-body); outline: none; border: none; }
       <div id="login-form">
         <h2 class="auth-title" id="login-title">Welcome back!</h2>
         <p class="auth-sub" id="login-sub">Sign in to continue shopping</p>
-        <div class="field"><label>Email or Mobile Number</label><input type="text" placeholder="email@example.com or 9876543210"></div>
-        <div class="field"><label>Password</label><input type="password" placeholder="Enter your password"><div style="text-align:right;margin-top:6px"><a style="font-size:13px;color:var(--saffron);cursor:pointer">Forgot password?</a></div></div>
-        <button class="btn-submit" onclick="doLogin()">Sign In <span class="role-badge" id="login-role-badge">as Customer</span></button>
-        <div class="divider"><span>or continue with</span></div>
-        <button class="btn-social" onclick="doLogin()">🇮🇳 Continue with Google</button>
+        <div class="error-msg" id="login-error"></div>
+        <div class="field">
+          <label>Email Address</label>
+          <input type="email" id="login-email" placeholder="email@example.com">
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input type="password" id="login-password" placeholder="Enter your password">
+          <div style="text-align:right;margin-top:6px"><a style="font-size:13px;color:var(--saffron);cursor:pointer">Forgot password?</a></div>
+        </div>
+        <button class="btn-submit" id="login-btn" onclick="doLogin()">
+          Sign In <span class="role-badge" id="login-role-badge">as Customer</span>
+        </button>
       </div>
 
       <!-- ── SIGNUP FORM ── -->
       <div id="signup-form" style="display:none">
         <h2 class="auth-title" id="signup-title">Join Apniva!</h2>
         <p class="auth-sub" id="signup-sub">Create your account in seconds</p>
+        <div class="error-msg" id="signup-error"></div>
         <div class="form-row">
-          <div class="field"><label>First Name</label><input type="text" placeholder="Priya"></div>
-          <div class="field"><label>Last Name</label><input type="text" placeholder="Sharma"></div>
+          <div class="field"><label>First Name</label><input type="text" id="signup-fname" placeholder="Priya"></div>
+          <div class="field"><label>Last Name</label><input type="text" id="signup-lname" placeholder="Sharma"></div>
         </div>
-        <div class="field"><label>Email Address</label><input type="email" placeholder="priya@example.com"></div>
-        <div class="field"><label>Mobile Number</label><input type="tel" placeholder="98765 43210"></div>
-        <div class="field"><label>Password</label><input type="password" placeholder="Min. 8 characters"></div>
-        <!-- Seller-only fields (shown when seller role is active) -->
-        <div class="field seller-field" id="sf-bizname"><label>Business / Shop Name</label><input type="text" placeholder="e.g. Sharma Silk House"></div>
-        <div class="field seller-field" id="sf-gst"><label>GST Number</label><input type="text" placeholder="e.g. 29ABCDE1234F1Z5"></div>
+        <div class="field"><label>Email Address</label><input type="email" id="signup-email" placeholder="priya@example.com"></div>
+        <div class="field"><label>Mobile Number</label><input type="tel" id="signup-mobile" placeholder="98765 43210"></div>
+        <div class="field"><label>Password</label><input type="password" id="signup-password" placeholder="Min. 8 characters"></div>
+        <!-- Seller-only fields -->
+        <div class="field seller-field" id="sf-bizname">
+          <label>Business / Shop Name</label>
+          <input type="text" id="signup-bizname" placeholder="e.g. Sharma Silk House">
+        </div>
+        <div class="field seller-field" id="sf-gst">
+          <label>GST Number</label>
+          <input type="text" id="signup-gst" placeholder="e.g. 29ABCDE1234F1Z5">
+        </div>
         <div class="field seller-field" id="sf-state">
           <label>State of Business</label>
-          <select style="width:100%;padding:12px 14px;background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:15px;color:var(--ink)">
+          <select id="signup-state" style="width:100%;padding:12px 14px;background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:15px;color:var(--ink)">
             <option value="">Select state…</option>
             <option>Andhra Pradesh</option><option>Bihar</option><option>Delhi</option>
             <option>Gujarat</option><option>Jammu & Kashmir</option><option>Karnataka</option>
@@ -201,7 +227,9 @@ input  { font-family: var(--font-body); outline: none; border: none; }
             <option>West Bengal</option>
           </select>
         </div>
-        <button class="btn-submit" onclick="doLogin()">Create Account <span class="role-badge" id="signup-role-badge">as Customer</span></button>
+        <button class="btn-submit" id="signup-btn" onclick="doSignup()">
+          Create Account <span class="role-badge" id="signup-role-badge">as Customer</span>
+        </button>
         <p class="form-meta">By creating an account you agree to our <a>Terms of Service</a> & <a>Privacy Policy</a></p>
       </div>
 
@@ -213,62 +241,197 @@ input  { font-family: var(--font-body); outline: none; border: none; }
 <div class="toast" id="toast"><span class="toast-dot"></span><span id="toast-msg"></span></div>
 
 <script>
-/* ── State ── */
-let currentRole = 'customer'; // 'customer' | 'seller'
-let currentMode = 'login';    // 'login' | 'signup'
+  // ── Config ──────────────────────────────────────────
+  const API = 'http://localhost:5001/api';
 
-/* ── Role Selection ── */
-function selectRole(role) {
-  currentRole = role;
-  document.getElementById('role-customer').classList.toggle('active', role === 'customer');
-  document.getElementById('role-seller').classList.toggle('active', role === 'seller');
+  // ── State ───────────────────────────────────────────
+  let currentRole = 'customer';
+  let currentMode = 'login';
 
-  // Show/hide seller-specific signup fields
-  document.getElementById('signup-form').classList.toggle('seller-mode', role === 'seller');
+  // ── Role Selection ───────────────────────────────────
+  function selectRole(role) {
+    currentRole = role;
+    document.getElementById('role-customer').classList.toggle('active', role === 'customer');
+    document.getElementById('role-seller').classList.toggle('active', role === 'seller');
+    document.getElementById('signup-form').classList.toggle('seller-mode', role === 'seller');
 
-  // Update titles & button labels
-  const isCustomer = role === 'customer';
-  document.getElementById('login-title').textContent   = isCustomer ? 'Welcome back!' : 'Seller Sign In';
-  document.getElementById('login-sub').textContent     = isCustomer ? 'Sign in to continue shopping' : 'Access your seller dashboard';
-  document.getElementById('signup-title').textContent  = isCustomer ? 'Join Apniva!' : 'Become a Seller';
-  document.getElementById('signup-sub').textContent    = isCustomer ? 'Create your account in seconds' : 'Start selling to crores of customers';
-  document.getElementById('login-role-badge').textContent  = isCustomer ? 'as Customer' : 'as Seller';
-  document.getElementById('signup-role-badge').textContent = isCustomer ? 'as Customer' : 'as Seller';
-}
+    const isCustomer = role === 'customer';
+    document.getElementById('login-title').textContent   = isCustomer ? 'Welcome back!'              : 'Seller Sign In';
+    document.getElementById('login-sub').textContent     = isCustomer ? 'Sign in to continue shopping' : 'Access your seller dashboard';
+    document.getElementById('signup-title').textContent  = isCustomer ? 'Join Apniva!'               : 'Become a Seller';
+    document.getElementById('signup-sub').textContent    = isCustomer ? 'Create your account in seconds' : 'Start selling to crores of customers';
+    document.getElementById('login-role-badge').textContent  = isCustomer ? 'as Customer' : 'as Seller';
+    document.getElementById('signup-role-badge').textContent = isCustomer ? 'as Customer' : 'as Seller';
 
-/* ── Toggle Login / Signup ── */
-function switchMode(mode) {
-  currentMode = mode;
-  document.getElementById('login-form').style.display  = mode === 'login'  ? 'block' : 'none';
-  document.getElementById('signup-form').style.display = mode === 'signup' ? 'block' : 'none';
-  document.getElementById('btn-login').classList.toggle('active',  mode === 'login');
-  document.getElementById('btn-signup').classList.toggle('active', mode === 'signup');
-}
+    clearErrors();
+  }
 
-/* ── Login / Redirect ── */
-function doLogin() {
-  // In production: validate & call POST /api/auth/login or /api/auth/register
-  // For now: store role in localStorage and redirect
-  localStorage.setItem('apniva_role', currentRole);
-  localStorage.setItem('apniva_user', JSON.stringify({
-    name: currentRole === 'seller' ? 'Ramesh Textiles' : 'Priya Sharma',
-    email: currentRole === 'seller' ? 'ramesh@textiles.in' : 'priya.sharma@gmail.com',
-    role: currentRole,
-  }));
+  // ── Toggle Login / Signup ────────────────────────────
+  function switchMode(mode) {
+    currentMode = mode;
+    document.getElementById('login-form').style.display  = mode === 'login'  ? 'block' : 'none';
+    document.getElementById('signup-form').style.display = mode === 'signup' ? 'block' : 'none';
+    document.getElementById('btn-login').classList.toggle('active',  mode === 'login');
+    document.getElementById('btn-signup').classList.toggle('active', mode === 'signup');
+    clearErrors();
+  }
 
-  showToast('Signing in…');
-  setTimeout(() => {
-    window.location.href = currentRole === 'seller' ? 'seller.html' : 'customer.html';
-  }, 700);
-}
+  // ── Helpers ─────────────────────────────────────────
+  function setLoading(btnId, loading) {
+    const btn = document.getElementById(btnId);
+    btn.disabled = loading;
+    if (loading) {
+      btn.dataset.orig = btn.innerHTML;
+      btn.innerHTML = '<span style="font-size:18px">⏳</span> Please wait…';
+    } else {
+      btn.innerHTML = btn.dataset.orig;
+    }
+  }
 
-/* ── Toast ── */
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  document.getElementById('toast-msg').textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2500);
-}
+  function showError(formId, msg) {
+    const el = document.getElementById(formId + '-error');
+    el.textContent = '⚠️ ' + msg;
+    el.classList.add('show');
+  }
+
+  function clearErrors() {
+    document.querySelectorAll('.error-msg').forEach(e => e.classList.remove('show'));
+  }
+
+  function saveSession(token, user) {
+    localStorage.setItem('apniva_token', token);
+    localStorage.setItem('apniva_role',  user.role);
+    localStorage.setItem('apniva_user',  JSON.stringify(user));
+  }
+
+  // ── LOGIN ────────────────────────────────────────────
+  async function doLogin() {
+    clearErrors();
+    const email    = document.getElementById('login-email').value.trim();
+    const password = document.getElementById('login-password').value;
+
+    if (!email || !password) {
+      showError('login', 'Please enter your email and password.');
+      return;
+    }
+
+    setLoading('login-btn', true);
+    try {
+      const res  = await fetch(`${API}/auth/login`, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ email, password, role: currentRole }),
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        showError('login', data.message || 'Login failed. Please try again.');
+        return;
+      }
+
+      saveSession(data.token, data.user);
+      showToast('✅ Welcome back, ' + data.user.name.split(' ')[0] + '!');
+      setTimeout(() => {
+        window.location.href = data.user.role === 'seller' ? 'seller.html' : 'customer.html';
+      }, 800);
+
+    } catch (err) {
+      showError('login', 'Cannot connect to server. Is the backend running?');
+    } finally {
+      setLoading('login-btn', false);
+    }
+  }
+
+  // ── SIGNUP ───────────────────────────────────────────
+  async function doSignup() {
+    clearErrors();
+    const fname    = document.getElementById('signup-fname').value.trim();
+    const lname    = document.getElementById('signup-lname').value.trim();
+    const email    = document.getElementById('signup-email').value.trim();
+    const mobile   = document.getElementById('signup-mobile').value.trim();
+    const password = document.getElementById('signup-password').value;
+
+    if (!fname || !email || !password) {
+      showError('signup', 'First name, email and password are required.');
+      return;
+    }
+    if (password.length < 8) {
+      showError('signup', 'Password must be at least 8 characters.');
+      return;
+    }
+
+    const body = {
+      name:     (fname + ' ' + lname).trim(),
+      email,
+      mobile,
+      password,
+      role: currentRole,
+    };
+
+    // Seller extra fields
+    if (currentRole === 'seller') {
+      const bizname = document.getElementById('signup-bizname').value.trim();
+      const gst     = document.getElementById('signup-gst').value.trim();
+      const state   = document.getElementById('signup-state').value;
+      if (!bizname) {
+        showError('signup', 'Business name is required for sellers.');
+        return;
+      }
+      body.businessName  = bizname;
+      body.gstNumber     = gst;
+      body.businessState = state;
+    }
+
+    setLoading('signup-btn', true);
+    try {
+      const res  = await fetch(`${API}/auth/register`, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(body),
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        showError('signup', data.message || 'Registration failed.');
+        return;
+      }
+
+      saveSession(data.token, data.user);
+      showToast('🎉 Account created! Welcome, ' + data.user.name.split(' ')[0] + '!');
+      setTimeout(() => {
+        window.location.href = data.user.role === 'seller' ? 'seller.html' : 'customer.html';
+      }, 800);
+
+    } catch (err) {
+      showError('signup', 'Cannot connect to server. Is the backend running?');
+    } finally {
+      setLoading('signup-btn', false);
+    }
+  }
+
+  // ── Enter key support ────────────────────────────────
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter') return;
+    if (currentMode === 'login')  doLogin();
+    if (currentMode === 'signup') doSignup();
+  });
+
+  // ── Toast ────────────────────────────────────────────
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    document.getElementById('toast-msg').textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2500);
+  }
+
+  // ── Auto-redirect if already logged in ───────────────
+  (function checkSession() {
+    const token = localStorage.getItem('apniva_token');
+    const role  = localStorage.getItem('apniva_role');
+    if (token && role) {
+      window.location.href = role === 'seller' ? 'seller.html' : 'customer.html';
+    }
+  })();
 </script>
 </body>
 </html>

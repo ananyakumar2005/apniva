@@ -114,6 +114,9 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
 .btn-add { width: 100%; padding: 9px; background: var(--saffron-light); color: var(--saffron); border-radius: var(--radius-sm); font-size: 13px; font-weight: 600; margin-top: 10px; transition: .2s; }
 .btn-add:hover { background: var(--saffron); color: var(--white); }
 
+/* ── Loading placeholder ── */
+.loading-text { color: var(--warm-gray); padding: 20px; font-size: 14px; }
+
 /* ── Empty State ── */
 .empty-state { text-align: center; padding: 60px 20px; }
 .empty-state .empty-icon { font-size: 64px; margin-bottom: 16px; }
@@ -174,13 +177,11 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
 .spotlight-header { margin-bottom: 20px; }
 .spotlight-sub { font-size: 14px; color: var(--warm-gray); margin-top: 4px; }
 
-/* State tabs strip */
 .state-tabs { display: flex; gap: 8px; margin-bottom: 24px; }
 .state-tab { flex-shrink: 0; padding: 8px 16px; border-radius: 40px; border: 1.5px solid var(--border); font-size: 13px; font-weight: 500; background: var(--ivory); color: var(--ink-mid); cursor: pointer; transition: .2s; white-space: nowrap; }
 .state-tab:hover { border-color: var(--saffron); color: var(--saffron); }
 .state-tab.active { background: var(--saffron); color: var(--white); border-color: var(--saffron); }
 
-/* State panel card */
 .state-panel { display: none; }
 .state-panel.active { display: grid; grid-template-columns: 280px 1fr; gap: 24px; align-items: start; }
 
@@ -197,7 +198,6 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
 .state-tag { padding: 4px 10px; background: var(--saffron-light); color: var(--saffron); border-radius: 20px; font-size: 11px; font-weight: 600; }
 .state-fact { font-size: 12px; color: var(--ink-mid); background: var(--white); padding: 10px 12px; border-radius: var(--radius-sm); border-left: 3px solid var(--saffron); line-height: 1.5; }
 
-/* State product scroll */
 .state-products { display: flex; gap: 16px; }
 .state-product-card { flex-shrink: 0; width: 160px; background: var(--ivory); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; cursor: pointer; transition: .2s; }
 .state-product-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); border-color: var(--saffron-mid); }
@@ -281,7 +281,6 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
 .cart-item-total { font-size: 16px; font-weight: 700; text-align: right; }
 .cart-remove { font-size: 12px; color: var(--warm-gray); cursor: pointer; margin-top: 6px; text-align: right; transition: .2s; }
 .cart-remove:hover { color: var(--sindoor); }
-/* Order summary card */
 .order-summary { background: var(--white); border-radius: var(--radius); border: 1px solid var(--border); padding: 22px; position: sticky; top: 80px; height: fit-content; }
 .summary-title { font-family: var(--font-display); font-size: 18px; margin-bottom: 18px; }
 .summary-row { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 12px; color: var(--ink-mid); }
@@ -304,7 +303,6 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
 ══════════════════════════════════════ */
 .profile-layout { display: grid; grid-template-columns: 260px 1fr; gap: 24px; padding: 32px; max-width: 1200px; margin: 0 auto; }
 
-/* 7a. Sidebar Nav */
 .profile-sidebar { background: var(--white); border-radius: var(--radius); border: 1px solid var(--border); padding: 24px; height: fit-content; }
 .profile-avatar-wrap { display: flex; flex-direction: column; align-items: center; margin-bottom: 24px; }
 .profile-avatar { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--saffron), var(--turmeric)); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 30px; color: var(--white); margin-bottom: 12px; }
@@ -317,12 +315,10 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
 .profile-nav-item.danger { color: var(--sindoor); margin-top: 12px; }
 .profile-nav-item.danger:hover { background: #FDF0EB; }
 
-/* Profile card container */
 .profile-card { background: var(--white); border-radius: var(--radius); border: 1px solid var(--border); padding: 24px; margin-bottom: 20px; }
 .profile-card-title { font-family: var(--font-display); font-size: 17px; margin-bottom: 18px; display: flex; align-items: center; justify-content: space-between; }
 .btn-edit { font-size: 13px; color: var(--saffron); font-weight: 500; cursor: pointer; background: transparent; }
 
-/* 7b. Overview info grid */
 .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .info-item label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .8px; color: var(--warm-gray); display: block; margin-bottom: 4px; }
 .info-item span { font-size: 14px; }
@@ -334,7 +330,6 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
 .stat-jade    { background: var(--jade-light); }    .stat-jade span    { color: var(--jade); }
 .stat-turmeric{ background: var(--turmeric-light); } .stat-turmeric span{ color: var(--turmeric); }
 
-/* 7c. Orders */
 .tab-bar { display: flex; gap: 4px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
 .tab-btn { padding: 10px 16px; font-size: 14px; font-weight: 500; color: var(--warm-gray); cursor: pointer; border-bottom: 2px solid transparent; transition: .2s; background: transparent; }
 .tab-btn:hover { color: var(--saffron); }
@@ -349,7 +344,6 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
 .status-shipping  { background: var(--turmeric-light); color: var(--turmeric); }
 .status-processing{ background: var(--saffron-light); color: var(--saffron); }
 
-/* 7d. Wishlist */
 .wishlist-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px,1fr)); gap: 12px; }
 .wishlist-item { background: var(--cream); border-radius: var(--radius-sm); padding: 12px; text-align: center; cursor: pointer; transition: .2s; }
 .wishlist-item:hover { background: var(--saffron-light); }
@@ -357,7 +351,6 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
 .wishlist-name  { font-size: 12px; font-weight: 600; margin-bottom: 4px; }
 .wishlist-price { font-size: 12px; color: var(--saffron); font-weight: 700; }
 
-/* 7e. Address */
 .address-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .address-card { background: var(--cream); border-radius: var(--radius-sm); padding: 16px; border: 1.5px solid var(--border); cursor: pointer; transition: .2s; position: relative; }
 .address-card:hover, .address-card.address-active { border-color: var(--saffron); background: var(--saffron-light); }
@@ -365,7 +358,6 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
 .address-name { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
 .address-text { font-size: 13px; color: var(--ink-mid); line-height: 1.5; }
 
-/* 7f. Payment */
 .pay-item { display: flex; align-items: center; gap: 14px; background: var(--cream); padding: 14px; border-radius: var(--radius-sm); margin-bottom: 10px; }
 .pay-name { font-size: 14px; font-weight: 600; }
 .pay-meta { font-size: 12px; color: var(--warm-gray); margin-top: 2px; }
@@ -383,7 +375,7 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
 <body>
 
 <!-- ══════════════════════════════════════════════════
-     NAVBAR (shared across all customer sections)
+     NAVBAR
 ══════════════════════════════════════════════════ -->
 <nav class="navbar">
   <div class="nav-logo" onclick="showSection('home')">apn<span>i</span>va</div>
@@ -395,16 +387,16 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
     <button class="nav-btn active" id="nav-home"    onclick="showSection('home')">🏠 Home</button>
     <button class="nav-btn"        id="nav-catalog" onclick="showSection('catalog')">🛒 Catalog</button>
     <button class="nav-btn"        id="nav-cart"    onclick="showSection('cart')" style="position:relative">
-      🛍️ Cart <span class="cart-badge" id="cart-badge">3</span>
+      🛍️ Cart <span class="cart-badge" id="cart-badge">0</span>
     </button>
     <button class="nav-btn"        id="nav-profile" onclick="showSection('profile')">👤 Account</button>
-    <div class="nav-avatar" id="nav-avatar" onclick="showSection('profile')">PS</div>
+    <div class="nav-avatar" id="nav-avatar" onclick="showSection('profile')">?</div>
   </div>
 </nav>
 
 
 <!-- ══════════════════════════════════════════════════
-     3. HOME PAGE  (#sec-home)
+     3. HOME PAGE
 ══════════════════════════════════════════════════ -->
 <div id="sec-home" class="page active">
 
@@ -446,10 +438,10 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
       <div class="timer-block"><span id="ts">17</span><small>sec</small></div>
     </div>
     <div class="flash-scroll scroll-x">
-      <div class="flash-item" onclick="openProduct(0)"><span style="font-size:22px">🎧</span><div><div class="flash-item-name">Wireless Earbuds</div><div class="flash-item-price">₹999 <s style="opacity:.6">₹2,499</s></div></div></div>
-      <div class="flash-item" onclick="openProduct(2)"><span style="font-size:22px">👗</span><div><div class="flash-item-name">Silk Saree</div><div class="flash-item-price">₹1,299 <s style="opacity:.6">₹3,500</s></div></div></div>
-      <div class="flash-item" onclick="openProduct(4)"><span style="font-size:22px">🫖</span><div><div class="flash-item-name">Brass Teapot</div><div class="flash-item-price">₹449 <s style="opacity:.6">₹899</s></div></div></div>
-      <div class="flash-item" onclick="openProduct(1)"><span style="font-size:22px">💻</span><div><div class="flash-item-name">Laptop Stand</div><div class="flash-item-price">₹799 <s style="opacity:.6">₹1,600</s></div></div></div>
+      <div class="flash-item" onclick="showSection('catalog')"><span style="font-size:22px">🎧</span><div><div class="flash-item-name">Wireless Earbuds</div><div class="flash-item-price">₹999 <s style="opacity:.6">₹2,499</s></div></div></div>
+      <div class="flash-item" onclick="showSection('catalog')"><span style="font-size:22px">👗</span><div><div class="flash-item-name">Silk Saree</div><div class="flash-item-price">₹1,299 <s style="opacity:.6">₹3,500</s></div></div></div>
+      <div class="flash-item" onclick="showSection('catalog')"><span style="font-size:22px">🫖</span><div><div class="flash-item-name">Brass Teapot</div><div class="flash-item-price">₹449 <s style="opacity:.6">₹899</s></div></div></div>
+      <div class="flash-item" onclick="showSection('catalog')"><span style="font-size:22px">💻</span><div><div class="flash-item-name">Laptop Stand</div><div class="flash-item-price">₹799 <s style="opacity:.6">₹1,600</s></div></div></div>
     </div>
   </div>
 
@@ -461,11 +453,7 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
         <p class="spotlight-sub">Discover authentic goods from across India's diverse states</p>
       </div>
     </div>
-
-    <!-- State Tab Strip -->
     <div class="state-tabs scroll-x" id="state-tabs"></div>
-
-    <!-- State Panels (rendered by JS) -->
     <div id="state-panels"></div>
   </div>
 
@@ -493,13 +481,15 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
       <h2 class="sec-title">Trending Now 🔥</h2>
       <span class="sec-link" onclick="showSection('catalog')">See All →</span>
     </div>
-    <div class="product-grid" id="home-grid"></div>
+    <div class="product-grid" id="home-grid">
+      <p class="loading-text">Loading products…</p>
+    </div>
   </div>
 </div><!-- end #sec-home -->
 
 
 <!-- ══════════════════════════════════════════════════
-     4. CATALOG PAGE  (#sec-catalog)
+     4. CATALOG PAGE
 ══════════════════════════════════════════════════ -->
 <div id="sec-catalog" class="page">
   <div class="catalog-wrap">
@@ -516,13 +506,15 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
         <option value="discount">Best Discount</option>
       </select>
     </div>
-    <div class="product-grid" id="catalog-grid"></div>
+    <div class="product-grid" id="catalog-grid">
+      <p class="loading-text">Loading products…</p>
+    </div>
   </div>
 </div>
 
 
 <!-- ══════════════════════════════════════════════════
-     5. PRODUCT DETAIL PAGE  (#sec-detail)
+     5. PRODUCT DETAIL PAGE
 ══════════════════════════════════════════════════ -->
 <div id="sec-detail" class="page">
   <div class="detail-layout">
@@ -557,7 +549,7 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
             <span class="qty-val" id="detail-qty">1</span>
             <button class="qty-btn" onclick="changeDetailQty(1)">+</button>
           </div>
-          <span style="font-size:13px;color:var(--jade);font-weight:500">✓ In Stock (47 left)</span>
+          <span style="font-size:13px;color:var(--jade);font-weight:500" id="detail-stock">✓ In Stock</span>
         </div>
       </div>
       <div class="detail-info-list">
@@ -576,25 +568,25 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
 
 
 <!-- ══════════════════════════════════════════════════
-     6. CART PAGE  (#sec-cart)
+     6. CART PAGE
 ══════════════════════════════════════════════════ -->
 <div id="sec-cart" class="page">
   <div class="cart-layout">
     <div class="cart-card">
       <div class="cart-card-header">
         <h2>Shopping Cart</h2>
-        <span class="cart-count-badge" id="cart-header-count">3 items</span>
+        <span class="cart-count-badge" id="cart-header-count">0 items</span>
       </div>
       <div id="cart-items-list"></div>
     </div>
     <div class="order-summary">
       <h2 class="summary-title">Order Summary</h2>
-      <div class="summary-row"><span>Subtotal (<span id="sum-qty">3</span> items)</span><span id="sum-subtotal">₹3,247</span></div>
+      <div class="summary-row"><span>Subtotal (<span id="sum-qty">0</span> items)</span><span id="sum-subtotal">₹0</span></div>
       <div class="summary-row"><span>Delivery</span><span style="color:var(--jade);font-weight:600">FREE</span></div>
       <div class="summary-row"><span>Discount</span><span style="color:var(--jade);font-weight:600" id="sum-discount">− ₹0</span></div>
       <div class="summary-divider"></div>
-      <div class="summary-total"><span>Total</span><span id="sum-total">₹3,247</span></div>
-      <div class="savings-badge" id="savings-badge">You save ₹648 on this order 🎉</div>
+      <div class="summary-total"><span>Total</span><span id="sum-total">₹0</span></div>
+      <div class="savings-badge" id="savings-badge">Add items to see savings 🛍️</div>
       <div class="promo-wrap">
         <input class="promo-input" type="text" id="promo-inp" placeholder="Promo code (try APNIVA10)">
         <button class="btn-promo" onclick="applyPromo()">Apply</button>
@@ -607,7 +599,7 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
 
 
 <!-- ══════════════════════════════════════════════════
-     7. PROFILE PAGE  (#sec-profile)
+     7. PROFILE PAGE
 ══════════════════════════════════════════════════ -->
 <div id="sec-profile" class="page">
   <div class="profile-layout">
@@ -615,9 +607,9 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
     <!-- 7a. Sidebar Nav -->
     <aside class="profile-sidebar">
       <div class="profile-avatar-wrap">
-        <div class="profile-avatar">PS</div>
-        <div class="profile-name">Priya Sharma</div>
-        <div class="profile-email">priya.sharma@gmail.com</div>
+        <div class="profile-avatar" id="profile-avatar-initials">PS</div>
+        <div class="profile-name" id="profile-name">Priya Sharma</div>
+        <div class="profile-email" id="profile-email">priya@example.com</div>
       </div>
       <nav class="profile-nav">
         <button class="profile-nav-item active" onclick="switchProfileTab('overview',this)">👤 My Account</button>
@@ -629,7 +621,7 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
       </nav>
     </aside>
 
-    <!-- Profile main content area (tabs swap here) -->
+    <!-- Profile main content -->
     <div id="profile-main">
 
       <!-- 7b. Overview Tab -->
@@ -637,20 +629,18 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
         <div class="profile-card">
           <div class="profile-card-title">Personal Information <button class="btn-edit" onclick="showToast('Edit — connect backend!')">Edit</button></div>
           <div class="info-grid">
-            <div class="info-item"><label>Full Name</label><span>Priya Sharma</span></div>
-            <div class="info-item"><label>Mobile</label><span>+91 98765 43210</span></div>
-            <div class="info-item"><label>Email</label><span>priya.sharma@gmail.com</span></div>
-            <div class="info-item"><label>Date of Birth</label><span>14 April 1992</span></div>
-            <div class="info-item"><label>Gender</label><span>Female</span></div>
-            <div class="info-item"><label>Member Since</label><span>March 2022</span></div>
+            <div class="info-item"><label>Full Name</label><span id="info-name">—</span></div>
+            <div class="info-item"><label>Mobile</label><span id="info-mobile">—</span></div>
+            <div class="info-item"><label>Email</label><span id="info-email">—</span></div>
+            <div class="info-item"><label>Role</label><span id="info-role">—</span></div>
           </div>
         </div>
         <div class="profile-card">
           <div class="profile-card-title">Shopping Summary</div>
           <div class="stats-grid">
-            <div class="stat-box stat-saffron"><span>12</span><small>Orders</small></div>
-            <div class="stat-box stat-jade"><span>8</span><small>Wishlisted</small></div>
-            <div class="stat-box stat-turmeric"><span>₹12K</span><small>Total Spent</small></div>
+            <div class="stat-box stat-saffron"><span id="stat-orders">—</span><small>Orders</small></div>
+            <div class="stat-box stat-jade"><span>4</span><small>Wishlisted</small></div>
+            <div class="stat-box stat-turmeric"><span id="stat-spent">—</span><small>Total Spent</small></div>
           </div>
         </div>
       </div>
@@ -664,14 +654,14 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
             <button class="tab-btn" onclick="switchOrderTab('active',this)">Active</button>
             <button class="tab-btn" onclick="switchOrderTab('delivered',this)">Delivered</button>
           </div>
-          <div id="order-list"></div>
+          <div id="order-list"><p class="loading-text">Loading orders…</p></div>
         </div>
       </div>
 
       <!-- 7d. Wishlist Tab -->
       <div id="ptab-wishlist" style="display:none">
         <div class="profile-card">
-          <div class="profile-card-title">My Wishlist <span style="font-size:13px;color:var(--warm-gray);font-weight:400">8 items saved</span></div>
+          <div class="profile-card-title">My Wishlist</div>
           <div class="wishlist-grid" id="wishlist-grid"></div>
         </div>
       </div>
@@ -683,12 +673,8 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
           <div class="address-grid">
             <div class="address-card address-active">
               <span class="address-default-tag">Default</span>
-              <div class="address-name">Priya Sharma (Home)</div>
-              <div class="address-text">42, Lotus Lane, Koramangala 5th Block<br>Bengaluru, Karnataka — 560095<br>📞 98765 43210</div>
-            </div>
-            <div class="address-card">
-              <div class="address-name">Priya Sharma (Office)</div>
-              <div class="address-text">Tower B, Floor 7, Prestige Techpark<br>Marathahalli, Bengaluru — 560037<br>📞 98765 43210</div>
+              <div class="address-name" id="addr-name">—</div>
+              <div class="address-text" id="addr-text">—</div>
             </div>
           </div>
         </div>
@@ -699,146 +685,106 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
         <div class="profile-card">
           <div class="profile-card-title">Payment Methods <button class="btn-edit" onclick="showToast('Add payment — connect backend!')">+ Add</button></div>
           <div class="pay-item"><span style="font-size:28px">💳</span><div><div class="pay-name">HDFC Bank Visa •••• 4521</div><div class="pay-meta">Expires 08/26</div></div><span class="default-pay-tag">Default</span></div>
-          <div class="pay-item"><span style="font-size:28px">📱</span><div><div class="pay-name">UPI — priya@upi</div><div class="pay-meta">Google Pay linked</div></div></div>
+          <div class="pay-item"><span style="font-size:28px">📱</span><div><div class="pay-name">UPI — linked</div><div class="pay-meta">Google Pay linked</div></div></div>
         </div>
       </div>
 
-    </div><!-- end #profile-main -->
+    </div>
   </div>
-</div><!-- end #sec-profile -->
+</div>
 
-
-<!-- Toast notification -->
+<!-- Toast -->
 <div class="toast" id="toast"><span class="toast-dot"></span><span id="toast-msg"></span></div>
 
 
 <!-- ══════════════════════════════════════════════════
-     JAVASCRIPT
+     JAVASCRIPT  — fully API-connected
 ══════════════════════════════════════════════════ -->
 <script>
 /* ─────────────────────────────────────
-   DATA: Products
+   CONFIG & AUTH HELPERS
 ───────────────────────────────────── */
-const PRODUCTS = [
-  {id:0, name:'Wireless Noise-Cancelling Earbuds', cat:'Electronics', emoji:'🎧', price:999,  orig:2499, rating:4.5, reviews:2341, badge:'hot', off:60, brand:'SoundWave India'},
-  {id:1, name:'Slim Aluminium Laptop Stand',       cat:'Electronics', emoji:'💻', price:799,  orig:1600, rating:4.3, reviews:876,  badge:'',    off:50, brand:'DeskMate Co.'},
-  {id:2, name:'Kanchipuram Silk Saree',            cat:'Fashion',     emoji:'👗', price:1299, orig:3500, rating:4.8, reviews:3120, badge:'new',  off:63, brand:'Silk Threads India'},
-  {id:3, name:'Mens Kurta Set — Festive',          cat:'Fashion',     emoji:'🧥', price:849,  orig:1800, rating:4.2, reviews:654,  badge:'',    off:53, brand:'Ethnic Roots'},
-  {id:4, name:'Handcrafted Brass Teapot',          cat:'Handcrafted', emoji:'🫖', price:449,  orig:899,  rating:4.7, reviews:432,  badge:'',    off:50, brand:'ArtisanCraft Co.'},
-  {id:5, name:'Indian Classic Literature Bundle',  cat:'Books',       emoji:'📚', price:349,  orig:700,  rating:4.6, reviews:1200, badge:'',    off:50, brand:'Penguin India'},
-  {id:6, name:'Ayurvedic Skincare Kit',            cat:'Beauty',      emoji:'🌿', price:699,  orig:1400, rating:4.4, reviews:987,  badge:'new', off:50, brand:'Vedic Glow'},
-  {id:7, name:'Premium Cricket Bat — Full Size',   cat:'Sports',      emoji:'🏏', price:1599, orig:3200, rating:4.5, reviews:342,  badge:'',    off:50, brand:'PlayCraft Sports'},
-  {id:8, name:'Stainless Steel Cookware Set',      cat:'Home & Kitchen',emoji:'🍳',price:1199,orig:2800, rating:4.3, reviews:1560, badge:'hot', off:57, brand:'KitchenPro India'},
-  {id:9, name:'Diya Diyas — Set of 12',            cat:'Handcrafted', emoji:'🪔', price:249,  orig:499,  rating:4.9, reviews:8741, badge:'hot', off:50, brand:'Diwali Craft Store'},
-  {id:10,name:'Organic Basmati Rice 5kg',          cat:'Groceries',   emoji:'🌾', price:399,  orig:599,  rating:4.6, reviews:2300, badge:'',    off:33, brand:'Organic Farmer Co.'},
-  {id:11,name:'Wooden Building Blocks — 50pc',     cat:'Toys',        emoji:'🧱', price:599,  orig:1199, rating:4.7, reviews:543,  badge:'',    off:50, brand:'TinyHands Toys'},
-];
+const API_BASE = 'http://localhost:5001/api';
+
+function getToken() { return localStorage.getItem('apniva_token') || ''; }
+function getUser()  {
+  try { return JSON.parse(localStorage.getItem('apniva_user') || '{}'); }
+  catch { return {}; }
+}
+
+async function apiFetch(path, opts = {}) {
+  const headers = { 'Content-Type': 'application/json', ...(opts.headers || {}) };
+  const token = getToken();
+  if (token) headers['Authorization'] = `Bearer ${token}`;
+  const res  = await fetch(API_BASE + path, { ...opts, headers });
+  const data = await res.json();
+  if (!res.ok) {
+    if (res.status === 401) logout();
+    throw new Error(data.message || `API error ${res.status}`);
+  }
+  return data;
+}
+
+function logout() {
+  localStorage.removeItem('apniva_token');
+  localStorage.removeItem('apniva_role');
+  localStorage.removeItem('apniva_user');
+  window.location.href = 'index.html';
+}
+
+/* ── Auth guard ── */
+(function guardCustomer() {
+  const role  = localStorage.getItem('apniva_role');
+  const token = getToken();
+  if (!token || !role) { window.location.href = 'index.html'; return; }
+  if (role === 'seller') { window.location.href = 'seller.html'; }
+})();
 
 /* ─────────────────────────────────────
-   DATA: State Spotlight
-   Each state: flag emoji, name, tagline, specialty tags, fun fact, products[]
+   STATE
+───────────────────────────────────── */
+let PRODUCTS       = [];
+let cartItems      = [];
+let currentProduct = null;
+let detailQty      = 1;
+let filterCategory = 'All';
+let ordersData     = [];
+
+/* ─────────────────────────────────────
+   STATE SPOTLIGHT DATA (static)
 ───────────────────────────────────── */
 const STATES = [
-  {
-    id:'rajasthan', flag:'🏜️', name:'Rajasthan', tab:'Rajasthan',
+  { id:'rajasthan',    flag:'🏜️', name:'Rajasthan',    tab:'Rajasthan',
     tagline:'The Land of Kings — famed for block-print textiles, blue pottery, and hand-knotted rugs.',
     tags:['Block Print','Blue Pottery','Lac Jewellery','Leheriya'],
     fact:'Rajasthan produces over 40% of India\'s hand-woven carpets, most from Jaipur and Bikaner.',
-    products:[
-      {emoji:'🏺', name:'Blue Pottery Vase', price:'₹649', orig:'₹1,100'},
-      {emoji:'🧣', name:'Bandhani Dupatta', price:'₹399', orig:'₹750'},
-      {emoji:'💍', name:'Kundan Earrings', price:'₹899', orig:'₹1,800'},
-      {emoji:'🪆', name:'Lac Bangle Set', price:'₹249', orig:'₹499'},
-    ]
-  },
-  {
-    id:'kerala', flag:'🌴', name:'Kerala', tab:'Kerala',
+    products:[{emoji:'🏺',name:'Blue Pottery Vase',price:'₹649',orig:'₹1,100'},{emoji:'🧣',name:'Bandhani Dupatta',price:'₹399',orig:'₹750'},{emoji:'💍',name:'Kundan Earrings',price:'₹899',orig:'₹1,800'},{emoji:'🪆',name:'Lac Bangle Set',price:'₹249',orig:'₹499'}]},
+  { id:'kerala',       flag:'🌴', name:'Kerala',       tab:'Kerala',
     tagline:'God\'s Own Country — renowned for spices, Kasavu sarees, coir crafts, and Ayurvedic oils.',
     tags:['Kasavu Saree','Black Pepper','Cardamom','Coir Craft'],
     fact:'Kerala supplies ~97% of India\'s black pepper and is the world\'s top producer of cardamom.',
-    products:[
-      {emoji:'🌶️', name:'Kerala Black Pepper 250g', price:'₹189', orig:'₹320'},
-      {emoji:'👘', name:'Kasavu Saree', price:'₹1,450', orig:'₹2,800'},
-      {emoji:'🌿', name:'Ayurvedic Hair Oil', price:'₹299', orig:'₹550'},
-      {emoji:'🪡', name:'Coir Door Mat', price:'₹349', orig:'₹650'},
-    ]
-  },
-  {
-    id:'gujarat', flag:'🦁', name:'Gujarat', tab:'Gujarat',
+    products:[{emoji:'🌶️',name:'Kerala Black Pepper 250g',price:'₹189',orig:'₹320'},{emoji:'👘',name:'Kasavu Saree',price:'₹1,450',orig:'₹2,800'},{emoji:'🌿',name:'Ayurvedic Hair Oil',price:'₹299',orig:'₹550'},{emoji:'🪡',name:'Coir Door Mat',price:'₹349',orig:'₹650'}]},
+  { id:'gujarat',      flag:'🦁', name:'Gujarat',      tab:'Gujarat',
     tagline:'The Jewel of the West — iconic for Patola silk, Kutch embroidery, and mirror-work handicrafts.',
     tags:['Patola Silk','Kutch Embroidery','Mirror Work','Bandhani'],
     fact:'The Kutch district alone has over 200 distinct folk-art traditions passed down for centuries.',
-    products:[
-      {emoji:'✨', name:'Kutch Mirror Tote Bag', price:'₹799', orig:'₹1,500'},
-      {emoji:'🧵', name:'Patola Dupatta', price:'₹1,299', orig:'₹2,600'},
-      {emoji:'🪭', name:'Handpainted Wall Plate', price:'₹449', orig:'₹850'},
-      {emoji:'📿', name:'Silver Oxidised Necklace', price:'₹649', orig:'₹1,200'},
-    ]
-  },
-  {
-    id:'westbengal', flag:'🐯', name:'West Bengal', tab:'West Bengal',
+    products:[{emoji:'✨',name:'Kutch Mirror Tote Bag',price:'₹799',orig:'₹1,500'},{emoji:'🧵',name:'Patola Dupatta',price:'₹1,299',orig:'₹2,600'},{emoji:'🪭',name:'Handpainted Wall Plate',price:'₹449',orig:'₹850'},{emoji:'📿',name:'Silver Oxidised Necklace',price:'₹649',orig:'₹1,200'}]},
+  { id:'westbengal',   flag:'🐯', name:'West Bengal',  tab:'West Bengal',
     tagline:'Cultural capital of India — home to Muslin, Baluchari silk, terracotta art, and Darjeeling tea.',
     tags:['Baluchari Silk','Darjeeling Tea','Terracotta','Kantha Stitch'],
     fact:'Darjeeling First Flush tea auctions regularly fetch among the highest per-kg prices in the world.',
-    products:[
-      {emoji:'🍵', name:'Darjeeling First Flush Tea', price:'₹499', orig:'₹900'},
-      {emoji:'👘', name:'Baluchari Saree', price:'₹2,199', orig:'₹4,200'},
-      {emoji:'🏺', name:'Terracotta Horse Figurine', price:'₹349', orig:'₹650'},
-      {emoji:'🧶', name:'Kantha Stitch Cushion', price:'₹599', orig:'₹1,100'},
-    ]
-  },
-  {
-    id:'uttarpradesh', flag:'🕌', name:'Uttar Pradesh', tab:'Uttar Pradesh',
+    products:[{emoji:'🍵',name:'Darjeeling First Flush Tea',price:'₹499',orig:'₹900'},{emoji:'👘',name:'Baluchari Saree',price:'₹2,199',orig:'₹4,200'},{emoji:'🏺',name:'Terracotta Horse Figurine',price:'₹349',orig:'₹650'},{emoji:'🧶',name:'Kantha Stitch Cushion',price:'₹599',orig:'₹1,100'}]},
+  { id:'uttarpradesh', flag:'🕌', name:'Uttar Pradesh', tab:'Uttar Pradesh',
     tagline:'Heart of India — celebrated for Chikankari embroidery, Varanasi Banarasi silk, and brass crafts.',
     tags:['Chikankari','Banarasi Silk','Brass Work','Zardozi'],
-    fact:'Varanasi\'s weavers have been producing Banarasi brocades for over 500 years using the same technique.',
-    products:[
-      {emoji:'🪡', name:'Chikankari Kurta', price:'₹899', orig:'₹1,800'},
-      {emoji:'🧶', name:'Banarasi Silk Dupatta', price:'₹1,599', orig:'₹3,200'},
-      {emoji:'🕌', name:'Brass Diya Set — 6pc', price:'₹449', orig:'₹850'},
-      {emoji:'💫', name:'Zardozi Clutch Purse', price:'₹749', orig:'₹1,400'},
-    ]
-  },
-  {
-    id:'punjab', flag:'🌾', name:'Punjab', tab:'Punjab',
+    fact:'Varanasi\'s weavers have been producing Banarasi brocades for over 500 years.',
+    products:[{emoji:'🪡',name:'Chikankari Kurta',price:'₹899',orig:'₹1,800'},{emoji:'🧶',name:'Banarasi Silk Dupatta',price:'₹1,599',orig:'₹3,200'},{emoji:'🕌',name:'Brass Diya Set — 6pc',price:'₹449',orig:'₹850'},{emoji:'💫',name:'Zardozi Clutch Purse',price:'₹749',orig:'₹1,400'}]},
+  { id:'punjab',       flag:'🌾', name:'Punjab',       tab:'Punjab',
     tagline:'The Land of Five Rivers — known for Phulkari embroidery, Punjabi jutti, and world-class wheat & dairy.',
     tags:['Phulkari','Punjabi Jutti','Amritsari Papad','Lassi'],
-    fact:'Punjab produces 50% of India\'s wheat and 25% of its rice, earning its title as the breadbasket of India.',
-    products:[
-      {emoji:'👟', name:'Handmade Punjabi Jutti', price:'₹799', orig:'₹1,500'},
-      {emoji:'🧣', name:'Phulkari Stole', price:'₹549', orig:'₹1,050'},
-      {emoji:'🍪', name:'Amritsari Wadi Pack', price:'₹199', orig:'₹350'},
-      {emoji:'🥛', name:'Organic Desi Ghee 500g', price:'₹699', orig:'₹1,100'},
-    ]
-  },
+    fact:'Punjab produces 50% of India\'s wheat and 25% of its rice — the breadbasket of India.',
+    products:[{emoji:'👟',name:'Handmade Punjabi Jutti',price:'₹799',orig:'₹1,500'},{emoji:'🧣',name:'Phulkari Stole',price:'₹549',orig:'₹1,050'},{emoji:'🍪',name:'Amritsari Wadi Pack',price:'₹199',orig:'₹350'},{emoji:'🥛',name:'Organic Desi Ghee 500g',price:'₹699',orig:'₹1,100'}]},
 ];
-
-/* ─────────────────────────────────────
-   DATA: Orders & Wishlist
-───────────────────────────────────── */
-const ORDERS = [
-  {emoji:'🎧', name:'Wireless Earbuds',      meta:'Ordered 3 Apr 2025 • ₹999',   status:'delivered', statusText:'Delivered'},
-  {emoji:'👗', name:'Kanchipuram Silk Saree', meta:'Ordered 28 Mar 2025 • ₹1,299',status:'shipping',  statusText:'Out for Delivery'},
-  {emoji:'🌿', name:'Ayurvedic Skincare Kit', meta:'Ordered 20 Mar 2025 • ₹699',  status:'delivered', statusText:'Delivered'},
-  {emoji:'💻', name:'Laptop Stand',           meta:'Ordered 15 Mar 2025 • ₹799',  status:'processing',statusText:'Processing'},
-  {emoji:'📚', name:'Book Bundle',            meta:'Ordered 1 Mar 2025 • ₹349',   status:'delivered', statusText:'Delivered'},
-];
-const WISHLIST = [
-  {emoji:'🏏',name:'Cricket Bat',    price:'₹1,599'},
-  {emoji:'🪔',name:'Diya Set',       price:'₹249'},
-  {emoji:'🍳',name:'Cookware Set',   price:'₹1,199'},
-  {emoji:'🧥',name:'Kurta Set',      price:'₹849'},
-  {emoji:'🌾',name:'Basmati Rice',   price:'₹399'},
-  {emoji:'🧱',name:'Building Blocks',price:'₹599'},
-];
-
-/* ─────────────────────────────────────
-   CART STATE
-───────────────────────────────────── */
-let cartItems = [{id:0,qty:1},{id:2,qty:1},{id:8,qty:1}];
-let currentProduct = null;
-let detailQty = 1;
-let filterCategory = 'All';
 
 /* ─────────────────────────────────────
    NAVIGATION
@@ -849,47 +795,72 @@ function showSection(s) {
     const btn = document.getElementById('nav-'+x);
     if (btn) btn.classList.toggle('active', x === s);
   });
+  if (s === 'cart') loadCart();
   updateCartBadge();
 }
 
 /* ─────────────────────────────────────
-   PRODUCT CARD HTML helper
+   PRODUCT CARD
 ───────────────────────────────────── */
 function productCard(p) {
-  const badgeHtml = p.badge ? `<span class="product-badge badge-${p.badge}">${p.badge==='hot'?'🔥 Hot':'New'}</span>` : '';
-  return `<div class="product-card" onclick="openProduct(${p.id})">
-    <div class="product-img">${badgeHtml}<span>${p.emoji}</span>
+  const pid     = p._id || p.id;
+  const off     = p.discountPercent ?? p.off ?? 0;
+  const reviews = p.numReviews ?? p.reviews ?? 0;
+  return `<div class="product-card" onclick="openProduct('${pid}')">
+    <div class="product-img"><span>${p.emoji}</span>
       <button class="product-wish" onclick="event.stopPropagation();showToast('Added to wishlist ❤️')">♡</button>
     </div>
     <div class="product-body">
-      <div class="product-cat">${p.cat}</div>
+      <div class="product-cat">${p.category}</div>
       <div class="product-name">${p.name}</div>
-      <div class="product-rating"><span class="stars">${'★'.repeat(Math.floor(p.rating))}${'☆'.repeat(5-Math.floor(p.rating))}</span><span class="rating-count">(${p.reviews.toLocaleString()})</span></div>
-      <div class="product-price"><span class="price-main">₹${p.price.toLocaleString()}</span><span class="price-orig">₹${p.orig.toLocaleString()}</span><span class="price-off">${p.off}% off</span></div>
-      <button class="btn-add" onclick="event.stopPropagation();addToCart(${p.id})">Add to Cart</button>
+      <div class="product-rating">
+        <span class="stars">${'★'.repeat(Math.floor(p.rating||0))}${'☆'.repeat(5-Math.floor(p.rating||0))}</span>
+        <span class="rating-count">(${Number(reviews).toLocaleString()})</span>
+      </div>
+      <div class="product-price">
+        <span class="price-main">₹${Number(p.price).toLocaleString()}</span>
+        <span class="price-orig">₹${Number(p.mrp||0).toLocaleString()}</span>
+        <span class="price-off">${off}% off</span>
+      </div>
+      <button class="btn-add" onclick="event.stopPropagation();addToCart('${pid}')">Add to Cart</button>
     </div>
   </div>`;
 }
 
 /* ─────────────────────────────────────
-   HOME: render trending grid
+   LOAD PRODUCTS FROM API
 ───────────────────────────────────── */
-function renderHome() {
-  document.getElementById('home-grid').innerHTML = PRODUCTS.slice(0,8).map(productCard).join('');
+async function loadProducts(category, search, sort) {
+  try {
+    let q = '?limit=50';
+    if (category && category !== 'All') q += `&category=${encodeURIComponent(category)}`;
+    if (search)   q += `&search=${encodeURIComponent(search)}`;
+    if (sort)     q += `&sort=${sort}`;
+    const data = await apiFetch(`/products${q}`);
+    return data.products || [];
+  } catch {
+    showToast('⚠️ Could not load products');
+    return [];
+  }
 }
 
 /* ─────────────────────────────────────
-   STATE SPOTLIGHT: render tabs & panels
+   HOME
+───────────────────────────────────── */
+async function renderHome() {
+  const grid = document.getElementById('home-grid');
+  PRODUCTS = await loadProducts();
+  grid.innerHTML = PRODUCTS.slice(0, 8).map(productCard).join('') || '<p class="loading-text">No products found.</p>';
+}
+
+/* ─────────────────────────────────────
+   STATE SPOTLIGHT
 ───────────────────────────────────── */
 function renderStateSpotlight() {
-  const tabsEl   = document.getElementById('state-tabs');
-  const panelsEl = document.getElementById('state-panels');
-
-  tabsEl.innerHTML = STATES.map((s,i) =>
+  document.getElementById('state-tabs').innerHTML = STATES.map((s,i) =>
     `<button class="state-tab${i===0?' active':''}" onclick="switchState('${s.id}',this)">${s.flag} ${s.tab}</button>`
   ).join('');
-
-  panelsEl.innerHTML = STATES.map((s,i) => `
+  document.getElementById('state-panels').innerHTML = STATES.map((s,i) => `
     <div class="state-panel${i===0?' active':''}" id="sp-${s.id}">
       <div class="state-info-card">
         <div class="state-flag">${s.flag}</div>
@@ -924,108 +895,232 @@ function switchState(id, el) {
 /* ─────────────────────────────────────
    CATALOG
 ───────────────────────────────────── */
-function filterCat(el, cat) {
+async function filterCat(el, cat) {
   filterCategory = cat;
   document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
   if (el) el.classList.add('active');
   document.getElementById('catalog-title').textContent = cat === 'All' ? 'All Products' : cat;
-  renderCatalog();
   showSection('catalog');
+  await renderCatalog();
 }
-function renderCatalog() {
-  const list = filterCategory === 'All' ? PRODUCTS : PRODUCTS.filter(p => p.cat === filterCategory);
+
+async function renderCatalog(sort) {
+  const grid = document.getElementById('catalog-grid');
+  grid.innerHTML = '<p class="loading-text">Loading…</p>';
+  const list = await loadProducts(filterCategory, null, sort);
+  if (list.length) PRODUCTS = list;
   document.getElementById('catalog-count').textContent = list.length + ' products found';
-  document.getElementById('catalog-grid').innerHTML = list.map(productCard).join('');
+  grid.innerHTML = list.map(productCard).join('') || '<p class="loading-text">No products found.</p>';
 }
-function sortProducts(v) {
-  let list = filterCategory === 'All' ? [...PRODUCTS] : PRODUCTS.filter(p => p.cat === filterCategory);
-  if (v === 'low')      list.sort((a,b) => a.price - b.price);
-  else if (v === 'high')   list.sort((a,b) => b.price - a.price);
-  else if (v === 'rating') list.sort((a,b) => b.rating - a.rating);
-  else if (v === 'discount')list.sort((a,b) => b.off - a.off);
-  document.getElementById('catalog-grid').innerHTML = list.map(productCard).join('');
-}
+
+async function sortProducts(v) { await renderCatalog(v); }
 
 /* ─────────────────────────────────────
    PRODUCT DETAIL
 ───────────────────────────────────── */
-function openProduct(id) {
-  currentProduct = PRODUCTS[id]; detailQty = 1;
-  document.getElementById('detail-emoji').textContent      = currentProduct.emoji;
-  document.getElementById('detail-title').textContent      = currentProduct.name;
-  document.getElementById('detail-price').textContent      = '₹'+currentProduct.price.toLocaleString();
-  document.getElementById('detail-orig').textContent       = '₹'+currentProduct.orig.toLocaleString();
-  document.getElementById('detail-off').textContent        = currentProduct.off+'% off';
-  document.getElementById('detail-brand').textContent      = 'by '+currentProduct.brand;
-  document.getElementById('detail-rating').textContent     = currentProduct.rating;
-  document.getElementById('detail-reviews').textContent    = `(${currentProduct.reviews.toLocaleString()} reviews)`;
-  document.getElementById('detail-qty').textContent        = 1;
-  document.getElementById('detail-breadcrumb').innerHTML   = `Home › ${currentProduct.cat} › <span>${currentProduct.name.split(' ').slice(0,3).join(' ')}</span>`;
+async function openProduct(id) {
+  detailQty = 1;
   showSection('detail');
+  document.getElementById('detail-emoji').textContent = '⏳';
+  document.getElementById('detail-title').textContent = 'Loading…';
+  try {
+    let p = PRODUCTS.find(x => (x._id || x.id) === id);
+    if (!p) p = await apiFetch(`/products/${id}`);
+    currentProduct = p;
+    const off     = p.discountPercent ?? 0;
+    const reviews = p.numReviews ?? 0;
+    document.getElementById('detail-emoji').textContent   = p.emoji;
+    document.getElementById('detail-title').textContent   = p.name;
+    document.getElementById('detail-price').textContent   = '₹' + Number(p.price).toLocaleString();
+    document.getElementById('detail-orig').textContent    = '₹' + Number(p.mrp||0).toLocaleString();
+    document.getElementById('detail-off').textContent     = off + '% off';
+    document.getElementById('detail-brand').textContent   = 'by ' + (p.brand || '');
+    document.getElementById('detail-rating').textContent  = p.rating || '—';
+    document.getElementById('detail-reviews').textContent = `(${Number(reviews).toLocaleString()} reviews)`;
+    document.getElementById('detail-qty').textContent     = 1;
+    document.getElementById('detail-stock').textContent   = p.stock > 0 ? `✓ In Stock (${p.stock} left)` : '✗ Out of Stock';
+    document.getElementById('detail-breadcrumb').innerHTML =
+      `Home › ${p.category} › <span>${p.name.split(' ').slice(0,3).join(' ')}</span>`;
+  } catch {
+    showToast('⚠️ Could not load product');
+    showSection('catalog');
+  }
 }
+
 function selectVariant(el) {
   el.closest('.variant-pills').querySelectorAll('.vpill').forEach(v => v.classList.remove('active'));
   el.classList.add('active');
 }
-function changeDetailQty(d) { detailQty = Math.max(1, detailQty+d); document.getElementById('detail-qty').textContent = detailQty; }
-function addToCartFromDetail() { addToCart(currentProduct.id); showToast('Added to cart 🛍️'); }
+function changeDetailQty(d) {
+  detailQty = Math.max(1, detailQty + d);
+  document.getElementById('detail-qty').textContent = detailQty;
+}
+async function addToCartFromDetail() {
+  if (!currentProduct) return;
+  await addToCart(currentProduct._id || currentProduct.id);
+}
 
 /* ─────────────────────────────────────
    CART
 ───────────────────────────────────── */
-function addToCart(id) {
-  const ex = cartItems.find(i => i.id === id);
-  if (ex) ex.qty++; else cartItems.push({id, qty:1});
-  updateCartBadge(); renderCart();
-  showToast('Added to cart 🛍️');
+async function loadCart() {
+  try {
+    const data = await apiFetch('/cart');
+    cartItems = (data.items || []).map(i => ({
+      id: i.product, qty: i.qty, name: i.name,
+      emoji: i.emoji, price: i.price, mrp: i.mrp,
+      category: i.category, brand: i.brand,
+    }));
+  } catch { /* keep existing cartItems */ }
+  renderCart();
+  updateCartBadge();
 }
-function removeFromCart(id) { cartItems = cartItems.filter(i => i.id !== id); renderCart(); updateCartBadge(); }
-function changeQty(id, d) {
-  const it = cartItems.find(i => i.id === id);
-  if (!it) return; it.qty = Math.max(1, it.qty+d); renderCart();
+
+async function addToCart(id) {
+  try {
+    await apiFetch('/cart/add', { method: 'POST', body: JSON.stringify({ productId: id, qty: detailQty || 1 }) });
+    await loadCart();
+    showToast('Added to cart 🛍️');
+  } catch (err) { showToast('⚠️ ' + (err.message || 'Could not add to cart')); }
 }
+
+async function removeFromCart(id) {
+  try {
+    await apiFetch(`/cart/remove/${id}`, { method: 'DELETE' });
+    await loadCart();
+  } catch { showToast('⚠️ Could not remove item'); }
+}
+
+async function changeQty(id, d) {
+  const item = cartItems.find(i => i.id === id);
+  if (!item) return;
+  const newQty = Math.max(1, item.qty + d);
+  try {
+    await apiFetch('/cart/update', { method: 'PUT', body: JSON.stringify({ productId: id, qty: newQty }) });
+    await loadCart();
+  } catch { showToast('⚠️ Could not update quantity'); }
+}
+
 function updateCartBadge() {
-  const tot = cartItems.reduce((s,i) => s+i.qty, 0);
+  const tot = cartItems.reduce((s, i) => s + i.qty, 0);
   document.getElementById('cart-badge').textContent = tot;
-  document.getElementById('cart-header-count').textContent = tot+' item'+(tot!==1?'s':'');
+  document.getElementById('cart-header-count').textContent = tot + ' item' + (tot !== 1 ? 's' : '');
   document.getElementById('sum-qty').textContent = tot;
 }
+
 function renderCart() {
   const el = document.getElementById('cart-items-list');
   if (!cartItems.length) {
-    el.innerHTML = `<div class="empty-state"><div class="empty-icon">🛒</div><h3>Your cart is empty</h3><p>Add items to get started!</p><button class="btn-add" style="width:auto;padding:10px 24px;border-radius:8px;margin-top:0" onclick="showSection('catalog')">Browse Products</button></div>`;
+    el.innerHTML = `<div class="empty-state"><div class="empty-icon">🛒</div><h3>Your cart is empty</h3><p>Add items to get started!</p>
+      <button class="btn-add" style="width:auto;padding:10px 24px;border-radius:8px;margin-top:0" onclick="showSection('catalog')">Browse Products</button></div>`;
+    document.getElementById('sum-subtotal').textContent  = '₹0';
+    document.getElementById('sum-total').textContent     = '₹0';
+    document.getElementById('sum-discount').textContent  = '− ₹0';
+    document.getElementById('savings-badge').textContent = 'Add items to see savings 🛍️';
     return;
   }
-  el.innerHTML = cartItems.map(it => {
-    const p = PRODUCTS[it.id];
-    return `<div class="cart-item">
-      <div class="cart-item-img">${p.emoji}</div>
+  el.innerHTML = cartItems.map(it => `
+    <div class="cart-item">
+      <div class="cart-item-img">${it.emoji}</div>
       <div>
-        <div class="cart-item-name">${p.name}</div>
-        <div class="cart-item-meta">${p.cat} · ${p.brand}</div>
+        <div class="cart-item-name">${it.name}</div>
+        <div class="cart-item-meta">${it.category||''} · ${it.brand||''}</div>
         <div class="cart-qty-row">
-          <button class="cqty-btn" onclick="changeQty(${p.id},-1)">−</button>
+          <button class="cqty-btn" onclick="changeQty('${it.id}',-1)">−</button>
           <span class="cqty-val">${it.qty}</span>
-          <button class="cqty-btn" onclick="changeQty(${p.id},1)">+</button>
-          <span class="unit-price">× ₹${p.price.toLocaleString()}</span>
+          <button class="cqty-btn" onclick="changeQty('${it.id}',1)">+</button>
+          <span class="unit-price">× ₹${Number(it.price).toLocaleString()}</span>
         </div>
       </div>
       <div>
-        <div class="cart-item-total">₹${(p.price*it.qty).toLocaleString()}</div>
-        <div class="cart-remove" onclick="removeFromCart(${p.id})">Remove</div>
+        <div class="cart-item-total">₹${(it.price * it.qty).toLocaleString()}</div>
+        <div class="cart-remove" onclick="removeFromCart('${it.id}')">Remove</div>
       </div>
-    </div>`;
-  }).join('');
-  const sub   = cartItems.reduce((s,i) => s+PRODUCTS[i.id].price*i.qty, 0);
-  const saves = cartItems.reduce((s,i) => s+(PRODUCTS[i.id].orig-PRODUCTS[i.id].price)*i.qty, 0);
-  document.getElementById('sum-subtotal').textContent  = '₹'+sub.toLocaleString();
-  document.getElementById('sum-total').textContent     = '₹'+sub.toLocaleString();
-  document.getElementById('sum-discount').textContent  = '− ₹'+saves.toLocaleString();
+    </div>`).join('');
+
+  const sub   = cartItems.reduce((s,i) => s + i.price*i.qty, 0);
+  const saves = cartItems.reduce((s,i) => s + ((i.mrp||i.price) - i.price)*i.qty, 0);
+  document.getElementById('sum-subtotal').textContent  = '₹' + sub.toLocaleString();
+  document.getElementById('sum-total').textContent     = '₹' + sub.toLocaleString();
+  document.getElementById('sum-discount').textContent  = '− ₹' + saves.toLocaleString();
   document.getElementById('savings-badge').textContent = `You save ₹${saves.toLocaleString()} on this order 🎉`;
 }
+
 function applyPromo() {
   const v = document.getElementById('promo-inp').value.trim().toUpperCase();
   showToast(v === 'APNIVA10' ? 'Promo applied! 10% discount ✅' : 'Invalid promo code ❌');
+}
+
+/* ─────────────────────────────────────
+   ORDERS
+───────────────────────────────────── */
+async function loadOrders() {
+  try {
+    const data = await apiFetch('/orders/my');
+    ordersData = (data.orders || []).map(o => ({
+      emoji:      o.items[0]?.emoji || '📦',
+      name:       o.items[0]?.name  || 'Order',
+      meta:       `Ordered ${new Date(o.createdAt).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})} • ₹${Number(o.totalAmount).toLocaleString()}`,
+      status:     o.status,
+      statusText: statusLabel(o.status),
+    }));
+    renderOrders(ordersData);
+
+    // Update stats
+    const total = ordersData.reduce((s, o) => {
+      const amt = parseInt((o.meta.match(/₹([\d,]+)/)||['','0'])[1].replace(/,/g,''));
+      return s + amt;
+    }, 0);
+    document.getElementById('stat-orders').textContent = ordersData.length;
+    document.getElementById('stat-spent').textContent  = '₹' + (total > 999 ? Math.round(total/1000)+'K' : total);
+  } catch {
+    renderOrders([]);
+  }
+}
+
+function statusLabel(s) {
+  return { processing:'Processing', confirmed:'Confirmed', shipped:'Shipped',
+           out_for_delivery:'Out for Delivery', delivered:'Delivered',
+           cancelled:'Cancelled', returned:'Returned' }[s] || s;
+}
+function statusClass(s) {
+  if (s === 'delivered') return 'status-delivered';
+  if (s === 'shipped' || s === 'out_for_delivery') return 'status-shipping';
+  return 'status-processing';
+}
+function renderOrders(list) {
+  document.getElementById('order-list').innerHTML = list.length
+    ? list.map(o => `
+        <div class="order-row">
+          <div class="order-emoji-box">${o.emoji}</div>
+          <div><div class="order-name">${o.name}</div><div class="order-meta">${o.meta}</div></div>
+          <span class="status-badge ${statusClass(o.status)}">${o.statusText}</span>
+        </div>`).join('')
+    : '<p style="color:var(--warm-gray);padding:20px;text-align:center">No orders yet. Start shopping!</p>';
+}
+function switchOrderTab(t, el) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  const filtered = t === 'active'
+    ? ordersData.filter(o => o.status !== 'delivered' && o.status !== 'cancelled')
+    : t === 'delivered' ? ordersData.filter(o => o.status === 'delivered') : ordersData;
+  renderOrders(filtered);
+}
+
+/* ─────────────────────────────────────
+   WISHLIST (static)
+───────────────────────────────────── */
+function renderWishlist() {
+  const items = [
+    {emoji:'🏏',name:'Cricket Bat',    price:'₹1,599'},
+    {emoji:'🪔',name:'Diya Set',       price:'₹249'},
+    {emoji:'🍳',name:'Cookware Set',   price:'₹1,199'},
+    {emoji:'🧥',name:'Kurta Set',      price:'₹849'},
+  ];
+  document.getElementById('wishlist-grid').innerHTML = items.map(w =>
+    `<div class="wishlist-item"><span class="wishlist-emoji">${w.emoji}</span>
+      <div class="wishlist-name">${w.name}</div>
+      <div class="wishlist-price">${w.price}</div></div>`).join('');
 }
 
 /* ─────────────────────────────────────
@@ -1033,32 +1128,11 @@ function applyPromo() {
 ───────────────────────────────────── */
 function switchProfileTab(tab, el) {
   ['overview','orders','wishlist','address','payment'].forEach(t => {
-    document.getElementById('ptab-'+t).style.display = t===tab ? 'block' : 'none';
+    document.getElementById('ptab-'+t).style.display = t === tab ? 'block' : 'none';
   });
   document.querySelectorAll('.profile-nav-item').forEach(i => i.classList.remove('active'));
   if (el) el.classList.add('active');
-}
-function switchOrderTab(t, el) {
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  el.classList.add('active');
-  const list = t==='active' ? ORDERS.filter(o => o.status!=='delivered') : t==='delivered' ? ORDERS.filter(o => o.status==='delivered') : ORDERS;
-  renderOrders(list);
-}
-function renderOrders(list) {
-  document.getElementById('order-list').innerHTML = list.map(o =>
-    `<div class="order-row">
-      <div class="order-emoji-box">${o.emoji}</div>
-      <div><div class="order-name">${o.name}</div><div class="order-meta">${o.meta}</div></div>
-      <span class="status-badge status-${o.status}">${o.statusText}</span>
-    </div>`).join('');
-}
-function renderWishlist() {
-  document.getElementById('wishlist-grid').innerHTML = WISHLIST.map(w =>
-    `<div class="wishlist-item" onclick="showToast('Added to cart 🛍️')">
-      <span class="wishlist-emoji">${w.emoji}</span>
-      <div class="wishlist-name">${w.name}</div>
-      <div class="wishlist-price">${w.price}</div>
-    </div>`).join('');
+  if (tab === 'orders') loadOrders();
 }
 
 /* ─────────────────────────────────────
@@ -1072,22 +1146,23 @@ function startTimer() {
     document.getElementById('ts').textContent = String(ts).padStart(2,'0');
     document.getElementById('tm').textContent = String(tm).padStart(2,'0');
     document.getElementById('th').textContent = String(th).padStart(2,'0');
-  },1000);
+  }, 1000);
 }
 
 /* ─────────────────────────────────────
    SEARCH
 ───────────────────────────────────── */
-document.getElementById('search-input').addEventListener('keydown', function(e) {
-  if (e.key==='Enter' && this.value.trim()) {
-    const q = this.value.toLowerCase();
-    const res = PRODUCTS.filter(p => p.name.toLowerCase().includes(q) || p.cat.toLowerCase().includes(q));
-    filterCategory = 'All';
-    document.getElementById('catalog-title').textContent = `Results for "${this.value}"`;
-    document.getElementById('catalog-count').textContent = res.length+' products found';
-    document.getElementById('catalog-grid').innerHTML = res.map(productCard).join('');
-    showSection('catalog');
-  }
+document.getElementById('search-input').addEventListener('keydown', async function(e) {
+  if (e.key !== 'Enter' || !this.value.trim()) return;
+  const q = this.value.trim();
+  filterCategory = 'All';
+  document.getElementById('catalog-title').textContent = `Results for "${q}"`;
+  showSection('catalog');
+  const grid = document.getElementById('catalog-grid');
+  grid.innerHTML = '<p class="loading-text">Searching…</p>';
+  const list = await loadProducts('All', q);
+  document.getElementById('catalog-count').textContent = list.length + ' products found';
+  grid.innerHTML = list.map(productCard).join('') || '<p class="loading-text">No results found.</p>';
 });
 
 /* ─────────────────────────────────────
@@ -1101,35 +1176,29 @@ function showToast(msg) {
 }
 
 /* ─────────────────────────────────────
-   LOGOUT
-───────────────────────────────────── */
-function logout() {
-  localStorage.removeItem('apniva_role');
-  window.location.href = 'index.html';
-}
-
-/* ─────────────────────────────────────
    INIT
 ───────────────────────────────────── */
-(function init() {
-  // Redirect if not logged in as customer
-  const role = localStorage.getItem('apniva_role');
-  if (role === 'seller') { window.location.href = 'seller.html'; return; }
-
-  const user = JSON.parse(localStorage.getItem('apniva_user') || '{}');
+(async function init() {
+  // Populate user info from localStorage
+  const user = getUser();
   if (user.name) {
     const initials = user.name.split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase();
-    document.getElementById('nav-avatar').textContent = initials;
+    document.getElementById('nav-avatar').textContent              = initials;
+    document.getElementById('profile-avatar-initials').textContent = initials;
+    document.getElementById('profile-name').textContent            = user.name;
+    document.getElementById('profile-email').textContent           = user.email || '';
+    document.getElementById('info-name').textContent               = user.name;
+    document.getElementById('info-email').textContent              = user.email || '';
+    document.getElementById('info-mobile').textContent             = user.mobile || '—';
+    document.getElementById('info-role').textContent               = 'Customer';
   }
 
-  renderHome();
-  renderCatalog();
-  renderCart();
-  updateCartBadge();
-  renderOrders(ORDERS);
-  renderWishlist();
   renderStateSpotlight();
+  renderWishlist();
   startTimer();
+
+  // Load remote data in parallel
+  await Promise.all([renderHome(), renderCatalog(), loadCart(), loadOrders()]);
 })();
 </script>
 </body>
