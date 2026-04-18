@@ -48,12 +48,24 @@ const userSchema = new mongoose.Schema({
     isDefault: { type: Boolean, default: false }
   }],
 
-  // Seller fields
+  // Seller — Business Info
   businessName:  String,
   gstNumber:     String,
   businessState: String,
   sellerRating:  { type: Number, default: 0 },
   totalReviews:  { type: Number, default: 0 },
+
+  // Seller — Payout Details
+  upiId: {
+    type: String,
+    default: ''
+  },
+  bankAccount: {
+    accountHolder: { type: String, default: '' },
+    accountNumber: { type: String, default: '' },  // store masked e.g. ••••4521
+    ifscCode:      { type: String, default: '' },
+    bankName:      { type: String, default: '' },
+  },
 
 }, { timestamps: true });
 

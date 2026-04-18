@@ -97,7 +97,7 @@ input, select, textarea { font-family: var(--font-body); outline: none; border: 
 .top-product-sales { font-size: 12px; color: var(--warm-gray); }
 .top-product-rev { font-size: 13px; font-weight: 700; color: var(--jade); }
 
-/* ── 5. List a Product ── */
+/* ── 5. List / Edit a Product ── */
 .form-card { background: var(--white); border-radius: var(--radius); border: 1px solid var(--border); padding: 28px; margin-bottom: 20px; }
 .form-card-title { font-family: var(--font-display); font-size: 18px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
 .form-section-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .8px; color: var(--warm-gray); margin: 20px 0 12px; border-top: 1px solid var(--border); padding-top: 16px; }
@@ -177,12 +177,13 @@ input, select, textarea { font-family: var(--font-body); outline: none; border: 
 .payout-amount { font-weight: 700; color: var(--jade); }
 .payout-status-paid    { color: var(--jade); font-weight: 600; }
 .payout-status-pending { color: var(--turmeric); font-weight: 600; }
+.no-bank-notice { background: var(--turmeric-light); border: 1px solid #F0C87A; border-radius: var(--radius-sm); padding: 12px 16px; font-size: 13px; color: var(--ink-mid); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+.no-bank-notice a { color: var(--saffron); font-weight: 600; cursor: pointer; }
 
 /* ── 9. Orders Tab ── */
 .orders-filter-bar { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
 .orders-filter-btn { padding: 7px 14px; background: var(--white); border: 1.5px solid var(--border); border-radius: 40px; font-size: 13px; font-weight: 500; color: var(--warm-gray); cursor: pointer; transition: .2s; }
 .orders-filter-btn:hover, .orders-filter-btn.active { border-color: var(--saffron); color: var(--saffron); background: var(--saffron-light); }
-
 .order-detail-card { background: var(--white); border-radius: var(--radius); border: 1px solid var(--border); margin-bottom: 16px; overflow: hidden; }
 .order-detail-header { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr auto; gap: 12px; align-items: center; padding: 16px 20px; background: var(--ivory); border-bottom: 1px solid var(--border); }
 .order-detail-header-id { font-weight: 700; color: var(--saffron); font-size: 14px; }
@@ -196,7 +197,6 @@ input, select, textarea { font-family: var(--font-body); outline: none; border: 
 .pill-delivered        { background: var(--jade-light); color: var(--jade); }
 .pill-cancelled        { background: var(--sindoor-light); color: var(--sindoor); }
 .pill-returned         { background: var(--sindoor-light); color: var(--sindoor); }
-
 .order-detail-body { padding: 16px 20px; }
 .order-item-row { display: flex; align-items: center; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--border); }
 .order-item-row:last-child { border-bottom: none; }
@@ -204,7 +204,6 @@ input, select, textarea { font-family: var(--font-body); outline: none; border: 
 .order-item-name { font-size: 14px; font-weight: 600; }
 .order-item-meta { font-size: 12px; color: var(--warm-gray); margin-top: 2px; }
 .order-item-price { margin-left: auto; font-size: 14px; font-weight: 700; }
-
 .order-detail-footer { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; border-top: 1px solid var(--border); background: var(--ivory); flex-wrap: wrap; gap: 12px; }
 .order-buyer-info { font-size: 13px; color: var(--ink-mid); }
 .order-buyer-info strong { color: var(--ink); }
@@ -214,7 +213,54 @@ input, select, textarea { font-family: var(--font-body); outline: none; border: 
 .btn-status-update.primary { background: var(--saffron); color: var(--white); border-color: var(--saffron); }
 .btn-status-update.primary:hover { background: #C03D13; }
 
-/* ── 10. Shared ── */
+/* ── 10. Settings ── */
+.settings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.settings-card { background: var(--white); border-radius: var(--radius); border: 1px solid var(--border); padding: 24px; }
+.settings-card.full { grid-column: 1 / -1; }
+.settings-card-title { font-family: var(--font-display); font-size: 17px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+.settings-card-sub { font-size: 13px; color: var(--warm-gray); margin-bottom: 20px; }
+.settings-field { margin-bottom: 16px; }
+.settings-field label { display: block; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .7px; color: var(--warm-gray); margin-bottom: 6px; }
+.settings-field input, .settings-field select { width: 100%; padding: 11px 14px; background: var(--ivory); border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 14px; color: var(--ink); transition: .2s; }
+.settings-field input:focus, .settings-field select:focus { border-color: var(--saffron); background: var(--white); outline: none; }
+.settings-field input:disabled { opacity: .5; cursor: not-allowed; }
+.settings-field .field-hint { font-size: 11px; color: var(--warm-gray); margin-top: 4px; }
+.settings-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.btn-settings-save { padding: 11px 24px; background: var(--saffron); color: var(--white); border-radius: var(--radius-sm); font-size: 14px; font-weight: 600; transition: .2s; display: inline-flex; align-items: center; gap: 8px; }
+.btn-settings-save:hover:not(:disabled) { background: #C03D13; }
+.btn-settings-save:disabled { opacity: .6; cursor: not-allowed; }
+.settings-success { display: none; align-items: center; gap: 8px; font-size: 13px; color: var(--jade); font-weight: 500; background: var(--jade-light); padding: 8px 14px; border-radius: var(--radius-sm); margin-top: 12px; }
+.settings-success.show { display: flex; }
+.settings-divider { display: flex; align-items: center; gap: 10px; margin: 20px 0; }
+.settings-divider::before, .settings-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.settings-divider span { font-size: 12px; color: var(--warm-gray); }
+.bank-or-upi { display: flex; gap: 10px; margin-bottom: 16px; }
+.bank-tab { flex: 1; padding: 9px; border-radius: var(--radius-sm); border: 1.5px solid var(--border); font-size: 13px; font-weight: 600; cursor: pointer; transition: .2s; background: var(--ivory); color: var(--warm-gray); text-align: center; }
+.bank-tab.active { border-color: var(--saffron); color: var(--saffron); background: var(--saffron-light); }
+.bank-section { display: none; }
+.bank-section.active { display: block; }
+.danger-zone { background: var(--sindoor-light); border: 1px solid #F5C0BC; border-radius: var(--radius-sm); padding: 14px 16px; font-size: 13px; color: var(--sindoor); margin-top: 16px; }
+.danger-zone strong { display: block; margin-bottom: 4px; }
+
+/* ── 11. Edit Listing Modal ── */
+.modal-overlay { position: fixed; inset: 0; background: rgba(28,18,8,.55); z-index: 500; display: flex; align-items: center; justify-content: center; padding: 24px; backdrop-filter: blur(2px); opacity: 0; pointer-events: none; transition: .3s; }
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal-box { background: var(--white); border-radius: var(--radius-lg); width: 100%; max-width: 780px; max-height: 90vh; overflow-y: auto; box-shadow: var(--shadow-lg); transform: translateY(20px); transition: .3s; }
+.modal-overlay.open .modal-box { transform: translateY(0); }
+.modal-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: var(--white); z-index: 10; border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+.modal-title { font-family: var(--font-display); font-size: 20px; }
+.modal-close { width: 32px; height: 32px; border-radius: 50%; background: var(--cream); display: flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer; transition: .2s; color: var(--ink-mid); }
+.modal-close:hover { background: var(--sindoor); color: var(--white); }
+.modal-body { padding: 24px; }
+.modal-footer { padding: 16px 24px; border-top: 1px solid var(--border); display: flex; gap: 12px; justify-content: flex-end; position: sticky; bottom: 0; background: var(--white); border-radius: 0 0 var(--radius-lg) var(--radius-lg); }
+.btn-modal-save { padding: 11px 24px; background: var(--saffron); color: var(--white); border-radius: var(--radius-sm); font-size: 14px; font-weight: 600; transition: .2s; }
+.btn-modal-save:hover:not(:disabled) { background: #C03D13; }
+.btn-modal-save:disabled { opacity: .6; cursor: not-allowed; }
+.btn-modal-cancel { padding: 11px 20px; background: var(--white); color: var(--ink-mid); border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 14px; font-weight: 600; transition: .2s; }
+.btn-modal-cancel:hover { border-color: var(--saffron); color: var(--saffron); }
+.edit-notice { background: var(--turmeric-light); border: 1px solid #F0C87A; border-radius: var(--radius-sm); padding: 10px 14px; font-size: 13px; color: var(--ink-mid); margin-bottom: 20px; display: flex; gap: 8px; align-items: flex-start; }
+
+/* ── 12. Shared ── */
 .toast { position: fixed; bottom: 24px; right: 24px; background: var(--ink); color: var(--white); padding: 12px 20px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; z-index: 9999; transform: translateY(80px); opacity: 0; transition: .3s; display: flex; align-items: center; gap: 8px; max-width: 320px; }
 .toast.show { transform: translateY(0); opacity: 1; }
 .toast-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--jade); flex-shrink: 0; }
@@ -226,8 +272,9 @@ input, select, textarea { font-family: var(--font-body); outline: none; border: 
 @media(max-width: 900px) {
   .sidebar { display: none; }
   .kpi-grid { grid-template-columns: repeat(2,1fr); }
-  .two-col, .analytics-grid { grid-template-columns: 1fr; }
+  .two-col, .analytics-grid, .settings-grid { grid-template-columns: 1fr; }
   .payout-summary { grid-template-columns: 1fr 1fr; }
+  .settings-card.full { grid-column: 1; }
 }
 </style>
 </head>
@@ -256,7 +303,6 @@ input, select, textarea { font-family: var(--font-body); outline: none; border: 
       <span class="nav-icon">🧾</span> Orders
       <span class="nav-badge" id="orders-count-badge">—</span>
     </button>
-
     <div class="nav-section-label">Business</div>
     <button class="nav-item" onclick="switchTab('analytics',this)">
       <span class="nav-icon">📈</span> Analytics
@@ -265,7 +311,7 @@ input, select, textarea { font-family: var(--font-body); outline: none; border: 
       <span class="nav-icon">💰</span> Payouts
     </button>
     <div class="nav-section-label">Account</div>
-    <button class="nav-item" onclick="showToast('Settings — connect backend!')">
+    <button class="nav-item" onclick="switchTab('settings',this)">
       <span class="nav-icon">⚙️</span> Settings
     </button>
     <button class="nav-item" onclick="logout()">
@@ -293,71 +339,41 @@ input, select, textarea { font-family: var(--font-body); outline: none; border: 
     </div>
   </div>
 
-  <!-- DASHBOARD TAB -->
+  <!-- ═══════════ DASHBOARD ═══════════ -->
   <div class="tab-content active" id="tab-dashboard">
     <h1 class="page-title" id="dash-greeting">Good morning! 👋</h1>
     <p class="page-sub">Here's how your store is performing.</p>
-
     <div class="kpi-grid">
-      <div class="kpi-card">
-        <div class="kpi-label">Total Revenue</div>
-        <div class="kpi-value" id="kpi-revenue">—</div>
-        <div class="kpi-delta delta-up" id="kpi-revenue-sub">Loading…</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-label">Total Orders</div>
-        <div class="kpi-value" id="kpi-orders">—</div>
-        <div class="kpi-delta delta-up" id="kpi-orders-sub">Loading…</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-label">Active Listings</div>
-        <div class="kpi-value" id="kpi-listings">—</div>
-        <div class="kpi-delta" id="kpi-listings-sub" style="color:var(--turmeric)">Loading…</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-label">Avg. Rating</div>
-        <div class="kpi-value" id="kpi-rating">—</div>
-        <div class="kpi-delta delta-up" id="kpi-rating-sub">Loading…</div>
-      </div>
+      <div class="kpi-card"><div class="kpi-label">Total Revenue</div><div class="kpi-value" id="kpi-revenue">—</div><div class="kpi-delta delta-up" id="kpi-revenue-sub">Loading…</div></div>
+      <div class="kpi-card"><div class="kpi-label">Total Orders</div><div class="kpi-value" id="kpi-orders">—</div><div class="kpi-delta delta-up" id="kpi-orders-sub">Loading…</div></div>
+      <div class="kpi-card"><div class="kpi-label">Active Listings</div><div class="kpi-value" id="kpi-listings">—</div><div class="kpi-delta" id="kpi-listings-sub" style="color:var(--turmeric)">Loading…</div></div>
+      <div class="kpi-card"><div class="kpi-label">Avg. Rating</div><div class="kpi-value" id="kpi-rating">—</div><div class="kpi-delta delta-up" id="kpi-rating-sub">Loading…</div></div>
     </div>
-
-    <!-- Revenue Chart -->
     <div class="chart-card">
       <div class="chart-header">
         <div class="chart-title">Monthly Revenue (₹)</div>
-        <div class="chart-legend">
-          <div class="legend-item"><div class="legend-dot" style="background:var(--saffron)"></div>Revenue</div>
-        </div>
+        <div class="chart-legend"><div class="legend-item"><div class="legend-dot" style="background:var(--saffron)"></div>Revenue</div></div>
       </div>
       <svg class="chart-svg" id="revenue-chart" viewBox="0 0 680 180" xmlns="http://www.w3.org/2000/svg">
         <text x="30" y="90" font-family="DM Sans" font-size="12" fill="#8C8070">Loading chart…</text>
       </svg>
     </div>
-
-    <!-- Recent Orders + Top Products -->
     <div class="two-col">
       <div class="data-card">
-        <div class="data-card-header">
-          <div class="data-card-title">Recent Orders</div>
-          <button class="view-all" onclick="switchTab('listings', document.querySelectorAll('.nav-item')[2])">View All →</button>
-        </div>
+        <div class="data-card-header"><div class="data-card-title">Recent Orders</div><button class="view-all" onclick="switchTab('orders', document.querySelectorAll('.nav-item')[3])">View All →</button></div>
         <table class="orders-table">
-          <thead>
-            <tr><th>Order ID</th><th>Product</th><th>Amount</th><th>Status</th></tr>
-          </thead>
+          <thead><tr><th>Order ID</th><th>Product</th><th>Amount</th><th>Status</th></tr></thead>
           <tbody id="orders-tbody"><tr><td colspan="4" class="loading-text">Loading…</td></tr></tbody>
         </table>
       </div>
       <div class="data-card">
-        <div class="data-card-header">
-          <div class="data-card-title">Top Products</div>
-        </div>
+        <div class="data-card-header"><div class="data-card-title">Top Products</div></div>
         <div id="top-products-list"><p class="loading-text">Loading…</p></div>
       </div>
     </div>
   </div>
 
-  <!-- LIST A PRODUCT TAB -->
+  <!-- ═══════════ LIST A PRODUCT ═══════════ -->
   <div class="tab-content" id="tab-list">
     <h1 class="page-title">List a Product</h1>
     <p class="page-sub">Add a new product to your store. All listings go through a quick review before going live.</p>
@@ -368,39 +384,23 @@ input, select, textarea { font-family: var(--font-body); outline: none; border: 
     <div class="form-card">
       <div class="form-card-title">📦 Product Information</div>
       <div class="form-row">
-        <div class="field">
-          <label>Product Name *</label>
-          <input type="text" id="f-name" placeholder="e.g. Handwoven Banarasi Silk Dupatta">
-        </div>
-        <div class="field">
-          <label>Category *</label>
+        <div class="field"><label>Product Name *</label><input type="text" id="f-name" placeholder="e.g. Handwoven Banarasi Silk Dupatta"></div>
+        <div class="field"><label>Category *</label>
           <select id="f-category">
             <option value="">Select category…</option>
-            <option>Electronics</option><option>Fashion</option>
-            <option>Home & Kitchen</option><option>Beauty</option>
-            <option>Books</option><option>Groceries</option>
+            <option>Electronics</option><option>Fashion</option><option>Home & Kitchen</option>
+            <option>Beauty</option><option>Books</option><option>Groceries</option>
             <option>Toys</option><option>Sports</option><option>Handcrafted</option>
           </select>
         </div>
       </div>
-      <div class="field">
-        <label>Product Description *</label>
-        <textarea id="f-description" placeholder="Describe your product in detail — materials, dimensions, care instructions, origin…"></textarea>
-        <div class="field-hint">Minimum 50 words recommended for better search visibility</div>
+      <div class="field"><label>Product Description *</label><textarea id="f-description" placeholder="Describe your product in detail…"></textarea></div>
+      <div class="form-row">
+        <div class="field"><label>Brand / Craft Name</label><input type="text" id="f-brand" placeholder="e.g. Ramesh Textiles"></div>
+        <div class="field"><label>Emoji Icon</label><input type="text" id="f-emoji" placeholder="e.g. 🧵" maxlength="2"></div>
       </div>
       <div class="form-row">
-        <div class="field">
-          <label>Brand / Craft Name</label>
-          <input type="text" id="f-brand" placeholder="e.g. Ramesh Textiles">
-        </div>
-        <div class="field">
-          <label>Emoji Icon</label>
-          <input type="text" id="f-emoji" placeholder="e.g. 🧵" maxlength="2">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="field">
-          <label>Origin State</label>
+        <div class="field"><label>Origin State</label>
           <select id="f-state">
             <option value="">Select state…</option>
             <option>Andhra Pradesh</option><option>Bihar</option><option>Delhi</option>
@@ -411,90 +411,42 @@ input, select, textarea { font-family: var(--font-body); outline: none; border: 
             <option>West Bengal</option>
           </select>
         </div>
-        <div class="field">
-          <label>Artisan / Handcrafted Badge</label>
+        <div class="field"><label>Artisan Badge</label>
           <select id="f-artisan">
-            <option>Not applicable</option>
-            <option>Handcrafted — traditional method</option>
-            <option>Handcrafted — artisan collective</option>
-            <option>Organic / Natural</option>
+            <option>Not applicable</option><option>Handcrafted — traditional method</option>
+            <option>Handcrafted — artisan collective</option><option>Organic / Natural</option>
           </select>
         </div>
       </div>
-
       <div class="form-section-label">💰 Pricing & Inventory</div>
       <div class="form-row-3">
-        <div class="field">
-          <label>Selling Price (₹) *</label>
-          <input type="number" id="f-price" placeholder="e.g. 1299">
-        </div>
-        <div class="field">
-          <label>MRP / Original Price (₹) *</label>
-          <input type="number" id="f-mrp" placeholder="e.g. 2500">
-          <div class="field-hint">Used to show discount %</div>
-        </div>
-        <div class="field">
-          <label>Stock Quantity *</label>
-          <input type="number" id="f-stock" placeholder="e.g. 50">
-        </div>
+        <div class="field"><label>Selling Price (₹) *</label><input type="number" id="f-price" placeholder="e.g. 1299"></div>
+        <div class="field"><label>MRP (₹) *</label><input type="number" id="f-mrp" placeholder="e.g. 2500"><div class="field-hint">Used to show discount %</div></div>
+        <div class="field"><label>Stock Quantity *</label><input type="number" id="f-stock" placeholder="e.g. 50"></div>
       </div>
       <div class="form-row">
-        <div class="field">
-          <label>SKU / Product Code</label>
-          <input type="text" id="f-sku" placeholder="e.g. RT-SILK-2024-001">
-        </div>
-        <div class="field">
-          <label>Weight (grams)</label>
-          <input type="number" id="f-weight" placeholder="e.g. 450">
-          <div class="field-hint">Used for shipping cost calculation</div>
-        </div>
+        <div class="field"><label>SKU / Product Code</label><input type="text" id="f-sku" placeholder="e.g. RT-SILK-2024-001"></div>
+        <div class="field"><label>Weight (grams)</label><input type="number" id="f-weight" placeholder="e.g. 450"></div>
       </div>
-
       <div class="form-section-label">📷 Product Images</div>
       <div class="form-row">
-        <div class="upload-zone" onclick="showToast('Image upload — connect backend storage!')">
-          <div class="upload-icon">🖼️</div>
-          <div class="upload-text">Main Product Image</div>
-          <div class="upload-sub">JPG, PNG up to 5MB · Min 800×800px</div>
-        </div>
-        <div class="upload-zone" onclick="showToast('Image upload — connect backend storage!')">
-          <div class="upload-icon">➕</div>
-          <div class="upload-text">Additional Images</div>
-          <div class="upload-sub">Up to 4 more photos</div>
-        </div>
+        <div class="upload-zone" onclick="showToast('Image upload — connect backend storage!')"><div class="upload-icon">🖼️</div><div class="upload-text">Main Product Image</div><div class="upload-sub">JPG, PNG up to 5MB</div></div>
+        <div class="upload-zone" onclick="showToast('Image upload — connect backend storage!')"><div class="upload-icon">➕</div><div class="upload-text">Additional Images</div><div class="upload-sub">Up to 4 more photos</div></div>
       </div>
-
       <div class="form-section-label">🚚 Shipping</div>
       <div class="form-row">
-        <div class="field">
-          <label>Dispatch Time</label>
-          <select id="f-dispatch">
-            <option>Same day</option><option>1–2 days</option>
-            <option selected>3–5 days</option><option>7–10 days</option>
-          </select>
+        <div class="field"><label>Dispatch Time</label>
+          <select id="f-dispatch"><option>Same day</option><option>1–2 days</option><option selected>3–5 days</option><option>7–10 days</option></select>
         </div>
-        <div class="field">
-          <label>Return Policy</label>
-          <select id="f-return">
-            <option>No returns</option><option selected>7-day return</option>
-            <option>15-day return</option><option>30-day return</option>
-          </select>
+        <div class="field"><label>Return Policy</label>
+          <select id="f-return"><option>No returns</option><option selected>7-day return</option><option>15-day return</option><option>30-day return</option></select>
         </div>
       </div>
-
       <div class="form-section-label">🏛️ Certifications (optional)</div>
       <div class="form-row">
-        <div class="field">
-          <label>GI Tag (Geographical Indication)</label>
-          <input type="text" id="f-gitag" placeholder="e.g. Banarasi Silk GI No. 123">
-          <div class="field-hint">Helps customers find authentic regional products</div>
-        </div>
-        <div class="field">
-          <label>Variants (comma separated)</label>
-          <input type="text" id="f-variants" placeholder="e.g. Red, Blue, Green">
-        </div>
+        <div class="field"><label>GI Tag</label><input type="text" id="f-gitag" placeholder="e.g. Banarasi Silk GI No. 123"></div>
+        <div class="field"><label>Variants (comma separated)</label><input type="text" id="f-variants" placeholder="e.g. Red, Blue, Green"></div>
       </div>
-
       <div class="form-actions">
         <button class="btn-submit-listing" id="btn-submit-listing" onclick="submitListing()">Submit for Approval →</button>
         <button class="btn-save-draft" onclick="saveDraft()">Save as Draft</button>
@@ -502,7 +454,7 @@ input, select, textarea { font-family: var(--font-body); outline: none; border: 
     </div>
   </div>
 
-  <!-- MY LISTINGS TAB -->
+  <!-- ═══════════ MY LISTINGS ═══════════ -->
   <div class="tab-content" id="tab-listings">
     <h1 class="page-title">My Listings</h1>
     <p class="page-sub">Manage all your product listings. Approved listings are live on the marketplace.</p>
@@ -516,11 +468,10 @@ input, select, textarea { font-family: var(--font-body); outline: none; border: 
     <div class="listings-grid" id="listings-grid"><p class="loading-text">Loading…</p></div>
   </div>
 
-  <!-- ORDERS TAB -->
+  <!-- ═══════════ ORDERS ═══════════ -->
   <div class="tab-content" id="tab-orders">
     <h1 class="page-title">Orders</h1>
     <p class="page-sub">All orders that contain your products. Update status as you fulfil them.</p>
-
     <div class="orders-filter-bar">
       <button class="orders-filter-btn active" data-filter="" onclick="filterOrders('',this)">All</button>
       <button class="orders-filter-btn" data-filter="processing" onclick="filterOrders('processing',this)">⏳ Processing</button>
@@ -530,11 +481,10 @@ input, select, textarea { font-family: var(--font-body); outline: none; border: 
       <button class="orders-filter-btn" data-filter="delivered" onclick="filterOrders('delivered',this)">✔️ Delivered</button>
       <button class="orders-filter-btn" data-filter="cancelled" onclick="filterOrders('cancelled',this)">❌ Cancelled</button>
     </div>
-
     <div id="orders-panel"><p class="loading-text">Loading orders…</p></div>
   </div>
 
-  <!-- ANALYTICS TAB -->
+  <!-- ═══════════ ANALYTICS ═══════════ -->
   <div class="tab-content" id="tab-analytics">
     <h1 class="page-title">Sales Analytics</h1>
     <p class="page-sub">Understand where your sales are coming from and how to grow.</p>
@@ -556,38 +506,196 @@ input, select, textarea { font-family: var(--font-body); outline: none; border: 
     </div>
   </div>
 
-  <!-- PAYOUTS TAB -->
+  <!-- ═══════════ PAYOUTS ═══════════ -->
   <div class="tab-content" id="tab-payouts">
     <h1 class="page-title">Payouts</h1>
     <p class="page-sub">Track your earnings and request withdrawals to your bank account.</p>
+    <div id="payout-bank-notice" class="no-bank-notice" style="display:none">
+      ⚠️ No payout method saved. <a onclick="switchTab('settings', document.querySelectorAll('.nav-item')[6])">Add bank / UPI in Settings →</a>
+    </div>
     <div class="payout-summary">
-      <div class="payout-card">
-        <div class="payout-label">Available Balance</div>
-        <div class="payout-value" id="pay-available" style="color:var(--jade)">—</div>
-        <div class="payout-sub">Ready to withdraw</div>
-      </div>
-      <div class="payout-card">
-        <div class="payout-label">Pending Clearance</div>
-        <div class="payout-value" id="pay-pending" style="color:var(--turmeric)">—</div>
-        <div class="payout-sub">Clears in 5–7 days</div>
-      </div>
-      <div class="payout-card">
-        <div class="payout-label">Total Paid Out</div>
-        <div class="payout-value" id="pay-total">—</div>
-        <div class="payout-sub">All-time earnings</div>
-      </div>
+      <div class="payout-card"><div class="payout-label">Available Balance</div><div class="payout-value" id="pay-available" style="color:var(--jade)">—</div><div class="payout-sub">Ready to withdraw</div></div>
+      <div class="payout-card"><div class="payout-label">Pending Clearance</div><div class="payout-value" id="pay-pending" style="color:var(--turmeric)">—</div><div class="payout-sub">Clears in 5–7 days</div></div>
+      <div class="payout-card"><div class="payout-label">Total Paid Out</div><div class="payout-value" id="pay-total">—</div><div class="payout-sub">All-time earnings</div></div>
     </div>
     <button class="btn-withdraw" id="btn-withdraw" onclick="requestWithdraw()">💳 Withdraw to Bank Account</button>
     <div class="payout-history">
-      <div class="payout-row header">
-        <div>Date</div><div>Description</div><div>Amount</div><div>Status</div>
+      <div class="payout-row header"><div>Date</div><div>Description</div><div>Amount</div><div>Status</div></div>
+      <div id="payout-rows"><div class="payout-row"><div class="loading-text">Loading…</div></div></div>
+    </div>
+  </div>
+
+  <!-- ═══════════ SETTINGS ═══════════ -->
+  <div class="tab-content" id="tab-settings">
+    <h1 class="page-title">Settings</h1>
+    <p class="page-sub">Manage your business profile, payout details, and account security.</p>
+
+    <div class="settings-grid">
+
+      <!-- Business Info -->
+      <div class="settings-card">
+        <div class="settings-card-title">🏪 Business Information</div>
+        <div class="settings-card-sub">Update your store details shown to customers.</div>
+        <div class="settings-field"><label>Business / Shop Name *</label><input type="text" id="s-bizname" placeholder="e.g. Sharma Silk House"></div>
+        <div class="settings-field"><label>Owner Name</label><input type="text" id="s-name" placeholder="Full name"></div>
+        <div class="settings-field"><label>Mobile Number</label><input type="tel" id="s-mobile" placeholder="98765 43210"></div>
+        <div class="settings-field"><label>GST Number</label><input type="text" id="s-gst" placeholder="e.g. 29ABCDE1234F1Z5"><div class="field-hint">Used for invoices and compliance</div></div>
+        <div class="settings-field"><label>State of Business</label>
+          <select id="s-state">
+            <option value="">Select state…</option>
+            <option>Andhra Pradesh</option><option>Bihar</option><option>Delhi</option>
+            <option>Gujarat</option><option>Jammu & Kashmir</option><option>Karnataka</option>
+            <option>Kerala</option><option>Madhya Pradesh</option><option>Maharashtra</option>
+            <option>Odisha</option><option>Punjab</option><option>Rajasthan</option>
+            <option>Tamil Nadu</option><option>Telangana</option><option>Uttar Pradesh</option>
+            <option>West Bengal</option>
+          </select>
+        </div>
+        <div class="settings-field"><label>Email (read-only)</label><input type="email" id="s-email" disabled placeholder="—"></div>
+        <button class="btn-settings-save" id="btn-save-biz" onclick="saveBusinessInfo()">💾 Save Business Info</button>
+        <div class="settings-success" id="biz-success">✅ Business info updated!</div>
       </div>
-      <div id="payout-rows"><div class="payout-row"><div colspan="4" class="loading-text">Loading…</div></div></div>
+
+      <!-- Password -->
+      <div class="settings-card">
+        <div class="settings-card-title">🔒 Change Password</div>
+        <div class="settings-card-sub">Keep your account secure with a strong password.</div>
+        <div class="settings-field"><label>Current Password</label><input type="password" id="s-curr-pwd" placeholder="Enter current password"></div>
+        <div class="settings-field"><label>New Password</label><input type="password" id="s-new-pwd" placeholder="Minimum 8 characters"></div>
+        <div class="settings-field"><label>Confirm New Password</label><input type="password" id="s-confirm-pwd" placeholder="Repeat new password"></div>
+        <button class="btn-settings-save" id="btn-save-pwd" onclick="changePassword()">🔑 Update Password</button>
+        <div class="settings-success" id="pwd-success">✅ Password changed successfully!</div>
+
+        <div class="settings-divider"><span>Account</span></div>
+        <div class="settings-card-sub" style="margin-bottom:12px">Seller rating, email, and role are managed by Apniva.</div>
+        <div class="settings-field"><label>Seller Rating</label><input type="text" id="s-rating" disabled></div>
+        <div class="settings-field"><label>Total Reviews</label><input type="text" id="s-reviews" disabled></div>
+        <div class="danger-zone">
+          <strong>⚠️ Account Deactivation</strong>
+          To permanently close your seller account, contact <a href="mailto:support@apniva.in" style="color:var(--sindoor)">support@apniva.in</a>.
+        </div>
+      </div>
+
+      <!-- Payout Details — full width -->
+      <div class="settings-card full">
+        <div class="settings-card-title">💳 Payout Details</div>
+        <div class="settings-card-sub">Add your bank account or UPI ID to receive withdrawals. Apniva's 5% platform fee is deducted automatically.</div>
+
+        <div class="bank-or-upi">
+          <button class="bank-tab active" id="tab-bank" onclick="switchPayoutTab('bank')">🏦 Bank Account</button>
+          <button class="bank-tab" id="tab-upi" onclick="switchPayoutTab('upi')">📱 UPI ID</button>
+        </div>
+
+        <!-- Bank section -->
+        <div class="bank-section active" id="section-bank">
+          <div class="settings-row">
+            <div class="settings-field"><label>Account Holder Name *</label><input type="text" id="s-bank-holder" placeholder="As per bank records"></div>
+            <div class="settings-field"><label>Bank Name *</label><input type="text" id="s-bank-name" placeholder="e.g. HDFC Bank"></div>
+          </div>
+          <div class="settings-row">
+            <div class="settings-field"><label>Account Number *</label><input type="text" id="s-bank-acc" placeholder="Enter full account number"><div class="field-hint">Stored securely — displayed masked</div></div>
+            <div class="settings-field"><label>IFSC Code *</label><input type="text" id="s-bank-ifsc" placeholder="e.g. HDFC0001234"></div>
+          </div>
+        </div>
+
+        <!-- UPI section -->
+        <div class="bank-section" id="section-upi">
+          <div class="settings-field" style="max-width:400px">
+            <label>UPI ID *</label>
+            <input type="text" id="s-upi" placeholder="e.g. seller@upi or 9876543210@hdfc">
+            <div class="field-hint">Used for instant payouts · Verified at withdrawal</div>
+          </div>
+        </div>
+
+        <button class="btn-settings-save" id="btn-save-payout" onclick="savePayoutDetails()">💾 Save Payout Details</button>
+        <div class="settings-success" id="payout-success">✅ Payout details saved!</div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /main-content -->
+
+<div class="toast" id="toast"><span class="toast-dot"></span><span id="toast-msg"></span></div>
+
+<!-- ═══════════ EDIT LISTING MODAL ═══════════ -->
+<div class="modal-overlay" id="edit-modal" onclick="closeEditModal(event)">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title">✏️ Edit Listing</div>
+      <button class="modal-close" onclick="document.getElementById('edit-modal').classList.remove('open')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="edit-notice">
+        <span>ℹ️</span>
+        <div>Editing an approved or rejected listing will re-submit it for review. Pending and draft listings update without re-review.</div>
+      </div>
+      <input type="hidden" id="edit-listing-id">
+      <div class="form-row">
+        <div class="field"><label>Product Name *</label><input type="text" id="e-name" placeholder="Product name"></div>
+        <div class="field"><label>Category *</label>
+          <select id="e-category">
+            <option value="">Select category…</option>
+            <option>Electronics</option><option>Fashion</option><option>Home & Kitchen</option>
+            <option>Beauty</option><option>Books</option><option>Groceries</option>
+            <option>Toys</option><option>Sports</option><option>Handcrafted</option>
+          </select>
+        </div>
+      </div>
+      <div class="field"><label>Description</label><textarea id="e-description" rows="3" placeholder="Product description…"></textarea></div>
+      <div class="form-row">
+        <div class="field"><label>Brand</label><input type="text" id="e-brand" placeholder="Brand name"></div>
+        <div class="field"><label>Emoji</label><input type="text" id="e-emoji" maxlength="2" placeholder="📦"></div>
+      </div>
+      <div class="form-row">
+        <div class="field"><label>Origin State</label>
+          <select id="e-state">
+            <option value="">Select state…</option>
+            <option>Andhra Pradesh</option><option>Bihar</option><option>Delhi</option>
+            <option>Gujarat</option><option>Jammu & Kashmir</option><option>Karnataka</option>
+            <option>Kerala</option><option>Madhya Pradesh</option><option>Maharashtra</option>
+            <option>Odisha</option><option>Punjab</option><option>Rajasthan</option>
+            <option>Tamil Nadu</option><option>Telangana</option><option>Uttar Pradesh</option>
+            <option>West Bengal</option>
+          </select>
+        </div>
+        <div class="field"><label>Artisan Badge</label>
+          <select id="e-artisan">
+            <option>Not applicable</option><option>Handcrafted — traditional method</option>
+            <option>Handcrafted — artisan collective</option><option>Organic / Natural</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-section-label" style="margin-top:8px">Pricing & Inventory</div>
+      <div class="form-row-3">
+        <div class="field"><label>Selling Price (₹) *</label><input type="number" id="e-price"></div>
+        <div class="field"><label>MRP (₹) *</label><input type="number" id="e-mrp"></div>
+        <div class="field"><label>Stock *</label><input type="number" id="e-stock"></div>
+      </div>
+      <div class="form-row">
+        <div class="field"><label>SKU</label><input type="text" id="e-sku"></div>
+        <div class="field"><label>Weight (grams)</label><input type="number" id="e-weight"></div>
+      </div>
+      <div class="form-section-label" style="margin-top:8px">Shipping & Certifications</div>
+      <div class="form-row">
+        <div class="field"><label>Dispatch Time</label>
+          <select id="e-dispatch"><option>Same day</option><option>1–2 days</option><option>3–5 days</option><option>7–10 days</option></select>
+        </div>
+        <div class="field"><label>Return Policy</label>
+          <select id="e-return"><option>No returns</option><option>7-day return</option><option>15-day return</option><option>30-day return</option></select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field"><label>GI Tag</label><input type="text" id="e-gitag"></div>
+        <div class="field"><label>Variants (comma separated)</label><input type="text" id="e-variants"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-modal-cancel" onclick="document.getElementById('edit-modal').classList.remove('open')">Cancel</button>
+      <button class="btn-modal-save" id="btn-modal-save" onclick="saveEditedListing()">Save & Re-submit →</button>
     </div>
   </div>
 </div>
-
-<div class="toast" id="toast"><span class="toast-dot"></span><span id="toast-msg"></span></div>
 
 <script>
 /* ─── CONFIG ─────────────────────────────── */
@@ -598,6 +706,7 @@ function getUser()  {
   try { return JSON.parse(localStorage.getItem('apniva_user') || '{}'); }
   catch { return {}; }
 }
+function setUser(u) { localStorage.setItem('apniva_user', JSON.stringify(u)); }
 
 async function apiFetch(path, opts = {}) {
   const headers = { 'Content-Type': 'application/json', ...(opts.headers || {}) };
@@ -621,32 +730,31 @@ function statusLabel(s) {
   return { approved:'✅ Live', pending:'⏳ Pending', rejected:'❌ Rejected', draft:'📝 Draft' }[s] || s;
 }
 const ORDER_STATUS_STYLES = {
-  delivered:        'color:var(--jade);font-weight:600',
-  processing:       'color:var(--turmeric);font-weight:600',
-  confirmed:        'color:var(--turmeric);font-weight:600',
-  shipped:          'color:var(--blue);font-weight:600',
+  delivered: 'color:var(--jade);font-weight:600',
+  processing: 'color:var(--turmeric);font-weight:600',
+  confirmed: 'color:var(--turmeric);font-weight:600',
+  shipped: 'color:var(--blue);font-weight:600',
   out_for_delivery: 'color:var(--blue);font-weight:600',
-  cancelled:        'color:var(--sindoor);font-weight:600',
+  cancelled: 'color:var(--sindoor);font-weight:600',
 };
 
 /* ─── TAB SWITCHING ──────────────────────── */
 const TAB_TITLES = {
-  dashboard:'Dashboard', list:'List a Product',
-  listings:'My Listings', orders:'Orders',
-  analytics:'Analytics', payouts:'Payouts'
+  dashboard:'Dashboard', list:'List a Product', listings:'My Listings',
+  orders:'Orders', analytics:'Analytics', payouts:'Payouts', settings:'Settings'
 };
+
 function switchTab(id, el) {
   document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   document.getElementById('tab-' + id).classList.add('active');
   if (el) el.classList.add('active');
   document.getElementById('topbar-title').textContent = TAB_TITLES[id] || id;
-
-  // Lazy-load on tab open
   if (id === 'analytics') loadAnalytics();
   if (id === 'payouts')   loadPayouts();
   if (id === 'listings')  loadListings('');
   if (id === 'orders')    loadOrders('');
+  if (id === 'settings')  loadSettings();
 }
 
 /* ─── TOAST ──────────────────────────────── */
@@ -669,38 +777,29 @@ async function loadDashboard() {
     ]);
 
     const s = analyticsData.summary || {};
-
-    // Greeting
     const hour = new Date().getHours();
     const greet = hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening';
     const user = getUser();
     document.getElementById('dash-greeting').textContent = `${greet}, ${(user.name || 'Seller').split(' ')[0]}! 👋`;
 
-    // KPIs
-    document.getElementById('kpi-revenue').textContent = fmt(s.totalRevenue);
+    document.getElementById('kpi-revenue').textContent     = fmt(s.totalRevenue);
     document.getElementById('kpi-revenue-sub').textContent = `Avg. order: ${fmt(s.avgOrderValue)}`;
-    document.getElementById('kpi-orders').textContent = s.totalOrders || 0;
-    document.getElementById('kpi-orders-sub').textContent = `${s.repeatBuyerPct || 0}% repeat buyers`;
+    document.getElementById('kpi-orders').textContent      = s.totalOrders || 0;
+    document.getElementById('kpi-orders-sub').textContent  = `${s.repeatBuyerPct || 0}% repeat buyers`;
 
-    const total   = listingsData.total || 0;
+    const total    = listingsData.total || 0;
     const approved = (listingsData.products || []).filter(p => p.status === 'approved').length;
     const pending  = (listingsData.products || []).filter(p => p.status === 'pending').length;
-    document.getElementById('kpi-listings').textContent = approved;
+    document.getElementById('kpi-listings').textContent     = approved;
     document.getElementById('kpi-listings-sub').textContent = pending > 0 ? `⏳ ${pending} pending approval` : 'All approved ✓';
     document.getElementById('listings-count-badge').textContent = total;
 
-    document.getElementById('kpi-rating').textContent = s.sellerRating ? `${s.sellerRating} ⭐` : '—';
+    document.getElementById('kpi-rating').textContent     = s.sellerRating ? `${s.sellerRating} ⭐` : '—';
     document.getElementById('kpi-rating-sub').textContent = s.totalReviews ? `From ${s.totalReviews} reviews` : 'No reviews yet';
 
-    // Revenue chart
     renderRevenueChart(analyticsData.monthlyRevenue || []);
-
-    // Recent orders table
     renderOrdersTable(ordersData.orders || []);
-
-    // Top products
     renderTopProducts(analyticsData.topProducts || []);
-
   } catch (err) {
     showToast('⚠️ Could not load dashboard: ' + err.message, true);
   }
@@ -713,83 +812,48 @@ function renderRevenueChart(months) {
     svg.innerHTML = `<text x="30" y="90" font-family="DM Sans" font-size="12" fill="#8C8070">No revenue data yet. Start selling!</text>`;
     return;
   }
-
   const maxRev = Math.max(...months.map(m => m.revenue), 1);
-  const BAR_W  = 36;
-  const CHART_H = 140;
-  const START_X = 40;
-  const GAP     = Math.min(90, Math.floor((640 - months.length * BAR_W) / months.length));
-
+  const BAR_W = 36, CHART_H = 140, START_X = 40;
+  const GAP = Math.min(90, Math.floor((640 - months.length * BAR_W) / months.length));
   const MONTH_NAMES = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-
   let bars = '';
   months.forEach((m, i) => {
     const barH = Math.max(4, Math.round((m.revenue / maxRev) * CHART_H));
-    const x = START_X + i * (BAR_W + GAP);
-    const y = 150 - barH;
-    const label = MONTH_NAMES[(m._id.month - 1)] || '';
+    const x = START_X + i * (BAR_W + GAP), y = 150 - barH;
     const isMax = m.revenue === maxRev;
-    bars += `
-      <rect x="${x}" y="${y}" width="${BAR_W}" height="${barH}" rx="4"
-            fill="${isMax ? '#E8471A' : '#F5845A'}" opacity="${isMax ? 1 : .85}"/>
-      <text x="${x + BAR_W/2}" y="168" font-family="DM Sans" font-size="10" fill="#8C8070" text-anchor="middle">${label}</text>
-      ${isMax ? `<text x="${x + BAR_W/2}" y="${y - 4}" font-family="DM Sans" font-size="9" fill="#E8471A" text-anchor="middle" font-weight="600">${fmt(m.revenue)}</text>` : ''}
-    `;
+    bars += `<rect x="${x}" y="${y}" width="${BAR_W}" height="${barH}" rx="4" fill="${isMax?'#E8471A':'#F5845A'}" opacity="${isMax?1:.85}"/>
+      <text x="${x+BAR_W/2}" y="168" font-family="DM Sans" font-size="10" fill="#8C8070" text-anchor="middle">${MONTH_NAMES[(m._id.month-1)]||''}</text>
+      ${isMax?`<text x="${x+BAR_W/2}" y="${y-4}" font-family="DM Sans" font-size="9" fill="#E8471A" text-anchor="middle" font-weight="600">${fmt(m.revenue)}</text>`:''}`;
   });
-
-  // Grid lines + Y labels
-  const yLabels = [0, 0.5, 1].map(pct => ({
-    val: Math.round(maxRev * pct),
-    y: 150 - Math.round(CHART_H * pct),
-  }));
-
+  const yLabels = [0,.5,1].map(p => ({ val: Math.round(maxRev*p), y: 150-Math.round(CHART_H*p) }));
   let grid = '';
   yLabels.forEach(l => {
     const lbl = l.val >= 1000 ? `₹${(l.val/1000).toFixed(0)}K` : `₹${l.val}`;
-    grid += `
-      <line x1="30" y1="${l.y}" x2="680" y2="${l.y}" stroke="#EAE3D5" stroke-width="1"/>
-      <text x="28" y="${l.y + 4}" font-family="DM Sans" font-size="9" fill="#8C8070" text-anchor="end">${lbl}</text>
-    `;
+    grid += `<line x1="30" y1="${l.y}" x2="680" y2="${l.y}" stroke="#EAE3D5" stroke-width="1"/>
+      <text x="28" y="${l.y+4}" font-family="DM Sans" font-size="9" fill="#8C8070" text-anchor="end">${lbl}</text>`;
   });
-
   svg.innerHTML = grid + bars;
 }
 
-/* ─── ORDERS TABLE ───────────────────────── */
 function renderOrdersTable(orders) {
   const tbody = document.getElementById('orders-tbody');
-  if (!orders.length) {
-    tbody.innerHTML = `<tr><td colspan="4" class="empty-state">No orders yet.</td></tr>`;
-    return;
-  }
+  if (!orders.length) { tbody.innerHTML = `<tr><td colspan="4" class="empty-state">No orders yet.</td></tr>`; return; }
   tbody.innerHTML = orders.slice(0,5).map(o => {
     const item = o.items?.[0] || {};
     const shortId = '#' + String(o._id).slice(-6).toUpperCase();
     const status = o.status || 'processing';
-    return `<tr>
-      <td><span class="order-id">${shortId}</span></td>
-      <td>${item.name || '—'}</td>
-      <td>${fmt(o.totalAmount)}</td>
-      <td><span style="${ORDER_STATUS_STYLES[status] || ''}">${status.replace(/_/g,' ')}</span></td>
-    </tr>`;
+    return `<tr><td><span class="order-id">${shortId}</span></td><td>${item.name||'—'}</td><td>${fmt(o.totalAmount)}</td><td><span style="${ORDER_STATUS_STYLES[status]||''}">${status.replace(/_/g,' ')}</span></td></tr>`;
   }).join('');
 }
 
-/* ─── TOP PRODUCTS ───────────────────────── */
 function renderTopProducts(products) {
   const el = document.getElementById('top-products-list');
-  if (!products.length) {
-    el.innerHTML = `<p class="empty-state">No sales data yet.</p>`;
-    return;
-  }
+  if (!products.length) { el.innerHTML = `<p class="empty-state">No sales data yet.</p>`; return; }
   el.innerHTML = products.slice(0,5).map((p, i) => `
     <div class="top-product-row">
       <div class="top-product-rank rank-${Math.min(i+1,3)}">${i+1}</div>
-      <span class="top-product-emoji">${p.emoji || '📦'}</span>
-      <div>
-        <div class="top-product-name">${p.name}</div>
-        <div class="top-product-sales">${p.unitsSold} sold</div>
-      </div>
+      <span class="top-product-emoji">${p.emoji||'📦'}</span>
+      <div><div class="top-product-name">${p.name}</div><div class="top-product-sales">${p.unitsSold} sold</div></div>
       <div class="top-product-rev">${fmt(p.revenue)}</div>
     </div>`).join('');
 }
@@ -808,24 +872,17 @@ async function loadListings(statusFilter) {
     }
     grid.innerHTML = list.map(l => `
       <div class="listing-card" id="card-${l._id}">
-        <div class="listing-img">
-          ${l.emoji || '📦'}
-          <span class="listing-status status-${l.status}">${statusLabel(l.status)}</span>
-        </div>
+        <div class="listing-img">${l.emoji||'📦'}<span class="listing-status status-${l.status}">${statusLabel(l.status)}</span></div>
         <div class="listing-body">
           <div class="listing-cat">${l.category}</div>
           <div class="listing-name">${l.name}</div>
-          <div class="listing-meta">
-            <span class="listing-price">${fmt(l.price)}</span>
-            <span class="listing-sold">Stock: ${l.stock}</span>
-          </div>
-          ${l.status === 'rejected' && l.rejectionReason
-            ? `<div class="rejection-reason">⚠️ ${l.rejectionReason}</div>` : ''}
+          <div class="listing-meta"><span class="listing-price">${fmt(l.price)}</span><span class="listing-sold">Stock: ${l.stock}</span></div>
+          ${l.status==='rejected'&&l.rejectionReason?`<div class="rejection-reason">⚠️ ${l.rejectionReason}</div>`:''}
           <div class="listing-actions">
-            <button class="btn-listing btn-listing-edit" onclick="showToast('Edit listing — coming soon!')">✏️ Edit</button>
-            ${l.status !== 'approved'
-              ? `<button class="btn-listing btn-listing-remove" onclick="removeListing('${l._id}')">🗑️</button>`
-              : `<button class="btn-listing btn-listing-remove" onclick="deactivateListing('${l._id}')">⏸️ Deactivate</button>`}
+            <button class="btn-listing btn-listing-edit" onclick="openEditModal('${l._id}')">✏️ Edit</button>
+            ${l.status!=='approved'
+              ?`<button class="btn-listing btn-listing-remove" onclick="removeListing('${l._id}')">🗑️</button>`
+              :`<button class="btn-listing btn-listing-remove" onclick="deactivateListing('${l._id}')">⏸️ Deactivate</button>`}
           </div>
         </div>
       </div>`).join('');
@@ -846,10 +903,8 @@ async function removeListing(id) {
     await apiFetch(`/seller/listings/${id}`, { method: 'DELETE' });
     document.getElementById('card-' + id)?.remove();
     showToast('Listing deleted.');
-    loadDashboard(); // refresh badge
-  } catch (err) {
-    showToast('⚠️ ' + err.message, true);
-  }
+    loadDashboard();
+  } catch (err) { showToast('⚠️ ' + err.message, true); }
 }
 
 async function deactivateListing(id) {
@@ -858,21 +913,57 @@ async function deactivateListing(id) {
     await apiFetch(`/seller/listings/${id}/deactivate`, { method: 'PUT' });
     showToast('Listing deactivated.');
     loadListings('');
-  } catch (err) {
-    showToast('⚠️ ' + err.message, true);
-  }
+  } catch (err) { showToast('⚠️ ' + err.message, true); }
 }
 
-/* ─── SUBMIT LISTING ─────────────────────── */
-async function submitListing() {
-  const name        = document.getElementById('f-name').value.trim();
-  const category    = document.getElementById('f-category').value;
-  const price       = Number(document.getElementById('f-price').value);
-  const mrp         = Number(document.getElementById('f-mrp').value);
-  const stock       = Number(document.getElementById('f-stock').value);
-  const description = document.getElementById('f-description').value.trim();
+/* ─── EDIT LISTING MODAL ─────────────────── */
+// Store listings data for quick lookup
+let _allListings = [];
 
-  if (!name || !category || !price || !mrp || !stock) {
+async function openEditModal(id) {
+  // Try to get from cached listings first, otherwise fetch
+  let listing = _allListings.find(l => l._id === id);
+  if (!listing) {
+    try {
+      const data = await apiFetch(`/seller/listings`);
+      _allListings = data.products || [];
+      listing = _allListings.find(l => l._id === id);
+    } catch {}
+  }
+
+  document.getElementById('edit-listing-id').value = id;
+
+  if (listing) {
+    document.getElementById('e-name').value        = listing.name || '';
+    document.getElementById('e-category').value    = listing.category || '';
+    document.getElementById('e-description').value = listing.description || '';
+    document.getElementById('e-brand').value       = listing.brand || '';
+    document.getElementById('e-emoji').value       = listing.emoji || '';
+    document.getElementById('e-state').value       = listing.originState || '';
+    document.getElementById('e-artisan').value     = listing.artisanBadge || 'Not applicable';
+    document.getElementById('e-price').value       = listing.price || '';
+    document.getElementById('e-mrp').value         = listing.mrp || '';
+    document.getElementById('e-stock').value       = listing.stock || '';
+    document.getElementById('e-sku').value         = listing.sku || '';
+    document.getElementById('e-weight').value      = listing.weightGrams || '';
+    document.getElementById('e-dispatch').value    = listing.dispatchDays || '3–5 days';
+    document.getElementById('e-return').value      = listing.returnPolicy || '7-day return';
+    document.getElementById('e-gitag').value       = listing.giTag || '';
+    document.getElementById('e-variants').value    = (listing.variants || []).join(', ');
+  }
+
+  document.getElementById('edit-modal').classList.add('open');
+}
+
+async function saveEditedListing() {
+  const id    = document.getElementById('edit-listing-id').value;
+  const name  = document.getElementById('e-name').value.trim();
+  const price = Number(document.getElementById('e-price').value);
+  const mrp   = Number(document.getElementById('e-mrp').value);
+  const stock = Number(document.getElementById('e-stock').value);
+  const cat   = document.getElementById('e-category').value;
+
+  if (!name || !cat || !price || !mrp || !stock) {
     showToast('⚠️ Name, category, price, MRP and stock are required.', true); return;
   }
   if (price > mrp) {
@@ -880,7 +971,58 @@ async function submitListing() {
   }
 
   const body = {
-    name, category, description, price, mrp, stock,
+    name, category: cat, price, mrp, stock,
+    description:  document.getElementById('e-description').value.trim(),
+    brand:        document.getElementById('e-brand').value.trim(),
+    emoji:        document.getElementById('e-emoji').value.trim() || '📦',
+    originState:  document.getElementById('e-state').value,
+    artisanBadge: document.getElementById('e-artisan').value,
+    sku:          document.getElementById('e-sku').value.trim(),
+    weightGrams:  Number(document.getElementById('e-weight').value) || 0,
+    dispatchDays: document.getElementById('e-dispatch').value,
+    returnPolicy: document.getElementById('e-return').value,
+    giTag:        document.getElementById('e-gitag').value.trim(),
+    variants:     document.getElementById('e-variants').value.split(',').map(v => v.trim()).filter(Boolean),
+  };
+
+  const btn = document.getElementById('btn-modal-save');
+  btn.disabled = true; btn.textContent = '⏳ Saving…';
+
+  try {
+    await apiFetch(`/seller/listings/${id}`, { method: 'PUT', body: JSON.stringify(body) });
+    showToast('✅ Listing updated and re-submitted for review.');
+    document.getElementById('edit-modal').classList.remove('open');
+    loadListings('');
+    loadDashboard();
+  } catch (err) {
+    showToast('⚠️ ' + err.message, true);
+  } finally {
+    btn.disabled = false; btn.textContent = 'Save & Re-submit →';
+  }
+}
+
+function closeEditModal(event) {
+  if (event.target === document.getElementById('edit-modal')) {
+    document.getElementById('edit-modal').classList.remove('open');
+  }
+}
+
+/* ─── SUBMIT / DRAFT LISTING ─────────────── */
+async function submitListing() {
+  const name     = document.getElementById('f-name').value.trim();
+  const category = document.getElementById('f-category').value;
+  const price    = Number(document.getElementById('f-price').value);
+  const mrp      = Number(document.getElementById('f-mrp').value);
+  const stock    = Number(document.getElementById('f-stock').value);
+
+  if (!name || !category || !price || !mrp || !stock) {
+    showToast('⚠️ Name, category, price, MRP and stock are required.', true); return;
+  }
+  if (price > mrp) { showToast('⚠️ Selling price cannot exceed MRP.', true); return; }
+
+  const body = {
+    name, category, price, mrp, stock,
+    description:  document.getElementById('f-description').value.trim(),
     brand:        document.getElementById('f-brand').value.trim(),
     emoji:        document.getElementById('f-emoji').value.trim() || '📦',
     originState:  document.getElementById('f-state').value,
@@ -899,14 +1041,11 @@ async function submitListing() {
   try {
     await apiFetch('/seller/listings', { method: 'POST', body: JSON.stringify(body) });
     showToast('✅ Listing submitted for approval! You\'ll hear back within 48 hours.');
-    // Reset form
     ['f-name','f-description','f-brand','f-emoji','f-price','f-mrp','f-stock','f-sku','f-weight','f-gitag','f-variants']
       .forEach(id => { document.getElementById(id).value = ''; });
     document.getElementById('f-category').value = '';
     document.getElementById('f-state').value = '';
-    setTimeout(() => {
-      switchTab('listings', document.querySelectorAll('.nav-item')[2]);
-    }, 1200);
+    setTimeout(() => { switchTab('listings', document.querySelectorAll('.nav-item')[2]); }, 1200);
   } catch (err) {
     showToast('⚠️ ' + err.message, true);
   } finally {
@@ -917,40 +1056,25 @@ async function submitListing() {
 async function saveDraft() {
   const name = document.getElementById('f-name').value.trim();
   if (!name) { showToast('⚠️ Enter at least a product name.', true); return; }
-
   const body = {
     name,
     category:    document.getElementById('f-category').value || 'Fashion',
-    price:       Number(document.getElementById('f-price').value) || 0,
-    mrp:         Number(document.getElementById('f-mrp').value) || 0,
+    price:       Number(document.getElementById('f-price').value) || 1,
+    mrp:         Number(document.getElementById('f-mrp').value) || 1,
     stock:       Number(document.getElementById('f-stock').value) || 0,
     description: document.getElementById('f-description').value.trim(),
     emoji:       document.getElementById('f-emoji').value.trim() || '📦',
   };
-
   try {
-    // Create as pending first, then immediately save as draft
-    const created = await apiFetch('/seller/listings', { method: 'POST', body: JSON.stringify({ ...body, price: body.price || 1, mrp: body.mrp || 1, stock: body.stock || 0 }) });
+    const created = await apiFetch('/seller/listings', { method: 'POST', body: JSON.stringify(body) });
     await apiFetch(`/seller/listings/${created.product._id}/draft`, { method: 'PUT', body: JSON.stringify(body) });
     showToast('Saved as draft 💾');
-  } catch (err) {
-    showToast('⚠️ ' + err.message, true);
-  }
+  } catch (err) { showToast('⚠️ ' + err.message, true); }
 }
 
-/* ─── ORDERS TAB ─────────────────────────── */
-const NEXT_STATUS = {
-  processing:       'confirmed',
-  confirmed:        'shipped',
-  shipped:          'out_for_delivery',
-  out_for_delivery: 'delivered',
-};
-const NEXT_STATUS_LABEL = {
-  processing:       '✅ Mark Confirmed',
-  confirmed:        '🚚 Mark Shipped',
-  shipped:          '📦 Mark Out for Delivery',
-  out_for_delivery: '✔️ Mark Delivered',
-};
+/* ─── ORDERS ─────────────────────────────── */
+const NEXT_STATUS = { processing:'confirmed', confirmed:'shipped', shipped:'out_for_delivery', out_for_delivery:'delivered' };
+const NEXT_STATUS_LABEL = { processing:'✅ Mark Confirmed', confirmed:'🚚 Mark Shipped', shipped:'📦 Mark Out for Delivery', out_for_delivery:'✔️ Mark Delivered' };
 
 async function loadOrders(statusFilter) {
   const panel = document.getElementById('orders-panel');
@@ -959,46 +1083,21 @@ async function loadOrders(statusFilter) {
     const q = statusFilter ? `?status=${statusFilter}&limit=30` : '?limit=30';
     const data = await apiFetch(`/seller/orders${q}`);
     const orders = data.orders || [];
-
-    // Update badge with total count (only on 'all' fetch)
-    if (!statusFilter) {
-      document.getElementById('orders-count-badge').textContent = data.total || orders.length;
-    }
-
-    if (!orders.length) {
-      panel.innerHTML = `<div class="empty-state">No orders found for this filter.</div>`;
-      return;
-    }
+    if (!statusFilter) document.getElementById('orders-count-badge').textContent = data.total || orders.length;
+    if (!orders.length) { panel.innerHTML = `<div class="empty-state">No orders found for this filter.</div>`; return; }
 
     panel.innerHTML = orders.map(o => {
       const shortId = '#' + String(o._id).slice(-6).toUpperCase();
       const status  = o.status || 'processing';
       const pillCls = 'order-status-pill pill-' + status;
-      const statusText = status.replace(/_/g, ' ');
-      const buyer = o.buyer || {};
-      const addr  = o.deliveryAddress || {};
-      const nextSt = NEXT_STATUS[status];
-      const nextLbl = NEXT_STATUS_LABEL[status];
-
-      const itemRows = (o.items || []).map(it => `
+      const buyer = o.buyer || {}, addr = o.deliveryAddress || {};
+      const nextSt = NEXT_STATUS[status], nextLbl = NEXT_STATUS_LABEL[status];
+      const itemRows = (o.items||[]).map(it => `
         <div class="order-item-row">
-          <div class="order-item-emoji">${it.emoji || '📦'}</div>
-          <div>
-            <div class="order-item-name">${it.name}</div>
-            <div class="order-item-meta">Qty: ${it.quantity} · ${it.variant || 'Standard'}</div>
-          </div>
+          <div class="order-item-emoji">${it.emoji||'📦'}</div>
+          <div><div class="order-item-name">${it.name}</div><div class="order-item-meta">Qty: ${it.quantity} · ${it.variant||'Standard'}</div></div>
           <div class="order-item-price">${fmt(it.subtotal)}</div>
         </div>`).join('');
-
-      const statusActions = nextSt ? `
-        <button class="btn-status-update primary"
-          onclick="updateOrderStatus('${o._id}', '${nextSt}', this)">
-          ${nextLbl}
-        </button>` : '';
-
-      const cancelBtn = (status !== 'delivered' && status !== 'cancelled')
-        ? `<button class="btn-status-update"
-            onclick="cancelOrder('${o._id}', this)">❌ Cancel</button>` : '';
 
       return `
         <div class="order-detail-card" id="ocard-${o._id}">
@@ -1006,21 +1105,19 @@ async function loadOrders(statusFilter) {
             <div class="order-detail-header-id">${shortId}</div>
             <div class="order-detail-header-date">${fmtDate(o.createdAt)}</div>
             <div class="order-detail-header-amount">${fmt(o.totalAmount)}</div>
-            <div><span class="${pillCls}" id="opill-${o._id}">${statusText}</span></div>
-            <div style="font-size:12px;color:var(--warm-gray)">${o.paymentMethod || 'UPI'}</div>
+            <div><span class="${pillCls}" id="opill-${o._id}">${status.replace(/_/g,' ')}</span></div>
+            <div style="font-size:12px;color:var(--warm-gray)">${o.paymentMethod||'UPI'}</div>
           </div>
           <div class="order-detail-body">${itemRows}</div>
           <div class="order-detail-footer">
             <div class="order-buyer-info">
-              <strong>${buyer.name || 'Customer'}</strong>
-              ${buyer.mobile ? `· 📞 ${buyer.mobile}` : ''}
-              <br>${addr.street || ''}${addr.city ? ', ' + addr.city : ''}${addr.state ? ', ' + addr.state : ''}
-              ${addr.pincode ? ' — ' + addr.pincode : ''}
-              ${o.trackingNumber ? `<br>🚚 Tracking: <strong>${o.trackingNumber}</strong>` : ''}
+              <strong>${buyer.name||'Customer'}</strong>${buyer.mobile?` · 📞 ${buyer.mobile}`:''}
+              <br>${addr.street||''}${addr.city?', '+addr.city:''}${addr.state?', '+addr.state:''}${addr.pincode?' — '+addr.pincode:''}
+              ${o.trackingNumber?`<br>🚚 Tracking: <strong>${o.trackingNumber}</strong>`:''}
             </div>
             <div class="order-status-actions">
-              ${statusActions}
-              ${cancelBtn}
+              ${nextSt?`<button class="btn-status-update primary" onclick="updateOrderStatus('${o._id}','${nextSt}',this)">${nextLbl}</button>`:''}
+              ${!['delivered','cancelled'].includes(status)?`<button class="btn-status-update" onclick="cancelOrder('${o._id}',this)">❌ Cancel</button>`:''}
             </div>
           </div>
         </div>`;
@@ -1040,15 +1137,10 @@ async function updateOrderStatus(orderId, newStatus, btn) {
   const orig = btn.textContent;
   btn.disabled = true; btn.textContent = '⏳ Updating…';
   try {
-    await apiFetch(`/orders/${orderId}/status`, {
-      method: 'PUT',
-      body: JSON.stringify({ status: newStatus, message: `Order ${newStatus.replace(/_/g,' ')}` }),
-    });
+    await apiFetch(`/orders/${orderId}/status`, { method: 'PUT', body: JSON.stringify({ status: newStatus, message: `Order ${newStatus.replace(/_/g,' ')}` }) });
     showToast(`✅ Order marked as ${newStatus.replace(/_/g,' ')}`);
-    // Refresh the orders panel in place
     const activeFilter = document.querySelector('.orders-filter-btn.active');
-    const currentFilter = activeFilter?.dataset?.filter || '';
-    await loadOrders(currentFilter);
+    await loadOrders(activeFilter?.dataset?.filter || '');
   } catch (err) {
     showToast('⚠️ ' + err.message, true);
     btn.disabled = false; btn.textContent = orig;
@@ -1063,7 +1155,6 @@ async function cancelOrder(orderId, btn) {
     await apiFetch(`/orders/${orderId}/cancel`, { method: 'PUT' });
     showToast('Order cancelled. Stock restored.');
     await loadOrders('');
-    // Reset filter buttons
     document.querySelectorAll('.orders-filter-btn').forEach(b => b.classList.remove('active'));
     document.querySelector('.orders-filter-btn').classList.add('active');
   } catch (err) {
@@ -1077,43 +1168,24 @@ async function loadAnalytics() {
   try {
     const data = await apiFetch('/seller/analytics');
     const s = data.summary || {};
+    document.getElementById('an-repeat').textContent      = `${s.repeatBuyerPct||0}%`;
+    document.getElementById('an-repeat-sub').textContent  = `↑ of your buyers come back`;
+    document.getElementById('an-aov').textContent         = fmt(s.avgOrderValue);
+    document.getElementById('an-return').textContent      = `${s.returnRatePct||0}%`;
+    document.getElementById('an-reviews').textContent     = s.totalReviews || 0;
 
-    // KPIs
-    document.getElementById('an-repeat').textContent  = `${s.repeatBuyerPct || 0}%`;
-    document.getElementById('an-repeat-sub').textContent = `↑ of your buyers come back`;
-    document.getElementById('an-aov').textContent     = fmt(s.avgOrderValue);
-    document.getElementById('an-return').textContent  = `${s.returnRatePct || 0}%`;
-    document.getElementById('an-reviews').textContent = s.totalReviews || 0;
-
-    // Category bars
     const catEl = document.getElementById('category-bars');
     const cats  = data.categoryBreakdown || [];
-    if (!cats.length) {
-      catEl.innerHTML = '<p class="empty-state">No category data yet.</p>';
-    } else {
-      catEl.innerHTML = cats.map(c => `
-        <div class="category-bar-row">
-          <div class="category-bar-label">${c.category}</div>
-          <div class="category-bar-track"><div class="category-bar-fill" style="width:${c.pct}%"></div></div>
-          <div class="category-bar-pct">${c.pct}%</div>
-        </div>`).join('');
-    }
+    catEl.innerHTML = cats.length
+      ? cats.map(c => `<div class="category-bar-row"><div class="category-bar-label">${c.category}</div><div class="category-bar-track"><div class="category-bar-fill" style="width:${c.pct}%"></div></div><div class="category-bar-pct">${c.pct}%</div></div>`).join('')
+      : '<p class="empty-state">No category data yet.</p>';
 
-    // State breakdown
     const stateEl = document.getElementById('state-breakdown');
     const states  = data.ordersByState || [];
-    if (!states.length) {
-      stateEl.innerHTML = '<p class="empty-state">No state data yet.</p>';
-    } else {
-      stateEl.innerHTML = states.map(s => `
-        <div class="state-row">
-          <span class="state-row-name">${s._id || 'Unknown'}</span>
-          <span class="state-row-value">${s.orders} orders</span>
-        </div>`).join('');
-    }
-  } catch (err) {
-    showToast('⚠️ Could not load analytics: ' + err.message, true);
-  }
+    stateEl.innerHTML = states.length
+      ? states.map(s => `<div class="state-row"><span class="state-row-name">${s._id||'Unknown'}</span><span class="state-row-value">${s.orders} orders</span></div>`).join('')
+      : '<p class="empty-state">No state data yet.</p>';
+  } catch (err) { showToast('⚠️ Could not load analytics: ' + err.message, true); }
 }
 
 /* ─── PAYOUTS ────────────────────────────── */
@@ -1128,50 +1200,262 @@ async function loadPayouts() {
     document.getElementById('pay-pending').textContent   = fmt(balance.pending);
     document.getElementById('pay-total').textContent     = fmt(balance.totalPaidOut);
 
-    // Update withdraw button
+    // Check if payout method is set
+    const user = getUser();
+    const hasPayout = !!(user.upiId || user.bankAccount?.accountNumber);
+    document.getElementById('payout-bank-notice').style.display = hasPayout ? 'none' : 'flex';
+
     const btn = document.getElementById('btn-withdraw');
-    if (balance.available > 0) {
-      btn.textContent = `💳 Withdraw ${fmt(balance.available)} to Bank Account`;
+    if (balance.available > 0 && hasPayout) {
+      btn.textContent = `💳 Withdraw ${fmt(balance.available)} to ${user.upiId ? 'UPI' : 'Bank Account'}`;
       btn.disabled = false;
+    } else if (!hasPayout) {
+      btn.textContent = '⚠️ Add payout method in Settings first';
+      btn.disabled = true;
     } else {
       btn.textContent = '💳 No balance to withdraw';
       btn.disabled = true;
     }
 
-    // Payout history
     const rows = document.getElementById('payout-rows');
     const payouts = history.payouts || [];
-    if (!payouts.length) {
-      rows.innerHTML = `<div class="payout-row"><div style="grid-column:1/-1" class="empty-state">No payout history yet.</div></div>`;
-    } else {
-      rows.innerHTML = payouts.map(p => `
-        <div class="payout-row">
-          <div>${fmtDate(p.createdAt)}</div>
-          <div>${p.description || '—'}</div>
-          <div class="payout-amount">${fmt(p.netAmount)}</div>
-          <div class="${p.status === 'paid' ? 'payout-status-paid' : 'payout-status-pending'}">
-            ${p.status === 'paid' ? 'Paid' : 'Pending'}
-          </div>
-        </div>`).join('');
-    }
-  } catch (err) {
-    showToast('⚠️ Could not load payouts: ' + err.message, true);
-  }
+    rows.innerHTML = payouts.length
+      ? payouts.map(p => `<div class="payout-row"><div>${fmtDate(p.createdAt)}</div><div>${p.description||'—'}</div><div class="payout-amount">${fmt(p.netAmount)}</div><div class="${p.status==='paid'?'payout-status-paid':'payout-status-pending'}">${p.status==='paid'?'Paid':'Pending'}</div></div>`).join('')
+      : `<div class="payout-row"><div style="grid-column:1/-1" class="empty-state">No payout history yet.</div></div>`;
+  } catch (err) { showToast('⚠️ Could not load payouts: ' + err.message, true); }
 }
 
 async function requestWithdraw() {
-  const btn = document.getElementById('btn-withdraw');
+  const user = getUser();
+  const btn  = document.getElementById('btn-withdraw');
   btn.disabled = true; btn.textContent = '⏳ Processing…';
+
+  // Build payout method from saved profile data
+  const payoutBody = {};
+  if (user.upiId) {
+    payoutBody.upiId = user.upiId;
+  } else if (user.bankAccount?.accountNumber) {
+    payoutBody.bankAccount = user.bankAccount;
+  } else {
+    showToast('⚠️ No payout method saved. Go to Settings → Payout Details.', true);
+    btn.disabled = false;
+    return;
+  }
+
   try {
-    const data = await apiFetch('/payouts/withdraw', {
-      method: 'POST',
-      body: JSON.stringify({ bankAccount: { accountHolder: getUser().name, accountNumber: '••••4521', ifscCode: 'HDFC0001234', bankName: 'HDFC Bank' } }),
-    });
+    const data = await apiFetch('/payouts/withdraw', { method: 'POST', body: JSON.stringify(payoutBody) });
     showToast('✅ ' + data.message);
-    await loadPayouts(); // refresh
+    // Refresh user from server to sync
+    await loadPayouts();
   } catch (err) {
     showToast('⚠️ ' + err.message, true);
     btn.disabled = false;
+  }
+}
+
+/* ─── SETTINGS ───────────────────────────── */
+async function loadSettings() {
+  try {
+    const profile = await apiFetch('/seller/profile');
+
+    // Merge into localStorage so other tabs see updated data
+    const stored = getUser();
+    const merged = { ...stored, ...profile };
+    delete merged.password;
+    setUser(merged);
+
+    // Business info
+    document.getElementById('s-bizname').value = profile.businessName || '';
+    document.getElementById('s-name').value    = profile.name || '';
+    document.getElementById('s-mobile').value  = profile.mobile || '';
+    document.getElementById('s-gst').value     = profile.gstNumber || '';
+    document.getElementById('s-state').value   = profile.businessState || '';
+    document.getElementById('s-email').value   = profile.email || '';
+
+    // Password fields — always blank
+    document.getElementById('s-curr-pwd').value    = '';
+    document.getElementById('s-new-pwd').value     = '';
+    document.getElementById('s-confirm-pwd').value = '';
+
+    // Stats (read-only)
+    document.getElementById('s-rating').value  = profile.sellerRating ? `${profile.sellerRating} ⭐ (${profile.totalReviews} reviews)` : 'No reviews yet';
+    document.getElementById('s-reviews').value = profile.totalReviews || 0;
+
+    // Payout details
+    if (profile.upiId) {
+      document.getElementById('s-upi').value = profile.upiId;
+    }
+    if (profile.bankAccount) {
+      document.getElementById('s-bank-holder').value = profile.bankAccount.accountHolder || '';
+      document.getElementById('s-bank-name').value   = profile.bankAccount.bankName || '';
+      document.getElementById('s-bank-acc').value    = profile.bankAccount.accountNumber || '';
+      document.getElementById('s-bank-ifsc').value   = profile.bankAccount.ifscCode || '';
+    }
+
+    // If UPI is set, default to UPI tab
+    if (profile.upiId && !profile.bankAccount?.accountNumber) {
+      switchPayoutTab('upi');
+    }
+  } catch (err) {
+    showToast('⚠️ Could not load settings: ' + err.message, true);
+  }
+}
+
+function switchPayoutTab(tab) {
+  document.getElementById('tab-bank').classList.toggle('active', tab === 'bank');
+  document.getElementById('tab-upi').classList.toggle('active', tab === 'upi');
+  document.getElementById('section-bank').classList.toggle('active', tab === 'bank');
+  document.getElementById('section-upi').classList.toggle('active', tab === 'upi');
+}
+
+async function saveBusinessInfo() {
+  const bizname = document.getElementById('s-bizname').value.trim();
+  if (!bizname) { showToast('⚠️ Business name is required.', true); return; }
+
+  const body = {
+    name:          document.getElementById('s-name').value.trim(),
+    mobile:        document.getElementById('s-mobile').value.trim(),
+    businessName:  bizname,
+    gstNumber:     document.getElementById('s-gst').value.trim(),
+    businessState: document.getElementById('s-state').value,
+  };
+
+  const btn = document.getElementById('btn-save-biz');
+  btn.disabled = true; btn.textContent = '⏳ Saving…';
+
+  try {
+    const data = await apiFetch('/seller/profile', { method: 'PUT', body: JSON.stringify(body) });
+    // Update localStorage
+    const stored = getUser();
+    setUser({ ...stored, ...data.user });
+
+    // Update sidebar display
+    if (data.user.name) {
+      const initials = data.user.name.split(' ').map(n => n[0]).join('').slice(0,2).toUpperCase();
+      document.getElementById('seller-av').textContent       = initials;
+      document.getElementById('topbar-avatar').textContent   = initials;
+      document.getElementById('seller-name').textContent     = data.user.name;
+    }
+
+    const successEl = document.getElementById('biz-success');
+    successEl.classList.add('show');
+    setTimeout(() => successEl.classList.remove('show'), 3000);
+    showToast('✅ Business info updated!');
+  } catch (err) {
+    showToast('⚠️ ' + err.message, true);
+  } finally {
+    btn.disabled = false; btn.textContent = '💾 Save Business Info';
+  }
+}
+
+async function changePassword() {
+  const currPwd    = document.getElementById('s-curr-pwd').value;
+  const newPwd     = document.getElementById('s-new-pwd').value;
+  const confirmPwd = document.getElementById('s-confirm-pwd').value;
+
+  if (!currPwd || !newPwd || !confirmPwd) {
+    showToast('⚠️ All password fields are required.', true); return;
+  }
+  if (newPwd.length < 8) {
+    showToast('⚠️ New password must be at least 8 characters.', true); return;
+  }
+  if (newPwd !== confirmPwd) {
+    showToast('⚠️ New passwords do not match.', true); return;
+  }
+
+  // Verify current password by attempting login
+  const user = getUser();
+  const btn  = document.getElementById('btn-save-pwd');
+  btn.disabled = true; btn.textContent = '⏳ Verifying…';
+
+  try {
+    // Verify old password via login endpoint
+    const loginCheck = await fetch(`${API_BASE}/auth/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: user.email, password: currPwd, role: 'seller' }),
+    });
+    if (!loginCheck.ok) {
+      showToast('⚠️ Current password is incorrect.', true);
+      btn.disabled = false; btn.textContent = '🔑 Update Password';
+      return;
+    }
+
+    // Now update with new password
+    await apiFetch('/seller/profile', {
+      method: 'PUT',
+      body: JSON.stringify({ password: newPwd }),
+    });
+
+    document.getElementById('s-curr-pwd').value    = '';
+    document.getElementById('s-new-pwd').value     = '';
+    document.getElementById('s-confirm-pwd').value = '';
+
+    const successEl = document.getElementById('pwd-success');
+    successEl.classList.add('show');
+    setTimeout(() => successEl.classList.remove('show'), 3000);
+    showToast('✅ Password updated successfully!');
+  } catch (err) {
+    showToast('⚠️ ' + err.message, true);
+  } finally {
+    btn.disabled = false; btn.textContent = '🔑 Update Password';
+  }
+}
+
+async function savePayoutDetails() {
+  // Determine active tab
+  const isBankTab = document.getElementById('tab-bank').classList.contains('active');
+  const btn = document.getElementById('btn-save-payout');
+  btn.disabled = true; btn.textContent = '⏳ Saving…';
+
+  let body = {};
+
+  if (isBankTab) {
+    const holder = document.getElementById('s-bank-holder').value.trim();
+    const name   = document.getElementById('s-bank-name').value.trim();
+    const acc    = document.getElementById('s-bank-acc').value.trim();
+    const ifsc   = document.getElementById('s-bank-ifsc').value.trim();
+
+    if (!holder || !name || !acc || !ifsc) {
+      showToast('⚠️ All bank fields are required.', true);
+      btn.disabled = false; btn.textContent = '💾 Save Payout Details';
+      return;
+    }
+    // Mask the account number for storage (keep last 4 digits)
+    const masked = '••••' + acc.slice(-4);
+    body = {
+      bankAccount: { accountHolder: holder, bankName: name, accountNumber: masked, ifscCode: ifsc },
+      upiId: '',  // clear UPI when bank is saved
+    };
+  } else {
+    const upi = document.getElementById('s-upi').value.trim();
+    if (!upi) {
+      showToast('⚠️ UPI ID is required.', true);
+      btn.disabled = false; btn.textContent = '💾 Save Payout Details';
+      return;
+    }
+    // Basic UPI format validation
+    if (!upi.includes('@')) {
+      showToast('⚠️ Invalid UPI ID format (must contain @).', true);
+      btn.disabled = false; btn.textContent = '💾 Save Payout Details';
+      return;
+    }
+    body = { upiId: upi, bankAccount: { accountHolder:'', accountNumber:'', ifscCode:'', bankName:'' } };
+  }
+
+  try {
+    const data = await apiFetch('/seller/profile', { method: 'PUT', body: JSON.stringify(body) });
+    const stored = getUser();
+    setUser({ ...stored, ...data.user });
+
+    const successEl = document.getElementById('payout-success');
+    successEl.classList.add('show');
+    setTimeout(() => successEl.classList.remove('show'), 3000);
+    showToast('✅ Payout details saved!');
+  } catch (err) {
+    showToast('⚠️ ' + err.message, true);
+  } finally {
+    btn.disabled = false; btn.textContent = '💾 Save Payout Details';
   }
 }
 
@@ -1185,13 +1469,11 @@ function logout() {
 
 /* ─── INIT ───────────────────────────────── */
 (async function init() {
-  // Guard: redirect if not seller
   const role  = localStorage.getItem('apniva_role');
   const token = getToken();
   if (!token || !role) { window.location.href = 'index.html'; return; }
   if (role === 'customer') { window.location.href = 'customer.html'; return; }
 
-  // Populate user info
   const user = getUser();
   if (user.name) {
     const initials = user.name.split(' ').map(n => n[0]).join('').slice(0,2).toUpperCase();
@@ -1199,7 +1481,7 @@ function logout() {
     document.getElementById('seller-av').textContent     = initials;
     document.getElementById('seller-name').textContent   = user.name;
     document.getElementById('seller-rating').textContent = user.sellerRating
-      ? `⭐ ${user.sellerRating} · ${user.totalReviews || 0} reviews` : 'New seller';
+      ? `⭐ ${user.sellerRating} · ${user.totalReviews||0} reviews` : 'New seller';
   }
 
   await loadDashboard();
