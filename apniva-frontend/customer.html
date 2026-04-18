@@ -282,7 +282,6 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
 ══════════════════════════════════════ */
 .checkout-layout { display: grid; grid-template-columns: 1fr 360px; gap: 28px; padding: 32px; max-width: 1200px; margin: 0 auto; }
 
-/* Step progress bar */
 .checkout-steps { display: flex; align-items: center; gap: 0; margin-bottom: 28px; }
 .checkout-step { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--warm-gray); }
 .checkout-step.active { color: var(--saffron); }
@@ -296,7 +295,6 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
 .co-card { background: var(--white); border-radius: var(--radius); border: 1px solid var(--border); padding: 24px; margin-bottom: 20px; }
 .co-card-title { font-family: var(--font-display); font-size: 17px; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
 
-/* Address cards */
 .addr-options { display: flex; flex-direction: column; gap: 12px; }
 .addr-option { display: flex; align-items: flex-start; gap: 14px; padding: 14px 16px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); cursor: pointer; transition: .2s; }
 .addr-option:hover { border-color: var(--saffron-mid); }
@@ -306,7 +304,6 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
 .addr-option-text { font-size: 13px; color: var(--ink-mid); line-height: 1.5; }
 .addr-default-chip { display: inline-block; font-size: 11px; font-weight: 600; color: var(--jade); background: var(--jade-light); padding: 2px 8px; border-radius: 4px; margin-left: 6px; }
 
-/* New address form */
 .new-addr-toggle { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border: 1.5px dashed var(--border); border-radius: var(--radius-sm); cursor: pointer; font-size: 14px; font-weight: 500; color: var(--saffron); transition: .2s; margin-top: 8px; }
 .new-addr-toggle:hover { background: var(--saffron-light); border-color: var(--saffron); }
 .new-addr-form { display: none; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
@@ -317,7 +314,6 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
 .co-field input, .co-field select { width: 100%; padding: 11px 13px; background: var(--ivory); border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 14px; color: var(--ink); transition: .2s; font-family: var(--font-body); }
 .co-field input:focus, .co-field select:focus { border-color: var(--saffron); background: var(--white); outline: none; }
 
-/* Payment methods */
 .pay-options { display: flex; flex-direction: column; gap: 10px; }
 .pay-option { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); cursor: pointer; transition: .2s; }
 .pay-option:hover { border-color: var(--saffron-mid); }
@@ -327,7 +323,6 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
 .pay-option-name { font-size: 14px; font-weight: 600; }
 .pay-option-desc { font-size: 12px; color: var(--warm-gray); margin-top: 1px; }
 
-/* Checkout order summary sidebar */
 .co-summary { background: var(--white); border-radius: var(--radius); border: 1px solid var(--border); padding: 22px; position: sticky; top: 80px; height: fit-content; }
 .co-summary-title { font-family: var(--font-display); font-size: 17px; margin-bottom: 16px; }
 .co-item-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
@@ -347,14 +342,12 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
 .btn-place-order:disabled { opacity: .6; cursor: not-allowed; }
 .btn-back-cart { width: 100%; padding: 11px; background: var(--white); color: var(--ink-mid); border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; cursor: pointer; transition: .2s; margin-top: 8px; }
 .btn-back-cart:hover { border-color: var(--saffron); color: var(--saffron); }
-
 .secure-note { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--warm-gray); margin-top: 12px; justify-content: center; }
 
 /* ══════════════════════════════════════
    6c. ORDER SUCCESS / FAILURE
 ══════════════════════════════════════ */
 .order-result-wrap { min-height: calc(100vh - 64px); display: flex; align-items: center; justify-content: center; padding: 40px 24px; }
-
 .result-card { background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 48px 40px; max-width: 520px; width: 100%; text-align: center; box-shadow: var(--shadow-lg); }
 .result-icon { font-size: 72px; margin-bottom: 20px; display: block; }
 .result-title { font-family: var(--font-display); font-size: 28px; margin-bottom: 10px; }
@@ -377,7 +370,6 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
 .btn-result-secondary { padding: 13px 28px; background: var(--white); color: var(--ink-mid); border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 14px; font-weight: 600; cursor: pointer; transition: .2s; }
 .btn-result-secondary:hover { border-color: var(--saffron); color: var(--saffron); }
 
-/* failure specific */
 .result-card.failure .result-title { color: var(--sindoor); }
 .failure-reasons { text-align: left; background: var(--cream); border-radius: var(--radius-sm); padding: 14px 16px; margin-bottom: 20px; }
 .failure-reasons li { font-size: 13px; color: var(--ink-mid); margin-bottom: 6px; padding-left: 4px; }
@@ -403,11 +395,31 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
 
 .profile-card { background: var(--white); border-radius: var(--radius); border: 1px solid var(--border); padding: 24px; margin-bottom: 20px; }
 .profile-card-title { font-family: var(--font-display); font-size: 17px; margin-bottom: 18px; display: flex; align-items: center; justify-content: space-between; }
-.btn-edit { font-size: 13px; color: var(--saffron); font-weight: 500; cursor: pointer; background: transparent; }
+.btn-edit { font-size: 13px; color: var(--saffron); font-weight: 500; cursor: pointer; background: transparent; padding: 6px 12px; border: 1.5px solid var(--saffron); border-radius: var(--radius-sm); transition: .2s; }
+.btn-edit:hover { background: var(--saffron); color: var(--white); }
+.btn-edit-cancel { font-size: 13px; color: var(--warm-gray); font-weight: 500; cursor: pointer; background: transparent; padding: 6px 12px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); transition: .2s; margin-right: 8px; }
+.btn-edit-cancel:hover { border-color: var(--warm-gray); }
+.btn-save { font-size: 13px; color: var(--white); font-weight: 600; cursor: pointer; background: var(--jade); padding: 6px 14px; border-radius: var(--radius-sm); transition: .2s; border: none; }
+.btn-save:hover { background: #0F5038; }
+.btn-save:disabled { opacity: .6; cursor: not-allowed; }
 
 .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .info-item label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .8px; color: var(--warm-gray); display: block; margin-bottom: 4px; }
 .info-item span { font-size: 14px; }
+
+/* Inline edit form */
+.info-edit-form { display: none; }
+.info-edit-form.open { display: block; }
+.info-static { }
+.info-static.hidden { display: none; }
+.edit-field { margin-bottom: 14px; }
+.edit-field label { display: block; font-size: 12px; font-weight: 600; color: var(--warm-gray); text-transform: uppercase; letter-spacing: .7px; margin-bottom: 6px; }
+.edit-field input { width: 100%; padding: 10px 12px; background: var(--ivory); border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 14px; color: var(--ink); font-family: var(--font-body); transition: .2s; }
+.edit-field input:focus { border-color: var(--saffron); background: var(--white); outline: none; }
+.edit-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.edit-actions { display: flex; align-items: center; gap: 8px; margin-top: 4px; }
+.edit-note { font-size: 12px; color: var(--warm-gray); margin-top: 12px; padding: 8px 12px; background: var(--turmeric-light); border-radius: var(--radius-sm); border-left: 3px solid var(--turmeric); }
+
 .stats-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
 .stat-box { border-radius: var(--radius-sm); padding: 16px; text-align: center; }
 .stat-box span { display: block; font-family: var(--font-display); font-size: 26px; }
@@ -420,15 +432,17 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
 .tab-btn { padding: 10px 16px; font-size: 14px; font-weight: 500; color: var(--warm-gray); cursor: pointer; border-bottom: 2px solid transparent; transition: .2s; background: transparent; }
 .tab-btn:hover { color: var(--saffron); }
 .tab-btn.active { color: var(--saffron); border-bottom-color: var(--saffron); }
-.order-row { display: grid; grid-template-columns: 50px 1fr auto; gap: 14px; align-items: center; padding: 14px; background: var(--cream); border-radius: var(--radius-sm); cursor: pointer; transition: .2s; margin-bottom: 10px; }
+.order-row { display: grid; grid-template-columns: 50px 1fr auto auto; gap: 14px; align-items: center; padding: 14px; background: var(--cream); border-radius: var(--radius-sm); cursor: pointer; transition: .2s; margin-bottom: 10px; }
 .order-row:hover { background: var(--saffron-light); }
 .order-emoji-box { width: 50px; height: 50px; background: var(--white); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 22px; }
 .order-name { font-size: 14px; font-weight: 600; }
 .order-meta { font-size: 12px; color: var(--warm-gray); margin-top: 2px; }
-.status-badge { font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 20px; }
+.status-badge { font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 20px; white-space: nowrap; }
 .status-delivered { background: var(--jade-light); color: var(--jade); }
 .status-shipping  { background: var(--turmeric-light); color: var(--turmeric); }
 .status-processing{ background: var(--saffron-light); color: var(--saffron); }
+.btn-view-order { font-size: 12px; color: var(--saffron); font-weight: 600; background: transparent; padding: 4px 10px; border: 1.5px solid var(--saffron); border-radius: var(--radius-sm); white-space: nowrap; transition: .2s; }
+.btn-view-order:hover { background: var(--saffron); color: var(--white); }
 
 .wishlist-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px,1fr)); gap: 12px; }
 .wishlist-item { background: var(--cream); border-radius: var(--radius-sm); padding: 12px; text-align: center; cursor: pointer; transition: .2s; }
@@ -438,16 +452,80 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
 .wishlist-price { font-size: 12px; color: var(--saffron); font-weight: 700; }
 
 .address-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.address-card { background: var(--cream); border-radius: var(--radius-sm); padding: 16px; border: 1.5px solid var(--border); cursor: pointer; transition: .2s; position: relative; }
-.address-card:hover, .address-card.address-active { border-color: var(--saffron); background: var(--saffron-light); }
+.address-card { background: var(--cream); border-radius: var(--radius-sm); padding: 16px; border: 1.5px solid var(--border); position: relative; }
 .address-default-tag { position: absolute; top: 10px; right: 10px; font-size: 11px; font-weight: 600; color: var(--jade); background: var(--jade-light); padding: 2px 8px; border-radius: 4px; }
 .address-name { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
 .address-text { font-size: 13px; color: var(--ink-mid); line-height: 1.5; }
+.address-actions { display: flex; gap: 8px; margin-top: 10px; }
+.btn-addr-action { font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 6px; cursor: pointer; transition: .2s; background: var(--white); border: 1.5px solid var(--border); color: var(--ink-mid); }
+.btn-addr-action:hover { border-color: var(--saffron); color: var(--saffron); }
+.btn-addr-delete { color: var(--sindoor); border-color: #F5C0BC; background: var(--white); }
+.btn-addr-delete:hover { background: var(--sindoor); color: var(--white); border-color: var(--sindoor); }
+
+/* Add address form card */
+.add-addr-form { background: var(--cream); border-radius: var(--radius-sm); padding: 20px; border: 1.5px dashed var(--border); margin-top: 16px; display: none; }
+.add-addr-form.open { display: block; }
+.add-addr-form h4 { font-size: 15px; font-weight: 600; margin-bottom: 14px; color: var(--ink); }
 
 .pay-item { display: flex; align-items: center; gap: 14px; background: var(--cream); padding: 14px; border-radius: var(--radius-sm); margin-bottom: 10px; }
 .pay-name { font-size: 14px; font-weight: 600; }
 .pay-meta { font-size: 12px; color: var(--warm-gray); margin-top: 2px; }
 .default-pay-tag { margin-left: auto; font-size: 11px; font-weight: 600; color: var(--jade); background: var(--jade-light); padding: 2px 8px; border-radius: 4px; }
+
+/* ══════════════════════════════════════
+   8. ORDER DETAIL MODAL
+══════════════════════════════════════ */
+.modal-overlay { position: fixed; inset: 0; background: rgba(28,18,8,.5); z-index: 500; display: flex; align-items: center; justify-content: center; padding: 24px; backdrop-filter: blur(2px); opacity: 0; pointer-events: none; transition: .3s; }
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal-box { background: var(--white); border-radius: var(--radius-lg); width: 100%; max-width: 660px; max-height: 90vh; overflow-y: auto; box-shadow: var(--shadow-lg); transform: translateY(20px); transition: .3s; }
+.modal-overlay.open .modal-box { transform: translateY(0); }
+.modal-header { display: flex; align-items: center; justify-content: space-between; padding: 22px 24px; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: var(--white); z-index: 10; border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+.modal-title { font-family: var(--font-display); font-size: 20px; }
+.modal-close { width: 32px; height: 32px; border-radius: 50%; background: var(--cream); display: flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer; transition: .2s; color: var(--ink-mid); }
+.modal-close:hover { background: var(--sindoor); color: var(--white); }
+.modal-body { padding: 24px; }
+
+.order-status-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; }
+.order-status-pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 700; }
+.pill-processing       { background: var(--saffron-light); color: var(--saffron); }
+.pill-confirmed        { background: var(--turmeric-light); color: var(--turmeric); }
+.pill-shipped          { background: #EBF1FA; color: #1A4E8C; }
+.pill-out_for_delivery { background: var(--turmeric-light); color: var(--turmeric); }
+.pill-delivered        { background: var(--jade-light); color: var(--jade); }
+.pill-cancelled        { background: #FDF0EF; color: var(--sindoor); }
+.pill-returned         { background: #FDF0EF; color: var(--sindoor); }
+
+.order-timeline { display: flex; align-items: flex-start; margin: 20px 0 24px; }
+.otl-step { display: flex; flex-direction: column; align-items: center; flex: 1; }
+.otl-dot { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; border: 2px solid var(--border); background: var(--white); flex-shrink: 0; }
+.otl-dot.done  { background: var(--jade); border-color: var(--jade); color: var(--white); }
+.otl-dot.active{ background: var(--saffron); border-color: var(--saffron); color: var(--white); }
+.otl-label { font-size: 10px; color: var(--warm-gray); margin-top: 5px; text-align: center; }
+.otl-line { flex: 1; height: 2px; background: var(--border); margin-top: 14px; }
+.otl-line.done { background: var(--jade); }
+
+.modal-section-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .9px; color: var(--warm-gray); margin: 18px 0 10px; }
+.modal-items-list { display: flex; flex-direction: column; gap: 10px; }
+.modal-item-row { display: flex; align-items: center; gap: 12px; padding: 12px; background: var(--cream); border-radius: var(--radius-sm); }
+.modal-item-emoji { width: 44px; height: 44px; background: var(--white); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+.modal-item-name { font-size: 14px; font-weight: 600; flex: 1; }
+.modal-item-meta { font-size: 12px; color: var(--warm-gray); margin-top: 2px; }
+.modal-item-price { font-size: 14px; font-weight: 700; }
+
+.modal-addr-box { background: var(--cream); border-radius: var(--radius-sm); padding: 14px 16px; font-size: 13px; line-height: 1.7; color: var(--ink-mid); }
+.modal-amounts { display: flex; flex-direction: column; gap: 8px; }
+.modal-amount-row { display: flex; justify-content: space-between; font-size: 14px; color: var(--ink-mid); }
+.modal-amount-row.total { font-weight: 700; font-size: 16px; color: var(--ink); border-top: 1px solid var(--border); padding-top: 8px; margin-top: 4px; }
+.modal-amount-row.discount { color: var(--jade); font-weight: 600; }
+
+.cancel-order-btn { width: 100%; padding: 11px; background: var(--white); color: var(--sindoor); border: 1.5px solid var(--sindoor); border-radius: var(--radius-sm); font-size: 14px; font-weight: 600; cursor: pointer; transition: .2s; margin-top: 20px; }
+.cancel-order-btn:hover { background: var(--sindoor); color: var(--white); }
+.cancel-order-btn:disabled { opacity: .4; cursor: not-allowed; }
+
+/* ══════════════════════════════════════
+   9. PASSWORD CHANGE MODAL
+══════════════════════════════════════ */
+.pwd-modal { max-width: 440px; }
 
 @media(max-width: 768px) {
   .hero { grid-template-columns: 1fr; } .hero-img { display: none; }
@@ -456,6 +534,9 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
   .checkout-layout { grid-template-columns: 1fr; }
   .profile-layout { grid-template-columns: 1fr; }
   .state-panel.active { grid-template-columns: 1fr; }
+  .info-grid { grid-template-columns: 1fr; }
+  .address-grid { grid-template-columns: 1fr; }
+  .edit-row { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -487,7 +568,6 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
 ══════════════════════════════════════════════════ -->
 <div id="sec-home" class="page active">
 
-  <!-- 3a. Category Bar -->
   <div class="cat-bar scroll-x">
     <button class="cat-pill active" onclick="filterCat(this,'All')">All</button>
     <button class="cat-pill" onclick="filterCat(this,'Electronics')">Electronics</button>
@@ -500,7 +580,6 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
     <button class="cat-pill" onclick="filterCat(this,'Handcrafted')">✨ Handcrafted</button>
   </div>
 
-  <!-- 3b. Hero Banner -->
   <div class="hero">
     <div>
       <div class="hero-label">✦ Diwali Sale — Up to 70% Off</div>
@@ -516,7 +595,6 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
     <div class="hero-img">🎁</div>
   </div>
 
-  <!-- 3c. Flash Sale Bar -->
   <div class="flash-bar scroll-x">
     <div class="flash-title">⚡ Flash Deals</div>
     <div class="flash-timer">
@@ -532,7 +610,6 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
     </div>
   </div>
 
-  <!-- 3d. STATE SPOTLIGHT -->
   <div class="spotlight-section">
     <div class="spotlight-header sec-header">
       <div>
@@ -544,7 +621,6 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
     <div id="state-panels"></div>
   </div>
 
-  <!-- 3e. Shop by Category -->
   <div class="section">
     <div class="sec-header">
       <h2 class="sec-title">Shop by Category</h2>
@@ -562,7 +638,6 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
     </div>
   </div>
 
-  <!-- 3f. Trending Products Grid -->
   <div class="section" style="padding-top:0">
     <div class="sec-header">
       <h2 class="sec-title">Trending Now 🔥</h2>
@@ -572,7 +647,7 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
       <p class="loading-text">Loading products…</p>
     </div>
   </div>
-</div><!-- end #sec-home -->
+</div>
 
 
 <!-- ══════════════════════════════════════════════════
@@ -647,7 +722,7 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
       </div>
       <div class="detail-actions">
         <button class="btn-cart-detail" onclick="addToCartFromDetail()">Add to Cart 🛍️</button>
-        <button class="btn-wish-detail" onclick="showToast('Added to wishlist ❤️')">♡</button>
+        <button class="btn-wish-detail" onclick="addToWishlist()">♡</button>
       </div>
     </div>
   </div>
@@ -690,70 +765,42 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
 ══════════════════════════════════════════════════ -->
 <div id="sec-checkout" class="page">
   <div style="padding: 24px 32px 0; max-width: 1200px; margin: 0 auto;">
-    <!-- Step progress -->
     <div class="checkout-steps">
       <div class="checkout-step done" id="cstep-cart">
-        <div class="step-circle">✓</div>
-        <span>Cart</span>
+        <div class="step-circle">✓</div><span>Cart</span>
       </div>
       <div class="step-connector done" id="conn-1"></div>
       <div class="checkout-step active" id="cstep-address">
-        <div class="step-circle">2</div>
-        <span>Address</span>
+        <div class="step-circle">2</div><span>Address</span>
       </div>
       <div class="step-connector" id="conn-2"></div>
       <div class="checkout-step" id="cstep-payment">
-        <div class="step-circle">3</div>
-        <span>Payment</span>
+        <div class="step-circle">3</div><span>Payment</span>
       </div>
       <div class="step-connector" id="conn-3"></div>
       <div class="checkout-step" id="cstep-confirm">
-        <div class="step-circle">4</div>
-        <span>Confirm</span>
+        <div class="step-circle">4</div><span>Confirm</span>
       </div>
     </div>
   </div>
 
   <div class="checkout-layout">
-    <!-- Left: Address + Payment forms -->
     <div>
-      <!-- Address Section -->
       <div class="co-card" id="co-address-card">
         <div class="co-card-title">📍 Delivery Address</div>
-
-        <div class="addr-options" id="addr-options">
-          <!-- populated by JS from user profile -->
-        </div>
-
-        <!-- Add new address toggle -->
+        <div class="addr-options" id="addr-options"></div>
         <div class="new-addr-toggle" onclick="toggleNewAddrForm()">
           <span>➕</span> Add a new address
         </div>
-
         <div class="new-addr-form" id="new-addr-form">
           <div class="co-field-row">
-            <div class="co-field">
-              <label>Full Name *</label>
-              <input type="text" id="naddr-name" placeholder="Priya Sharma">
-            </div>
-            <div class="co-field">
-              <label>Phone *</label>
-              <input type="tel" id="naddr-phone" placeholder="98765 43210">
-            </div>
+            <div class="co-field"><label>Full Name *</label><input type="text" id="naddr-name" placeholder="Priya Sharma"></div>
+            <div class="co-field"><label>Phone *</label><input type="tel" id="naddr-phone" placeholder="98765 43210"></div>
           </div>
-          <div class="co-field">
-            <label>Street Address *</label>
-            <input type="text" id="naddr-street" placeholder="House no., Building, Street, Area">
-          </div>
+          <div class="co-field"><label>Street Address *</label><input type="text" id="naddr-street" placeholder="House no., Building, Street, Area"></div>
           <div class="co-field-row">
-            <div class="co-field">
-              <label>City *</label>
-              <input type="text" id="naddr-city" placeholder="Bengaluru">
-            </div>
-            <div class="co-field">
-              <label>Pincode *</label>
-              <input type="text" id="naddr-pincode" placeholder="560001">
-            </div>
+            <div class="co-field"><label>City *</label><input type="text" id="naddr-city" placeholder="Bengaluru"></div>
+            <div class="co-field"><label>Pincode *</label><input type="text" id="naddr-pincode" placeholder="560001"></div>
           </div>
           <div class="co-field">
             <label>State *</label>
@@ -770,71 +817,49 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
         </div>
       </div>
 
-      <!-- Payment Section -->
       <div class="co-card">
         <div class="co-card-title">💳 Payment Method</div>
         <div class="pay-options">
           <label class="pay-option selected" onclick="selectPayment(this,'UPI')">
             <input type="radio" name="pay-method" value="UPI" checked>
             <span class="pay-option-icon">📱</span>
-            <div>
-              <div class="pay-option-name">UPI</div>
-              <div class="pay-option-desc">Google Pay, PhonePe, Paytm, BHIM</div>
-            </div>
+            <div><div class="pay-option-name">UPI</div><div class="pay-option-desc">Google Pay, PhonePe, Paytm, BHIM</div></div>
           </label>
           <label class="pay-option" onclick="selectPayment(this,'Card')">
             <input type="radio" name="pay-method" value="Card">
             <span class="pay-option-icon">💳</span>
-            <div>
-              <div class="pay-option-name">Credit / Debit Card</div>
-              <div class="pay-option-desc">Visa, Mastercard, RuPay</div>
-            </div>
+            <div><div class="pay-option-name">Credit / Debit Card</div><div class="pay-option-desc">Visa, Mastercard, RuPay</div></div>
           </label>
           <label class="pay-option" onclick="selectPayment(this,'NetBanking')">
             <input type="radio" name="pay-method" value="NetBanking">
             <span class="pay-option-icon">🏦</span>
-            <div>
-              <div class="pay-option-name">Net Banking</div>
-              <div class="pay-option-desc">SBI, HDFC, ICICI, Axis and more</div>
-            </div>
+            <div><div class="pay-option-name">Net Banking</div><div class="pay-option-desc">SBI, HDFC, ICICI, Axis and more</div></div>
           </label>
           <label class="pay-option" onclick="selectPayment(this,'EMI')">
             <input type="radio" name="pay-method" value="EMI">
             <span class="pay-option-icon">📆</span>
-            <div>
-              <div class="pay-option-name">EMI</div>
-              <div class="pay-option-desc">No-cost EMI on 3, 6, 12 months</div>
-            </div>
+            <div><div class="pay-option-name">EMI</div><div class="pay-option-desc">No-cost EMI on 3, 6, 12 months</div></div>
           </label>
           <label class="pay-option" onclick="selectPayment(this,'COD')">
             <input type="radio" name="pay-method" value="COD">
             <span class="pay-option-icon">💵</span>
-            <div>
-              <div class="pay-option-name">Cash on Delivery</div>
-              <div class="pay-option-desc">Pay when your order arrives</div>
-            </div>
+            <div><div class="pay-option-name">Cash on Delivery</div><div class="pay-option-desc">Pay when your order arrives</div></div>
           </label>
         </div>
       </div>
     </div>
 
-    <!-- Right: Order summary sidebar -->
     <div>
       <div class="co-summary">
         <div class="co-summary-title">Your Order</div>
-        <div id="co-items-list">
-          <!-- populated by JS -->
-        </div>
+        <div id="co-items-list"></div>
         <div class="co-summary-divider"></div>
         <div class="co-summary-row"><span>Subtotal</span><span id="co-subtotal">₹0</span></div>
         <div class="co-summary-row"><span>Delivery</span><span style="color:var(--jade);font-weight:600" id="co-delivery">FREE</span></div>
         <div class="co-promo-applied" id="co-promo-applied">🎉 APNIVA10 applied — 10% off!</div>
         <div class="co-summary-row" id="co-discount-row" style="display:none"><span>Discount</span><span style="color:var(--jade);font-weight:600" id="co-discount">− ₹0</span></div>
         <div class="co-summary-total"><span>Total</span><span id="co-total">₹0</span></div>
-
-        <button class="btn-place-order" id="btn-place-order" onclick="placeOrder()">
-          🔒 Place Order
-        </button>
+        <button class="btn-place-order" id="btn-place-order" onclick="placeOrder()">🔒 Place Order</button>
         <button class="btn-back-cart" onclick="showSection('cart')">← Back to Cart</button>
         <div class="secure-note">🔒 SSL secured · 256-bit encryption</div>
       </div>
@@ -851,37 +876,21 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
     <div class="result-card">
       <span class="result-icon">🎉</span>
       <h2 class="result-title">Order Placed!</h2>
-      <p class="result-sub">Your order has been confirmed and will be delivered within 5 business days. You'll receive updates via SMS.</p>
+      <p class="result-sub">Your order has been confirmed and will be delivered within 5 business days.</p>
       <div class="result-order-id">Order ID: <span id="success-order-id">#APNIVA000000</span></div>
-
-      <!-- Delivery timeline -->
       <div class="delivery-timeline">
-        <div class="tl-step">
-          <div class="tl-dot done">✓</div>
-          <div class="tl-label">Ordered</div>
-        </div>
+        <div class="tl-step"><div class="tl-dot done">✓</div><div class="tl-label">Ordered</div></div>
         <div class="tl-line done"></div>
-        <div class="tl-step">
-          <div class="tl-dot active">📦</div>
-          <div class="tl-label">Processing</div>
-        </div>
+        <div class="tl-step"><div class="tl-dot active">📦</div><div class="tl-label">Processing</div></div>
         <div class="tl-line"></div>
-        <div class="tl-step">
-          <div class="tl-dot">🚚</div>
-          <div class="tl-label">Shipped</div>
-        </div>
+        <div class="tl-step"><div class="tl-dot">🚚</div><div class="tl-label">Shipped</div></div>
         <div class="tl-line"></div>
-        <div class="tl-step">
-          <div class="tl-dot">🏠</div>
-          <div class="tl-label">Delivered</div>
-        </div>
+        <div class="tl-step"><div class="tl-dot">🏠</div><div class="tl-label">Delivered</div></div>
       </div>
-
       <div style="background:var(--jade-light);border-radius:var(--radius-sm);padding:14px 18px;margin-bottom:24px;font-size:13px;color:var(--jade);">
         <strong>Expected Delivery:</strong> <span id="success-delivery-date">—</span><br>
         <span style="font-size:12px;opacity:.8">Free delivery · No extra charges</span>
       </div>
-
       <div class="result-actions">
         <button class="btn-result-primary" onclick="switchProfileTab('orders', null); showSection('profile')">Track Order</button>
         <button class="btn-result-secondary" onclick="showSection('catalog')">Continue Shopping</button>
@@ -900,13 +909,11 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
       <span class="result-icon">😔</span>
       <h2 class="result-title">Order Failed</h2>
       <p class="result-sub">Something went wrong while placing your order. Your cart is safe — please try again.</p>
-
       <ul class="failure-reasons">
         <li>⚠️ <span id="failure-reason">An unexpected error occurred.</span></li>
         <li>💡 Check your internet connection and try again</li>
         <li>📞 Contact support if the issue persists</li>
       </ul>
-
       <div class="result-actions">
         <button class="btn-result-primary" onclick="showSection('checkout')">Try Again</button>
         <button class="btn-result-secondary" onclick="showSection('cart')">Back to Cart</button>
@@ -922,7 +929,6 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
 <div id="sec-profile" class="page">
   <div class="profile-layout">
 
-    <!-- 7a. Sidebar Nav -->
     <aside class="profile-sidebar">
       <div class="profile-avatar-wrap">
         <div class="profile-avatar" id="profile-avatar-initials">PS</div>
@@ -939,25 +945,50 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
       </nav>
     </aside>
 
-    <!-- Profile main content -->
     <div id="profile-main">
 
       <!-- 7b. Overview Tab -->
       <div id="ptab-overview">
         <div class="profile-card">
-          <div class="profile-card-title">Personal Information <button class="btn-edit" onclick="showToast('Edit — connect backend!')">Edit</button></div>
-          <div class="info-grid">
-            <div class="info-item"><label>Full Name</label><span id="info-name">—</span></div>
-            <div class="info-item"><label>Mobile</label><span id="info-mobile">—</span></div>
-            <div class="info-item"><label>Email</label><span id="info-email">—</span></div>
-            <div class="info-item"><label>Role</label><span id="info-role">—</span></div>
+          <div class="profile-card-title">
+            Personal Information
+            <div style="display:flex;gap:8px;align-items:center">
+              <button class="btn-edit-cancel" id="btn-cancel-edit" style="display:none" onclick="cancelEditProfile()">Cancel</button>
+              <button class="btn-save" id="btn-save-profile" style="display:none" onclick="saveProfile()">Save Changes</button>
+              <button class="btn-edit" id="btn-start-edit" onclick="startEditProfile()">✏️ Edit</button>
+            </div>
+          </div>
+
+          <!-- Static view -->
+          <div class="info-static" id="info-static">
+            <div class="info-grid">
+              <div class="info-item"><label>Full Name</label><span id="info-name">—</span></div>
+              <div class="info-item"><label>Mobile</label><span id="info-mobile">—</span></div>
+              <div class="info-item"><label>Email</label><span id="info-email">—</span></div>
+              <div class="info-item"><label>Role</label><span id="info-role">—</span></div>
+            </div>
+          </div>
+
+          <!-- Inline edit form -->
+          <div class="info-edit-form" id="info-edit-form">
+            <div class="edit-row">
+              <div class="edit-field"><label>Full Name</label><input type="text" id="edit-name" placeholder="Your full name"></div>
+              <div class="edit-field"><label>Mobile</label><input type="tel" id="edit-mobile" placeholder="98765 43210"></div>
+            </div>
+            <div class="edit-field"><label>Email (read-only)</label><input type="email" id="edit-email" disabled style="opacity:.6;cursor:not-allowed"></div>
+            <div class="edit-field">
+              <label>New Password <span style="font-weight:400;text-transform:none;letter-spacing:0">(leave blank to keep current)</span></label>
+              <input type="password" id="edit-password" placeholder="Minimum 8 characters">
+            </div>
+            <div class="edit-note">🔒 Your email cannot be changed. Password will only be updated if you enter a new one.</div>
           </div>
         </div>
+
         <div class="profile-card">
           <div class="profile-card-title">Shopping Summary</div>
           <div class="stats-grid">
             <div class="stat-box stat-saffron"><span id="stat-orders">—</span><small>Orders</small></div>
-            <div class="stat-box stat-jade"><span>4</span><small>Wishlisted</small></div>
+            <div class="stat-box stat-jade"><span id="stat-wishlist">0</span><small>Wishlisted</small></div>
             <div class="stat-box stat-turmeric"><span id="stat-spent">—</span><small>Total Spent</small></div>
           </div>
         </div>
@@ -980,20 +1011,52 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
       <div id="ptab-wishlist" style="display:none">
         <div class="profile-card">
           <div class="profile-card-title">My Wishlist</div>
-          <div class="wishlist-grid" id="wishlist-grid"></div>
+          <div class="wishlist-grid" id="wishlist-grid">
+            <p class="loading-text">Loading…</p>
+          </div>
         </div>
       </div>
 
       <!-- 7e. Address Tab -->
       <div id="ptab-address" style="display:none">
         <div class="profile-card">
-          <div class="profile-card-title">Saved Addresses <button class="btn-edit" onclick="showToast('Add address — connect backend!')">+ Add New</button></div>
-          <div class="address-grid">
-            <div class="address-card address-active">
-              <span class="address-default-tag">Default</span>
-              <div class="address-name" id="addr-name">—</div>
-              <div class="address-text" id="addr-text">—</div>
+          <div class="profile-card-title">
+            Saved Addresses
+            <button class="btn-edit" onclick="toggleAddAddrForm()">+ Add New</button>
+          </div>
+
+          <!-- Add new address form -->
+          <div class="add-addr-form" id="add-addr-form">
+            <h4>New Address</h4>
+            <div class="edit-row">
+              <div class="edit-field"><label>Label (e.g. Home, Work)</label><input type="text" id="na-label" placeholder="Home"></div>
+              <div class="edit-field"><label>Phone</label><input type="tel" id="na-phone" placeholder="98765 43210"></div>
             </div>
+            <div class="edit-field"><label>Street Address *</label><input type="text" id="na-street" placeholder="House no., Building, Area"></div>
+            <div class="edit-row">
+              <div class="edit-field"><label>City *</label><input type="text" id="na-city" placeholder="Mumbai"></div>
+              <div class="edit-field"><label>Pincode *</label><input type="text" id="na-pincode" placeholder="400001"></div>
+            </div>
+            <div class="edit-field">
+              <label>State *</label>
+              <select id="na-state" style="width:100%;padding:10px 12px;background:var(--ivory);border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:14px;color:var(--ink);font-family:var(--font-body)">
+                <option value="">Select state…</option>
+                <option>Andhra Pradesh</option><option>Bihar</option><option>Delhi</option>
+                <option>Gujarat</option><option>Jammu & Kashmir</option><option>Karnataka</option>
+                <option>Kerala</option><option>Madhya Pradesh</option><option>Maharashtra</option>
+                <option>Odisha</option><option>Punjab</option><option>Rajasthan</option>
+                <option>Tamil Nadu</option><option>Telangana</option><option>Uttar Pradesh</option>
+                <option>West Bengal</option>
+              </select>
+            </div>
+            <div style="display:flex;gap:10px;margin-top:4px">
+              <button class="btn-save" onclick="saveNewAddress()" id="btn-save-addr">Save Address</button>
+              <button class="btn-edit-cancel" onclick="toggleAddAddrForm()">Cancel</button>
+            </div>
+          </div>
+
+          <div class="address-grid" id="address-grid" style="margin-top:16px">
+            <p class="loading-text">Loading addresses…</p>
           </div>
         </div>
       </div>
@@ -1001,9 +1064,10 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
       <!-- 7f. Payment Tab -->
       <div id="ptab-payment" style="display:none">
         <div class="profile-card">
-          <div class="profile-card-title">Payment Methods <button class="btn-edit" onclick="showToast('Add payment — connect backend!')">+ Add</button></div>
+          <div class="profile-card-title">Payment Methods</div>
           <div class="pay-item"><span style="font-size:28px">💳</span><div><div class="pay-name">HDFC Bank Visa •••• 4521</div><div class="pay-meta">Expires 08/26</div></div><span class="default-pay-tag">Default</span></div>
           <div class="pay-item"><span style="font-size:28px">📱</span><div><div class="pay-name">UPI — linked</div><div class="pay-meta">Google Pay linked</div></div></div>
+          <p style="font-size:13px;color:var(--warm-gray);margin-top:14px;padding:12px;background:var(--cream);border-radius:var(--radius-sm);">💡 Card and UPI management is handled securely through our payment gateway. Contact support to add or remove payment methods.</p>
         </div>
       </div>
 
@@ -1013,6 +1077,21 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
 
 <!-- Toast -->
 <div class="toast" id="toast"><span class="toast-dot"></span><span id="toast-msg"></span></div>
+
+<!-- ══════════════════════════════════════════════════
+     ORDER DETAIL MODAL
+══════════════════════════════════════════════════ -->
+<div class="modal-overlay" id="order-modal" onclick="closeOrderModal(event)">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title" id="modal-order-title">Order Details</div>
+      <button class="modal-close" onclick="document.getElementById('order-modal').classList.remove('open')">✕</button>
+    </div>
+    <div class="modal-body" id="modal-order-body">
+      <p class="loading-text">Loading…</p>
+    </div>
+  </div>
+</div>
 
 
 <!-- ══════════════════════════════════════════════════
@@ -1029,6 +1108,7 @@ function getUser()  {
   try { return JSON.parse(localStorage.getItem('apniva_user') || '{}'); }
   catch { return {}; }
 }
+function setUser(u) { localStorage.setItem('apniva_user', JSON.stringify(u)); }
 
 async function apiFetch(path, opts = {}) {
   const headers = { 'Content-Type': 'application/json', ...(opts.headers || {}) };
@@ -1067,18 +1147,17 @@ let currentProduct = null;
 let detailQty      = 1;
 let filterCategory = 'All';
 let ordersData     = [];
+let wishlistItems  = [];
 
-// Promo state
 let promoApplied   = false;
 let promoCode      = '';
-let promoDiscount  = 0;   // rupee amount
+let promoDiscount  = 0;
 
-// Checkout state
-let selectedAddrIndex  = 0;  // index into user.addresses; -1 = new address
+let selectedAddrIndex  = 0;
 let selectedPayMethod  = 'UPI';
 
 /* ─────────────────────────────────────
-   STATE SPOTLIGHT DATA (static)
+   STATE SPOTLIGHT DATA
 ───────────────────────────────────── */
 const STATES = [
   { id:'rajasthan',    flag:'🏜️', name:'Rajasthan',    tab:'Rajasthan',
@@ -1122,13 +1201,13 @@ function showSection(s) {
   NAV_SECTIONS.forEach(x => {
     document.getElementById('sec-'+x).classList.toggle('active', x === s);
   });
-  // Update nav button highlights (only for top-level nav)
   ['home','catalog','cart','profile'].forEach(x => {
     const btn = document.getElementById('nav-'+x);
     if (btn) btn.classList.toggle('active', x === s);
   });
   if (s === 'cart')     { loadCart(); }
   if (s === 'checkout') { renderCheckout(); }
+  if (s === 'profile')  { refreshProfileUI(); }
   updateCartBadge();
 }
 
@@ -1141,7 +1220,7 @@ function productCard(p) {
   const reviews = p.numReviews ?? p.reviews ?? 0;
   return `<div class="product-card" onclick="openProduct('${pid}')">
     <div class="product-img"><span>${p.emoji}</span>
-      <button class="product-wish" onclick="event.stopPropagation();showToast('Added to wishlist ❤️')">♡</button>
+      <button class="product-wish" onclick="event.stopPropagation();addToWishlistById('${pid}','${p.name}','${p.emoji}',${p.price})">♡</button>
     </div>
     <div class="product-body">
       <div class="product-cat">${p.category}</div>
@@ -1206,7 +1285,7 @@ function renderStateSpotlight() {
         <p style="font-size:13px;color:var(--warm-gray);margin-bottom:14px">Popular goods from ${s.name}</p>
         <div class="state-products scroll-x">
           ${s.products.map(p=>`
-            <div class="state-product-card" onclick="showToast('Viewing ${p.name}…')">
+            <div class="state-product-card" onclick="showToast('Browse catalog to find ${p.name}!')">
               <div class="state-product-img">${p.emoji}</div>
               <div class="state-product-body">
                 <div class="state-product-name">${p.name}</div>
@@ -1294,6 +1373,45 @@ async function addToCartFromDetail() {
 }
 
 /* ─────────────────────────────────────
+   WISHLIST
+───────────────────────────────────── */
+function addToWishlistById(id, name, emoji, price) {
+  if (wishlistItems.find(w => w.id === id)) {
+    showToast('Already in wishlist ❤️');
+    return;
+  }
+  wishlistItems.push({ id, name, emoji, price });
+  document.getElementById('stat-wishlist').textContent = wishlistItems.length;
+  renderWishlist();
+  showToast('Added to wishlist ❤️');
+}
+
+function addToWishlist() {
+  if (!currentProduct) return;
+  const p = currentProduct;
+  addToWishlistById(p._id || p.id, p.name, p.emoji, p.price);
+}
+
+function renderWishlist() {
+  const el = document.getElementById('wishlist-grid');
+  document.getElementById('stat-wishlist').textContent = wishlistItems.length;
+  if (!wishlistItems.length) {
+    el.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--warm-gray)">
+      <div style="font-size:48px;margin-bottom:12px">🤍</div>
+      <p style="font-size:14px">Your wishlist is empty.<br>Heart products to save them here.</p>
+    </div>`;
+    return;
+  }
+  el.innerHTML = wishlistItems.map(w => `
+    <div class="wishlist-item" onclick="addToCart('${w.id}')">
+      <span class="wishlist-emoji">${w.emoji}</span>
+      <div class="wishlist-name">${w.name}</div>
+      <div class="wishlist-price">₹${Number(w.price).toLocaleString()}</div>
+      <div style="font-size:11px;color:var(--saffron);margin-top:4px;font-weight:600">Tap to add to cart</div>
+    </div>`).join('');
+}
+
+/* ─────────────────────────────────────
    CART
 ───────────────────────────────────── */
 async function loadCart() {
@@ -1353,7 +1471,6 @@ function renderCart() {
   if (!cartItems.length) {
     el.innerHTML = `<div class="empty-state"><div class="empty-icon">🛒</div><h3>Your cart is empty</h3><p>Add items to get started!</p>
       <button class="btn-add" style="width:auto;padding:10px 24px;border-radius:8px;margin-top:0" onclick="showSection('catalog')">Browse Products</button></div>`;
-    // Reset summary
     document.getElementById('sum-subtotal').textContent  = '₹0';
     document.getElementById('sum-total').textContent     = '₹0';
     document.getElementById('sum-discount-row').style.display = 'none';
@@ -1382,19 +1499,13 @@ function renderCart() {
 
   const sub      = cartSubtotal();
   const delivery = cartDelivery(sub);
-
-  // Recalculate promo discount based on current subtotal
-  if (promoApplied) {
-    promoDiscount = Math.round(sub * 0.1);
-  }
-
+  if (promoApplied) promoDiscount = Math.round(sub * 0.1);
   const total = sub - promoDiscount + delivery;
 
   document.getElementById('sum-subtotal').textContent = '₹' + sub.toLocaleString();
   document.getElementById('sum-delivery').textContent = delivery === 0 ? 'FREE' : '₹' + delivery;
   document.getElementById('sum-total').textContent    = '₹' + total.toLocaleString();
 
-  // Promo row — only show if applied
   const discRow = document.getElementById('sum-discount-row');
   if (promoApplied && promoDiscount > 0) {
     discRow.style.display = 'flex';
@@ -1419,27 +1530,21 @@ function applyPromo() {
     renderCart();
     showToast('✅ Promo applied! 10% discount');
   } else {
-    promoApplied  = false;
-    promoCode     = '';
-    promoDiscount = 0;
+    promoApplied = false; promoCode = ''; promoDiscount = 0;
     renderCart();
     showToast('❌ Invalid promo code');
   }
 }
 
 /* ─────────────────────────────────────
-   GO TO CHECKOUT
+   CHECKOUT
 ───────────────────────────────────── */
 function goToCheckout() {
   if (!cartItems.length) { showToast('Your cart is empty!'); return; }
   showSection('checkout');
 }
 
-/* ─────────────────────────────────────
-   CHECKOUT RENDER
-───────────────────────────────────── */
 function renderCheckout() {
-  // Build address options from user profile
   const user = getUser();
   const addresses = user.addresses || [];
   const addrEl = document.getElementById('addr-options');
@@ -1459,22 +1564,17 @@ function renderCheckout() {
   } else {
     addrEl.innerHTML = '<p style="font-size:13px;color:var(--warm-gray);padding:8px 0">No saved addresses. Add one below.</p>';
     selectedAddrIndex = -1;
-    // Auto-open new form
     document.getElementById('new-addr-form').classList.add('open');
   }
 
-  // Render items in sidebar
-  const sub      = cartSubtotal();
+  const sub = cartSubtotal();
   const delivery = cartDelivery(sub);
-  const total    = sub - promoDiscount + delivery;
+  const total = sub - promoDiscount + delivery;
 
   document.getElementById('co-items-list').innerHTML = cartItems.map(it => `
     <div class="co-item-row">
       <div class="co-item-emoji">${it.emoji}</div>
-      <div>
-        <div class="co-item-name">${it.name}</div>
-        <div class="co-item-qty">Qty: ${it.qty}</div>
-      </div>
+      <div><div class="co-item-name">${it.name}</div><div class="co-item-qty">Qty: ${it.qty}</div></div>
       <div class="co-item-price">₹${(it.price * it.qty).toLocaleString()}</div>
     </div>`).join('');
 
@@ -1482,8 +1582,8 @@ function renderCheckout() {
   document.getElementById('co-delivery').textContent = delivery === 0 ? 'FREE' : '₹' + delivery;
   document.getElementById('co-total').textContent    = '₹' + total.toLocaleString();
 
-  const promoEl     = document.getElementById('co-promo-applied');
-  const discRow     = document.getElementById('co-discount-row');
+  const promoEl = document.getElementById('co-promo-applied');
+  const discRow = document.getElementById('co-discount-row');
   if (promoApplied && promoDiscount > 0) {
     promoEl.classList.add('show');
     discRow.style.display = 'flex';
@@ -1504,7 +1604,7 @@ function toggleNewAddrForm() {
   const form = document.getElementById('new-addr-form');
   form.classList.toggle('open');
   if (form.classList.contains('open')) {
-    selectedAddrIndex = -1; // use new address
+    selectedAddrIndex = -1;
     document.querySelectorAll('.addr-option').forEach(a => {
       a.classList.remove('selected');
       a.querySelector('input').checked = false;
@@ -1522,44 +1622,32 @@ function selectPayment(el, method) {
    PLACE ORDER
 ───────────────────────────────────── */
 async function placeOrder() {
-  // Build delivery address
   let deliveryAddress;
   const user = getUser();
 
   if (selectedAddrIndex === -1) {
-    // New address from form
     const name    = document.getElementById('naddr-name').value.trim();
     const phone   = document.getElementById('naddr-phone').value.trim();
     const street  = document.getElementById('naddr-street').value.trim();
     const city    = document.getElementById('naddr-city').value.trim();
     const pincode = document.getElementById('naddr-pincode').value.trim();
     const state   = document.getElementById('naddr-state').value;
-
     if (!name || !phone || !street || !city || !pincode || !state) {
-      showToast('⚠️ Please fill all address fields');
-      return;
+      showToast('⚠️ Please fill all address fields'); return;
     }
     deliveryAddress = { name, phone, street, city, state, pincode };
   } else {
     const saved = (user.addresses || [])[selectedAddrIndex];
     if (!saved) { showToast('⚠️ No address selected'); return; }
     deliveryAddress = {
-      name:    saved.name || user.name || '',
-      phone:   saved.phone || user.mobile || '',
-      street:  saved.street,
-      city:    saved.city,
-      state:   saved.state,
-      pincode: saved.pincode,
+      name: saved.name || user.name || '',
+      phone: saved.phone || user.mobile || '',
+      street: saved.street, city: saved.city,
+      state: saved.state, pincode: saved.pincode,
     };
   }
 
-  // Build order items
-  const items = cartItems.map(i => ({
-    productId: i.id,
-    quantity:  i.qty,
-    variant:   '',
-  }));
-
+  const items = cartItems.map(i => ({ productId: i.id, quantity: i.qty, variant: '' }));
   const btn = document.getElementById('btn-place-order');
   btn.disabled = true;
   btn.innerHTML = '⏳ Placing your order…';
@@ -1567,23 +1655,13 @@ async function placeOrder() {
   try {
     const result = await apiFetch('/orders', {
       method: 'POST',
-      body: JSON.stringify({
-        items,
-        deliveryAddress,
-        paymentMethod: selectedPayMethod,
-        promoCode: promoApplied ? promoCode : '',
-      }),
+      body: JSON.stringify({ items, deliveryAddress, paymentMethod: selectedPayMethod, promoCode: promoApplied ? promoCode : '' }),
     });
 
-    // Clear cart after successful order
     try { await apiFetch('/cart/clear', { method: 'DELETE' }); } catch {}
-    cartItems     = [];
-    promoApplied  = false;
-    promoCode     = '';
-    promoDiscount = 0;
+    cartItems = []; promoApplied = false; promoCode = ''; promoDiscount = 0;
     updateCartBadge();
 
-    // Show success
     const orderId = result.order?._id || result.order?.id || '';
     const shortId = '#' + String(orderId).slice(-8).toUpperCase();
     document.getElementById('success-order-id').textContent = shortId;
@@ -1594,7 +1672,7 @@ async function placeOrder() {
       delivDate.toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
 
     showSection('order-success');
-
+    await loadOrders();
   } catch (err) {
     document.getElementById('failure-reason').textContent = err.message || 'Something went wrong';
     showSection('order-failure');
@@ -1605,26 +1683,20 @@ async function placeOrder() {
 }
 
 /* ─────────────────────────────────────
-   ORDERS (profile)
+   ORDERS
 ───────────────────────────────────── */
 async function loadOrders() {
   try {
-    const data = await apiFetch('/orders/my');
-    ordersData = (data.orders || []).map(o => ({
-      emoji:      o.items[0]?.emoji || '📦',
-      name:       o.items[0]?.name  || 'Order',
-      meta:       `Ordered ${new Date(o.createdAt).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})} • ₹${Number(o.totalAmount).toLocaleString()}`,
-      status:     o.status,
-      statusText: statusLabel(o.status),
-    }));
+    const data = await apiFetch('/orders/my?limit=50');
+    ordersData = data.orders || [];
     renderOrders(ordersData);
 
-    const total = ordersData.reduce((s, o) => {
-      const amt = parseInt((o.meta.match(/₹([\d,]+)/)||['','0'])[1].replace(/,/g,''));
-      return s + amt;
-    }, 0);
+    // Update stats
+    const total = ordersData.reduce((s, o) => s + (o.totalAmount || 0), 0);
     document.getElementById('stat-orders').textContent = ordersData.length;
-    document.getElementById('stat-spent').textContent  = '₹' + (total > 999 ? Math.round(total/1000)+'K' : total);
+    document.getElementById('stat-spent').textContent  = total > 99999
+      ? '₹' + Math.round(total/1000) + 'K'
+      : '₹' + total.toLocaleString();
   } catch {
     renderOrders([]);
   }
@@ -1637,42 +1709,376 @@ function statusLabel(s) {
 }
 function statusClass(s) {
   if (s === 'delivered') return 'status-delivered';
-  if (s === 'shipped' || s === 'out_for_delivery') return 'status-shipping';
+  if (s === 'shipped' || s === 'out_for_delivery' || s === 'confirmed') return 'status-shipping';
   return 'status-processing';
 }
+
 function renderOrders(list) {
   document.getElementById('order-list').innerHTML = list.length
-    ? list.map(o => `
-        <div class="order-row">
-          <div class="order-emoji-box">${o.emoji}</div>
-          <div><div class="order-name">${o.name}</div><div class="order-meta">${o.meta}</div></div>
-          <span class="status-badge ${statusClass(o.status)}">${o.statusText}</span>
-        </div>`).join('')
+    ? list.map(o => {
+        const item = o.items?.[0] || {};
+        const shortId = '#' + String(o._id).slice(-6).toUpperCase();
+        const date = new Date(o.createdAt).toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' });
+        return `<div class="order-row" onclick="openOrderDetail('${o._id}')">
+          <div class="order-emoji-box">${item.emoji || '📦'}</div>
+          <div>
+            <div class="order-name">${item.name || 'Order ' + shortId}${o.items?.length > 1 ? ` +${o.items.length-1} more` : ''}</div>
+            <div class="order-meta">${shortId} · ${date} · ₹${Number(o.totalAmount).toLocaleString()}</div>
+          </div>
+          <span class="status-badge ${statusClass(o.status)}">${statusLabel(o.status)}</span>
+          <button class="btn-view-order" onclick="event.stopPropagation();openOrderDetail('${o._id}')">View Details</button>
+        </div>`;
+      }).join('')
     : '<p style="color:var(--warm-gray);padding:20px;text-align:center">No orders yet. Start shopping!</p>';
 }
+
 function switchOrderTab(t, el) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   el.classList.add('active');
   const filtered = t === 'active'
-    ? ordersData.filter(o => o.status !== 'delivered' && o.status !== 'cancelled')
-    : t === 'delivered' ? ordersData.filter(o => o.status === 'delivered') : ordersData;
+    ? ordersData.filter(o => o.status !== 'delivered' && o.status !== 'cancelled' && o.status !== 'returned')
+    : t === 'delivered' ? ordersData.filter(o => o.status === 'delivered')
+    : ordersData;
   renderOrders(filtered);
 }
 
 /* ─────────────────────────────────────
-   WISHLIST (static)
+   ORDER DETAIL MODAL
 ───────────────────────────────────── */
-function renderWishlist() {
-  const items = [
-    {emoji:'🏏',name:'Cricket Bat',    price:'₹1,599'},
-    {emoji:'🪔',name:'Diya Set',       price:'₹249'},
-    {emoji:'🍳',name:'Cookware Set',   price:'₹1,199'},
-    {emoji:'🧥',name:'Kurta Set',      price:'₹849'},
-  ];
-  document.getElementById('wishlist-grid').innerHTML = items.map(w =>
-    `<div class="wishlist-item"><span class="wishlist-emoji">${w.emoji}</span>
-      <div class="wishlist-name">${w.name}</div>
-      <div class="wishlist-price">${w.price}</div></div>`).join('');
+async function openOrderDetail(orderId) {
+  const modal = document.getElementById('order-modal');
+  const body  = document.getElementById('modal-order-body');
+  document.getElementById('modal-order-title').textContent = 'Order Details';
+  body.innerHTML = '<p class="loading-text">Loading order details…</p>';
+  modal.classList.add('open');
+
+  try {
+    const o = await apiFetch(`/orders/${orderId}`);
+    const shortId = '#' + String(o._id).slice(-6).toUpperCase();
+    document.getElementById('modal-order-title').textContent = `Order ${shortId}`;
+
+    // Timeline steps
+    const STATUS_ORDER = ['processing','confirmed','shipped','out_for_delivery','delivered'];
+    const currentIdx = STATUS_ORDER.indexOf(o.status);
+    const isCancelled = o.status === 'cancelled' || o.status === 'returned';
+
+    const timelineHtml = isCancelled
+      ? `<div style="background:var(--sindoor-light);border-radius:var(--radius-sm);padding:12px 16px;color:var(--sindoor);font-weight:600;font-size:14px;margin:16px 0;">
+           ❌ This order was ${o.status}
+         </div>`
+      : `<div class="order-timeline">
+          ${STATUS_ORDER.map((s, i) => {
+            const done   = i < currentIdx;
+            const active = i === currentIdx;
+            const icons  = ['📋','✅','🚚','📦','🏠'];
+            return `<div class="otl-step">
+              <div class="otl-dot ${done?'done':active?'active':''}">${done?'✓':icons[i]}</div>
+              <div class="otl-label">${statusLabel(s)}</div>
+            </div>${i < STATUS_ORDER.length-1 ? `<div class="otl-line ${done?'done':''}"></div>` : ''}`;
+          }).join('')}
+        </div>`;
+
+    // Timeline log from order.timeline
+    const timelineLog = (o.timeline||[]).slice().reverse().map(t =>
+      `<div style="display:flex;gap:10px;font-size:12px;color:var(--ink-mid);padding:6px 0;border-bottom:1px solid var(--border);">
+        <span style="color:var(--warm-gray);flex-shrink:0">${new Date(t.time).toLocaleString('en-IN',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})}</span>
+        <span>${t.message || statusLabel(t.status)}</span>
+      </div>`).join('') || '<p style="font-size:13px;color:var(--warm-gray)">No timeline entries yet.</p>';
+
+    // Items
+    const itemsHtml = (o.items||[]).map(it => `
+      <div class="modal-item-row">
+        <div class="modal-item-emoji">${it.emoji||'📦'}</div>
+        <div>
+          <div class="modal-item-name">${it.name}</div>
+          <div class="modal-item-meta">Qty: ${it.quantity}${it.variant?' · '+it.variant:''} · ₹${Number(it.price).toLocaleString()} each</div>
+        </div>
+        <div class="modal-item-price">₹${Number(it.subtotal||it.price*it.quantity).toLocaleString()}</div>
+      </div>`).join('');
+
+    // Delivery address
+    const addr = o.deliveryAddress || {};
+    const addrHtml = addr.street
+      ? `<strong>${addr.name || ''}</strong>${addr.phone ? ' · 📞 '+addr.phone : ''}<br>${addr.street}, ${addr.city}, ${addr.state} — ${addr.pincode}`
+      : 'No address on file';
+
+    // Amounts
+    const discount = o.discountAmount || 0;
+    const amountsHtml = `
+      <div class="modal-amount-row"><span>Subtotal</span><span>₹${Number(o.subtotal||0).toLocaleString()}</span></div>
+      ${discount>0?`<div class="modal-amount-row discount"><span>Promo Discount${o.promoCode?' ('+o.promoCode+')':''}</span><span>− ₹${Number(discount).toLocaleString()}</span></div>`:''}
+      <div class="modal-amount-row"><span>Delivery</span><span>${o.deliveryCharge>0?'₹'+o.deliveryCharge:'FREE'}</span></div>
+      <div class="modal-amount-row total"><span>Total Paid</span><span>₹${Number(o.totalAmount).toLocaleString()}</span></div>
+      <div style="margin-top:10px;font-size:13px;color:var(--warm-gray)">Payment: ${o.paymentMethod||'UPI'} · Status: <span style="color:${o.paymentStatus==='paid'?'var(--jade)':'var(--turmeric)'};font-weight:600">${o.paymentStatus||'—'}</span></div>
+    `;
+
+    // Tracking
+    const trackingHtml = o.trackingNumber
+      ? `<div style="background:var(--turmeric-light);border-radius:var(--radius-sm);padding:10px 14px;font-size:13px;margin-top:8px;">
+           🚚 Tracking Number: <strong>${o.trackingNumber}</strong>
+         </div>`
+      : '';
+
+    // Expected delivery
+    const expHtml = o.expectedDelivery && o.status !== 'delivered' && !isCancelled
+      ? `<div style="background:var(--jade-light);border-radius:var(--radius-sm);padding:10px 14px;font-size:13px;margin-top:8px;color:var(--jade);">
+           📅 Expected by: <strong>${new Date(o.expectedDelivery).toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'long'})}</strong>
+         </div>`
+      : '';
+
+    // Cancel button
+    const canCancel = !['delivered','cancelled','returned'].includes(o.status);
+    const cancelHtml = canCancel
+      ? `<button class="cancel-order-btn" onclick="cancelOrderFromModal('${o._id}', this)">Cancel This Order</button>`
+      : '';
+
+    body.innerHTML = `
+      <div class="order-status-header">
+        <div>
+          <div style="font-size:13px;color:var(--warm-gray);margin-bottom:4px">Placed on ${new Date(o.createdAt).toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'})}</div>
+          <div style="font-size:13px;font-weight:600;color:var(--ink)">${shortId}</div>
+        </div>
+        <span class="order-status-pill pill-${o.status}">${statusLabel(o.status)}</span>
+      </div>
+
+      ${timelineHtml}
+      ${trackingHtml}
+      ${expHtml}
+
+      <div class="modal-section-title">Items Ordered</div>
+      <div class="modal-items-list">${itemsHtml}</div>
+
+      <div class="modal-section-title">Delivery Address</div>
+      <div class="modal-addr-box">${addrHtml}</div>
+
+      <div class="modal-section-title">Order Timeline</div>
+      <div style="background:var(--cream);border-radius:var(--radius-sm);padding:12px 14px;">${timelineLog}</div>
+
+      <div class="modal-section-title">Payment Summary</div>
+      <div class="modal-amounts">${amountsHtml}</div>
+
+      ${cancelHtml}
+    `;
+  } catch (err) {
+    body.innerHTML = `<p style="color:var(--sindoor);padding:20px">⚠️ Could not load order: ${err.message}</p>`;
+  }
+}
+
+async function cancelOrderFromModal(orderId, btn) {
+  if (!confirm('Are you sure you want to cancel this order? Stock will be restored.')) return;
+  const orig = btn.textContent;
+  btn.disabled = true; btn.textContent = '⏳ Cancelling…';
+  try {
+    await apiFetch(`/orders/${orderId}/cancel`, { method: 'PUT' });
+    showToast('Order cancelled. Stock has been restored.');
+    document.getElementById('order-modal').classList.remove('open');
+    await loadOrders();
+  } catch (err) {
+    showToast('⚠️ ' + err.message, true);
+    btn.disabled = false; btn.textContent = orig;
+  }
+}
+
+function closeOrderModal(event) {
+  if (event.target === document.getElementById('order-modal')) {
+    document.getElementById('order-modal').classList.remove('open');
+  }
+}
+
+/* ─────────────────────────────────────
+   PROFILE — EDIT
+───────────────────────────────────── */
+function startEditProfile() {
+  const user = getUser();
+  document.getElementById('edit-name').value     = user.name || '';
+  document.getElementById('edit-mobile').value   = user.mobile || '';
+  document.getElementById('edit-email').value    = user.email || '';
+  document.getElementById('edit-password').value = '';
+
+  document.getElementById('info-static').classList.add('hidden');
+  document.getElementById('info-edit-form').classList.add('open');
+  document.getElementById('btn-start-edit').style.display    = 'none';
+  document.getElementById('btn-cancel-edit').style.display   = 'inline-block';
+  document.getElementById('btn-save-profile').style.display  = 'inline-block';
+}
+
+function cancelEditProfile() {
+  document.getElementById('info-static').classList.remove('hidden');
+  document.getElementById('info-edit-form').classList.remove('open');
+  document.getElementById('btn-start-edit').style.display    = 'inline-block';
+  document.getElementById('btn-cancel-edit').style.display   = 'none';
+  document.getElementById('btn-save-profile').style.display  = 'none';
+}
+
+async function saveProfile() {
+  const name     = document.getElementById('edit-name').value.trim();
+  const mobile   = document.getElementById('edit-mobile').value.trim();
+  const password = document.getElementById('edit-password').value;
+
+  if (!name) { showToast('⚠️ Name cannot be empty'); return; }
+
+  const body = { name, mobile };
+  if (password) {
+    if (password.length < 8) { showToast('⚠️ Password must be at least 8 characters'); return; }
+    body.password = password;
+  }
+
+  const btn = document.getElementById('btn-save-profile');
+  btn.disabled = true; btn.textContent = 'Saving…';
+
+  try {
+    const data = await apiFetch('/auth/profile', { method: 'PUT', body: JSON.stringify(body) });
+    // Merge updated fields into stored user
+    const user = getUser();
+    const updated = { ...user, name: data.user.name, mobile: data.user.mobile };
+    setUser(updated);
+    refreshProfileUI();
+    cancelEditProfile();
+    showToast('✅ Profile updated successfully!');
+  } catch (err) {
+    showToast('⚠️ ' + err.message);
+  } finally {
+    btn.disabled = false; btn.textContent = 'Save Changes';
+  }
+}
+
+/* ─────────────────────────────────────
+   PROFILE — ADDRESS MANAGEMENT
+───────────────────────────────────── */
+function toggleAddAddrForm() {
+  const form = document.getElementById('add-addr-form');
+  form.classList.toggle('open');
+  if (form.classList.contains('open')) {
+    ['na-label','na-phone','na-street','na-city','na-pincode'].forEach(id => {
+      document.getElementById(id).value = '';
+    });
+    document.getElementById('na-state').value = '';
+  }
+}
+
+async function saveNewAddress() {
+  const street  = document.getElementById('na-street').value.trim();
+  const city    = document.getElementById('na-city').value.trim();
+  const state   = document.getElementById('na-state').value;
+  const pincode = document.getElementById('na-pincode').value.trim();
+
+  if (!street || !city || !state || !pincode) {
+    showToast('⚠️ Street, city, state and pincode are required');
+    return;
+  }
+
+  const newAddr = {
+    label:     document.getElementById('na-label').value.trim() || 'Home',
+    phone:     document.getElementById('na-phone').value.trim(),
+    street, city, state, pincode,
+    isDefault: false,
+  };
+
+  const btn = document.getElementById('btn-save-addr');
+  btn.disabled = true; btn.textContent = 'Saving…';
+
+  try {
+    const user = getUser();
+    const addresses = [...(user.addresses || []), newAddr];
+    // If this is the first address, make it default
+    if (addresses.length === 1) addresses[0].isDefault = true;
+
+    const data = await apiFetch('/auth/profile', {
+      method: 'PUT',
+      body: JSON.stringify({ addresses }),
+    });
+
+    // Re-fetch full profile to get server-assigned _ids
+    const profile = await apiFetch('/auth/profile');
+    const updatedUser = { ...user, addresses: profile.addresses || addresses };
+    setUser(updatedUser);
+
+    renderAddressGrid();
+    toggleAddAddrForm();
+    showToast('✅ Address saved!');
+  } catch (err) {
+    showToast('⚠️ ' + err.message);
+  } finally {
+    btn.disabled = false; btn.textContent = 'Save Address';
+  }
+}
+
+async function deleteAddress(idx) {
+  if (!confirm('Remove this address?')) return;
+  try {
+    const user = getUser();
+    const addresses = (user.addresses || []).filter((_, i) => i !== idx);
+    // Ensure at least one default if any remain
+    if (addresses.length && !addresses.find(a => a.isDefault)) addresses[0].isDefault = true;
+
+    await apiFetch('/auth/profile', { method: 'PUT', body: JSON.stringify({ addresses }) });
+    const updatedUser = { ...user, addresses };
+    setUser(updatedUser);
+    renderAddressGrid();
+    showToast('Address removed.');
+  } catch (err) {
+    showToast('⚠️ ' + err.message);
+  }
+}
+
+async function setDefaultAddress(idx) {
+  try {
+    const user = getUser();
+    const addresses = (user.addresses || []).map((a, i) => ({ ...a, isDefault: i === idx }));
+    await apiFetch('/auth/profile', { method: 'PUT', body: JSON.stringify({ addresses }) });
+    const updatedUser = { ...user, addresses };
+    setUser(updatedUser);
+    renderAddressGrid();
+    showToast('✅ Default address updated.');
+  } catch (err) {
+    showToast('⚠️ ' + err.message);
+  }
+}
+
+function renderAddressGrid() {
+  const user = getUser();
+  const addresses = user.addresses || [];
+  const grid = document.getElementById('address-grid');
+
+  if (!addresses.length) {
+    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:30px;color:var(--warm-gray);font-size:14px">
+      No saved addresses. Click "Add New" to add one.
+    </div>`;
+    return;
+  }
+
+  grid.innerHTML = addresses.map((a, i) => `
+    <div class="address-card">
+      ${a.isDefault ? '<span class="address-default-tag">Default</span>' : ''}
+      <div class="address-name">${a.label || 'Address ' + (i+1)}</div>
+      <div class="address-text">${a.street}<br>${a.city}, ${a.state} — ${a.pincode}${a.phone?'<br>📞 '+a.phone:''}</div>
+      <div class="address-actions">
+        ${!a.isDefault ? `<button class="btn-addr-action" onclick="setDefaultAddress(${i})">Set Default</button>` : ''}
+        <button class="btn-addr-action btn-addr-delete" onclick="deleteAddress(${i})">Remove</button>
+      </div>
+    </div>`).join('');
+}
+
+/* ─────────────────────────────────────
+   PROFILE — REFRESH UI
+───────────────────────────────────── */
+function refreshProfileUI() {
+  const user = getUser();
+  if (!user.name) return;
+
+  const initials = user.name.split(' ').map(n => n[0]).join('').slice(0,2).toUpperCase();
+  document.getElementById('nav-avatar').textContent              = initials;
+  document.getElementById('profile-avatar-initials').textContent = initials;
+  document.getElementById('profile-name').textContent            = user.name;
+  document.getElementById('profile-email').textContent           = user.email || '';
+
+  document.getElementById('info-name').textContent   = user.name;
+  document.getElementById('info-email').textContent  = user.email || '';
+  document.getElementById('info-mobile').textContent = user.mobile || '—';
+  document.getElementById('info-role').textContent   = 'Customer';
+
+  renderAddressGrid();
+  renderWishlist();
 }
 
 /* ─────────────────────────────────────
@@ -1684,7 +2090,9 @@ function switchProfileTab(tab, el) {
   });
   document.querySelectorAll('.profile-nav-item').forEach(i => i.classList.remove('active'));
   if (el) el.classList.add('active');
-  if (tab === 'orders') loadOrders();
+  if (tab === 'orders')   loadOrders();
+  if (tab === 'wishlist') renderWishlist();
+  if (tab === 'address')  renderAddressGrid();
 }
 
 /* ─────────────────────────────────────
@@ -1722,7 +2130,9 @@ document.getElementById('search-input').addEventListener('keydown', async functi
 ───────────────────────────────────── */
 function showToast(msg) {
   const t = document.getElementById('toast');
+  const dot = t.querySelector('.toast-dot');
   document.getElementById('toast-msg').textContent = msg;
+  dot.style.background = msg.startsWith('⚠️') ? 'var(--sindoor)' : 'var(--jade)';
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 2800);
 }
@@ -1732,29 +2142,9 @@ function showToast(msg) {
 ───────────────────────────────────── */
 (async function init() {
   const user = getUser();
-  if (user.name) {
-    const initials = user.name.split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase();
-    document.getElementById('nav-avatar').textContent              = initials;
-    document.getElementById('profile-avatar-initials').textContent = initials;
-    document.getElementById('profile-name').textContent            = user.name;
-    document.getElementById('profile-email').textContent           = user.email || '';
-    document.getElementById('info-name').textContent               = user.name;
-    document.getElementById('info-email').textContent              = user.email || '';
-    document.getElementById('info-mobile').textContent             = user.mobile || '—';
-    document.getElementById('info-role').textContent               = 'Customer';
-
-    // Populate profile address tab from saved addresses
-    const addrs = user.addresses || [];
-    if (addrs.length) {
-      const a = addrs[0];
-      document.getElementById('addr-name').textContent = user.name;
-      document.getElementById('addr-text').textContent =
-        `${a.street}, ${a.city}, ${a.state} — ${a.pincode}\n📞 ${a.phone || '—'}`;
-    }
-  }
+  if (user.name) refreshProfileUI();
 
   renderStateSpotlight();
-  renderWishlist();
   startTimer();
 
   await Promise.all([renderHome(), renderCatalog(), loadCart(), loadOrders()]);
