@@ -699,7 +699,7 @@ input, select, textarea { font-family: var(--font-body); outline: none; border: 
 
 <script>
 /* ─── CONFIG ─────────────────────────────── */
-const API_BASE = 'http://localhost:5001/api';
+const API_BASE = '/api';
 
 function getToken() { return localStorage.getItem('apniva_token') || ''; }
 function getUser()  {
@@ -917,11 +917,9 @@ async function deactivateListing(id) {
 }
 
 /* ─── EDIT LISTING MODAL ─────────────────── */
-// Store listings data for quick lookup
 let _allListings = [];
 
 async function openEditModal(id) {
-  // Try to get from cached listings first, otherwise fetch
   let listing = _allListings.find(l => l._id === id);
   if (!listing) {
     try {
@@ -1200,7 +1198,6 @@ async function loadPayouts() {
     document.getElementById('pay-pending').textContent   = fmt(balance.pending);
     document.getElementById('pay-total').textContent     = fmt(balance.totalPaidOut);
 
-    // Check if payout method is set
     const user = getUser();
     const hasPayout = !!(user.upiId || user.bankAccount?.accountNumber);
     document.getElementById('payout-bank-notice').style.display = hasPayout ? 'none' : 'flex';
@@ -1230,7 +1227,6 @@ async function requestWithdraw() {
   const btn  = document.getElementById('btn-withdraw');
   btn.disabled = true; btn.textContent = '⏳ Processing…';
 
-  // Build payout method from saved profile data
   const payoutBody = {};
   if (user.upiId) {
     payoutBody.upiId = user.upiId;
@@ -1245,7 +1241,6 @@ async function requestWithdraw() {
   try {
     const data = await apiFetch('/payouts/withdraw', { method: 'POST', body: JSON.stringify(payoutBody) });
     showToast('✅ ' + data.message);
-    // Refresh user from server to sync
     await loadPayouts();
   } catch (err) {
     showToast('⚠️ ' + err.message, true);
@@ -1258,13 +1253,11 @@ async function loadSettings() {
   try {
     const profile = await apiFetch('/seller/profile');
 
-    // Merge into localStorage so other tabs see updated data
     const stored = getUser();
     const merged = { ...stored, ...profile };
     delete merged.password;
     setUser(merged);
 
-    // Business info
     document.getElementById('s-bizname').value = profile.businessName || '';
     document.getElementById('s-name').value    = profile.name || '';
     document.getElementById('s-mobile').value  = profile.mobile || '';
@@ -1272,16 +1265,13 @@ async function loadSettings() {
     document.getElementById('s-state').value   = profile.businessState || '';
     document.getElementById('s-email').value   = profile.email || '';
 
-    // Password fields — always blank
     document.getElementById('s-curr-pwd').value    = '';
     document.getElementById('s-new-pwd').value     = '';
     document.getElementById('s-confirm-pwd').value = '';
 
-    // Stats (read-only)
     document.getElementById('s-rating').value  = profile.sellerRating ? `${profile.sellerRating} ⭐ (${profile.totalReviews} reviews)` : 'No reviews yet';
     document.getElementById('s-reviews').value = profile.totalReviews || 0;
 
-    // Payout details
     if (profile.upiId) {
       document.getElementById('s-upi').value = profile.upiId;
     }
@@ -1292,7 +1282,6 @@ async function loadSettings() {
       document.getElementById('s-bank-ifsc').value   = profile.bankAccount.ifscCode || '';
     }
 
-    // If UPI is set, default to UPI tab
     if (profile.upiId && !profile.bankAccount?.accountNumber) {
       switchPayoutTab('upi');
     }
@@ -1325,11 +1314,9 @@ async function saveBusinessInfo() {
 
   try {
     const data = await apiFetch('/seller/profile', { method: 'PUT', body: JSON.stringify(body) });
-    // Update localStorage
     const stored = getUser();
     setUser({ ...stored, ...data.user });
 
-    // Update sidebar display
     if (data.user.name) {
       const initials = data.user.name.split(' ').map(n => n[0]).join('').slice(0,2).toUpperCase();
       document.getElementById('seller-av').textContent       = initials;
@@ -1363,13 +1350,11 @@ async function changePassword() {
     showToast('⚠️ New passwords do not match.', true); return;
   }
 
-  // Verify current password by attempting login
   const user = getUser();
   const btn  = document.getElementById('btn-save-pwd');
   btn.disabled = true; btn.textContent = '⏳ Verifying…';
 
   try {
-    // Verify old password via login endpoint
     const loginCheck = await fetch(`${API_BASE}/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -1381,7 +1366,6 @@ async function changePassword() {
       return;
     }
 
-    // Now update with new password
     await apiFetch('/seller/profile', {
       method: 'PUT',
       body: JSON.stringify({ password: newPwd }),
@@ -1403,7 +1387,6 @@ async function changePassword() {
 }
 
 async function savePayoutDetails() {
-  // Determine active tab
   const isBankTab = document.getElementById('tab-bank').classList.contains('active');
   const btn = document.getElementById('btn-save-payout');
   btn.disabled = true; btn.textContent = '⏳ Saving…';
@@ -1421,11 +1404,10 @@ async function savePayoutDetails() {
       btn.disabled = false; btn.textContent = '💾 Save Payout Details';
       return;
     }
-    // Mask the account number for storage (keep last 4 digits)
     const masked = '••••' + acc.slice(-4);
     body = {
       bankAccount: { accountHolder: holder, bankName: name, accountNumber: masked, ifscCode: ifsc },
-      upiId: '',  // clear UPI when bank is saved
+      upiId: '',
     };
   } else {
     const upi = document.getElementById('s-upi').value.trim();
@@ -1434,7 +1416,6 @@ async function savePayoutDetails() {
       btn.disabled = false; btn.textContent = '💾 Save Payout Details';
       return;
     }
-    // Basic UPI format validation
     if (!upi.includes('@')) {
       showToast('⚠️ Invalid UPI ID format (must contain @).', true);
       btn.disabled = false; btn.textContent = '💾 Save Payout Details';
