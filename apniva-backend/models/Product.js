@@ -1,62 +1,47 @@
-const express = require('express');
-const router = express.Router();
-const Product = require('../models/Product');
+const mongoose = require('mongoose');
 
-// GET /api/products
-// Query params: category, search, sort (low|high|rating|discount), page, limit
-router.get('/', async (req, res) => {
-  try {
-    const { category, search, sort, page = 1, limit = 20 } = req.query;
+const productSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  description: String,
 
-    const filter = { status: 'approved' };
+  price: {
+    type: Number,
+    required: true
+  },
 
-    if (category && category !== 'All') {
-      filter.category = category;
-    }
+  category: String,
 
-    if (search) {
-      filter.$or = [
-        { name:     { $regex: search, $options: 'i' } },
-        { category: { $regex: search, $options: 'i' } },
-        { brand:    { $regex: search, $options: 'i' } },
-      ];
-    }
+  seller: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  },
 
-    const sortMap = {
-      low:      { price: 1 },
-      high:     { price: -1 },
-      rating:   { rating: -1 },
-      discount: { discount: -1 },
-    };
-    const sortQuery = sortMap[sort] || { createdAt: -1 };
+  stock: {
+    type: Number,
+    default: 0
+  },
 
-    const skip = (Number(page) - 1) * Number(limit);
+  isIndianOrigin: {
+    type: Boolean,
+    default: true
+  },
 
-    const [products, total] = await Promise.all([
-      Product.find(filter).sort(sortQuery).skip(skip).limit(Number(limit)),
-      Product.countDocuments(filter),
-    ]);
+  rawMaterialOrigin: {
+    type: String, // "India" or "Imported"
+    default: "India"
+  },
 
-    res.json({
-      products,
-      total,
-      page:  Number(page),
-      pages: Math.ceil(total / Number(limit)),
-    });
-  } catch (err) {
-    res.status(500).json({ message: 'Server error', error: err.message });
+  margin: {
+    type: Number // for your commission logic
+  },
+
+  createdAt: {
+    type: Date,
+    default: Date.now
   }
 });
 
-// GET /api/products/:id
-router.get('/:id', async (req, res) => {
-  try {
-    const product = await Product.findById(req.params.id);
-    if (!product) return res.status(404).json({ message: 'Product not found' });
-    res.json(product);
-  } catch (err) {
-    res.status(500).json({ message: 'Server error', error: err.message });
-  }
-});
-
-module.exports = router;
+module.exports = mongoose.model('Product', productSchema);
