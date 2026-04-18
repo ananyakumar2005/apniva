@@ -8,27 +8,6 @@
 <style>
 /* ============================================================
    APNIVA — CUSTOMER APP (customer.html)
-
-   SECTIONS IN THIS FILE:
-   1. CSS Variables & Reset
-   2. Shared Components  (navbar, toast, buttons, empty states)
-   3. Home Page          (#sec-home)
-      3a. Category Bar
-      3b. Hero Banner
-      3c. Flash Sale Bar
-      3d. State Spotlight Section
-      3e. Shop by Category Circles
-      3f. Trending Products Grid
-   4. Catalog Page       (#sec-catalog)
-   5. Product Detail     (#sec-detail)
-   6. Cart Page          (#sec-cart)
-   7. Profile Page       (#sec-profile)
-      7a. Sidebar Nav
-      7b. Overview Tab
-      7c. Orders Tab
-      7d. Wishlist Tab
-      7e. Address Tab
-      7f. Payment Tab
    ============================================================ */
 
 /* ── 1. CSS Variables & Reset ── */
@@ -299,6 +278,113 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
 
 
 /* ══════════════════════════════════════
+   6b. CHECKOUT PAGE
+══════════════════════════════════════ */
+.checkout-layout { display: grid; grid-template-columns: 1fr 360px; gap: 28px; padding: 32px; max-width: 1200px; margin: 0 auto; }
+
+/* Step progress bar */
+.checkout-steps { display: flex; align-items: center; gap: 0; margin-bottom: 28px; }
+.checkout-step { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--warm-gray); }
+.checkout-step.active { color: var(--saffron); }
+.checkout-step.done { color: var(--jade); }
+.step-circle { width: 28px; height: 28px; border-radius: 50%; border: 2px solid currentColor; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; transition: .3s; }
+.checkout-step.done .step-circle { background: var(--jade); border-color: var(--jade); color: var(--white); }
+.checkout-step.active .step-circle { background: var(--saffron); border-color: var(--saffron); color: var(--white); }
+.step-connector { flex: 1; height: 2px; background: var(--border); margin: 0 8px; min-width: 32px; }
+.step-connector.done { background: var(--jade); }
+
+.co-card { background: var(--white); border-radius: var(--radius); border: 1px solid var(--border); padding: 24px; margin-bottom: 20px; }
+.co-card-title { font-family: var(--font-display); font-size: 17px; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
+
+/* Address cards */
+.addr-options { display: flex; flex-direction: column; gap: 12px; }
+.addr-option { display: flex; align-items: flex-start; gap: 14px; padding: 14px 16px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); cursor: pointer; transition: .2s; }
+.addr-option:hover { border-color: var(--saffron-mid); }
+.addr-option.selected { border-color: var(--saffron); background: var(--saffron-light); }
+.addr-option input[type="radio"] { margin-top: 3px; accent-color: var(--saffron); flex-shrink: 0; }
+.addr-option-label { font-size: 14px; font-weight: 600; margin-bottom: 3px; }
+.addr-option-text { font-size: 13px; color: var(--ink-mid); line-height: 1.5; }
+.addr-default-chip { display: inline-block; font-size: 11px; font-weight: 600; color: var(--jade); background: var(--jade-light); padding: 2px 8px; border-radius: 4px; margin-left: 6px; }
+
+/* New address form */
+.new-addr-toggle { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border: 1.5px dashed var(--border); border-radius: var(--radius-sm); cursor: pointer; font-size: 14px; font-weight: 500; color: var(--saffron); transition: .2s; margin-top: 8px; }
+.new-addr-toggle:hover { background: var(--saffron-light); border-color: var(--saffron); }
+.new-addr-form { display: none; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+.new-addr-form.open { display: block; }
+.co-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+.co-field { margin-bottom: 14px; }
+.co-field label { display: block; font-size: 12px; font-weight: 600; color: var(--warm-gray); text-transform: uppercase; letter-spacing: .7px; margin-bottom: 6px; }
+.co-field input, .co-field select { width: 100%; padding: 11px 13px; background: var(--ivory); border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 14px; color: var(--ink); transition: .2s; font-family: var(--font-body); }
+.co-field input:focus, .co-field select:focus { border-color: var(--saffron); background: var(--white); outline: none; }
+
+/* Payment methods */
+.pay-options { display: flex; flex-direction: column; gap: 10px; }
+.pay-option { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); cursor: pointer; transition: .2s; }
+.pay-option:hover { border-color: var(--saffron-mid); }
+.pay-option.selected { border-color: var(--saffron); background: var(--saffron-light); }
+.pay-option input[type="radio"] { accent-color: var(--saffron); flex-shrink: 0; }
+.pay-option-icon { font-size: 22px; flex-shrink: 0; }
+.pay-option-name { font-size: 14px; font-weight: 600; }
+.pay-option-desc { font-size: 12px; color: var(--warm-gray); margin-top: 1px; }
+
+/* Checkout order summary sidebar */
+.co-summary { background: var(--white); border-radius: var(--radius); border: 1px solid var(--border); padding: 22px; position: sticky; top: 80px; height: fit-content; }
+.co-summary-title { font-family: var(--font-display); font-size: 17px; margin-bottom: 16px; }
+.co-item-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+.co-item-row:last-of-type { border-bottom: none; }
+.co-item-emoji { width: 40px; height: 40px; background: var(--cream); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+.co-item-name { font-size: 13px; font-weight: 600; flex: 1; }
+.co-item-qty { font-size: 12px; color: var(--warm-gray); }
+.co-item-price { font-size: 13px; font-weight: 700; flex-shrink: 0; }
+.co-summary-divider { height: 1px; background: var(--border); margin: 14px 0; }
+.co-summary-row { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 10px; color: var(--ink-mid); }
+.co-summary-total { display: flex; justify-content: space-between; font-size: 16px; font-weight: 700; margin-top: 14px; }
+.co-promo-applied { background: var(--jade-light); color: var(--jade); padding: 8px 12px; border-radius: var(--radius-sm); font-size: 12px; font-weight: 600; margin-bottom: 10px; display: none; }
+.co-promo-applied.show { display: block; }
+
+.btn-place-order { width: 100%; padding: 15px; background: var(--saffron); color: var(--white); border-radius: var(--radius-sm); font-size: 15px; font-weight: 700; cursor: pointer; transition: .2s; margin-top: 18px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+.btn-place-order:hover:not(:disabled) { background: #C03D13; }
+.btn-place-order:disabled { opacity: .6; cursor: not-allowed; }
+.btn-back-cart { width: 100%; padding: 11px; background: var(--white); color: var(--ink-mid); border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; cursor: pointer; transition: .2s; margin-top: 8px; }
+.btn-back-cart:hover { border-color: var(--saffron); color: var(--saffron); }
+
+.secure-note { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--warm-gray); margin-top: 12px; justify-content: center; }
+
+/* ══════════════════════════════════════
+   6c. ORDER SUCCESS / FAILURE
+══════════════════════════════════════ */
+.order-result-wrap { min-height: calc(100vh - 64px); display: flex; align-items: center; justify-content: center; padding: 40px 24px; }
+
+.result-card { background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 48px 40px; max-width: 520px; width: 100%; text-align: center; box-shadow: var(--shadow-lg); }
+.result-icon { font-size: 72px; margin-bottom: 20px; display: block; }
+.result-title { font-family: var(--font-display); font-size: 28px; margin-bottom: 10px; }
+.result-sub { font-size: 15px; color: var(--warm-gray); line-height: 1.6; margin-bottom: 28px; max-width: 360px; margin-left: auto; margin-right: auto; }
+.result-order-id { background: var(--cream); border-radius: var(--radius-sm); padding: 12px 20px; font-size: 14px; font-weight: 600; color: var(--ink-mid); margin-bottom: 24px; display: inline-block; }
+.result-order-id span { color: var(--saffron); }
+
+.delivery-timeline { display: flex; align-items: flex-start; gap: 0; margin: 24px 0; justify-content: center; }
+.tl-step { display: flex; flex-direction: column; align-items: center; flex: 1; max-width: 100px; }
+.tl-dot { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; border: 2px solid var(--border); background: var(--white); flex-shrink: 0; }
+.tl-dot.done { background: var(--jade); border-color: var(--jade); }
+.tl-dot.active { background: var(--saffron); border-color: var(--saffron); }
+.tl-label { font-size: 11px; color: var(--warm-gray); margin-top: 6px; text-align: center; }
+.tl-line { flex: 1; height: 2px; background: var(--border); margin-top: 16px; }
+.tl-line.done { background: var(--jade); }
+
+.result-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-result-primary { padding: 13px 28px; background: var(--saffron); color: var(--white); border-radius: var(--radius-sm); font-size: 14px; font-weight: 600; cursor: pointer; transition: .2s; }
+.btn-result-primary:hover { background: #C03D13; }
+.btn-result-secondary { padding: 13px 28px; background: var(--white); color: var(--ink-mid); border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 14px; font-weight: 600; cursor: pointer; transition: .2s; }
+.btn-result-secondary:hover { border-color: var(--saffron); color: var(--saffron); }
+
+/* failure specific */
+.result-card.failure .result-title { color: var(--sindoor); }
+.failure-reasons { text-align: left; background: var(--cream); border-radius: var(--radius-sm); padding: 14px 16px; margin-bottom: 20px; }
+.failure-reasons li { font-size: 13px; color: var(--ink-mid); margin-bottom: 6px; padding-left: 4px; }
+.failure-reasons li:last-child { margin-bottom: 0; }
+
+
+/* ══════════════════════════════════════
    7. PROFILE PAGE
 ══════════════════════════════════════ */
 .profile-layout { display: grid; grid-template-columns: 260px 1fr; gap: 24px; padding: 32px; max-width: 1200px; margin: 0 auto; }
@@ -367,6 +453,7 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
   .hero { grid-template-columns: 1fr; } .hero-img { display: none; }
   .detail-layout { grid-template-columns: 1fr; }
   .cart-layout { grid-template-columns: 1fr; }
+  .checkout-layout { grid-template-columns: 1fr; }
   .profile-layout { grid-template-columns: 1fr; }
   .state-panel.active { grid-template-columns: 1fr; }
 }
@@ -582,17 +669,248 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
     <div class="order-summary">
       <h2 class="summary-title">Order Summary</h2>
       <div class="summary-row"><span>Subtotal (<span id="sum-qty">0</span> items)</span><span id="sum-subtotal">₹0</span></div>
-      <div class="summary-row"><span>Delivery</span><span style="color:var(--jade);font-weight:600">FREE</span></div>
-      <div class="summary-row"><span>Discount</span><span style="color:var(--jade);font-weight:600" id="sum-discount">− ₹0</span></div>
+      <div class="summary-row"><span>Delivery</span><span style="color:var(--jade);font-weight:600" id="sum-delivery">FREE</span></div>
+      <div class="summary-row" id="sum-discount-row" style="display:none"><span>Promo (APNIVA10)</span><span style="color:var(--jade);font-weight:600" id="sum-discount">− ₹0</span></div>
       <div class="summary-divider"></div>
       <div class="summary-total"><span>Total</span><span id="sum-total">₹0</span></div>
-      <div class="savings-badge" id="savings-badge">Add items to see savings 🛍️</div>
-      <div class="promo-wrap">
+      <div class="savings-badge" id="savings-badge" style="display:none"></div>
+      <div class="promo-wrap" style="margin-top:14px">
         <input class="promo-input" type="text" id="promo-inp" placeholder="Promo code (try APNIVA10)">
         <button class="btn-promo" onclick="applyPromo()">Apply</button>
       </div>
-      <button class="btn-checkout" onclick="showToast('🎉 Redirecting to payment…')">Proceed to Checkout →</button>
+      <button class="btn-checkout" onclick="goToCheckout()">Proceed to Checkout →</button>
       <button class="btn-continue-shop" onclick="showSection('catalog')">Continue Shopping</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     6b. CHECKOUT PAGE
+══════════════════════════════════════════════════ -->
+<div id="sec-checkout" class="page">
+  <div style="padding: 24px 32px 0; max-width: 1200px; margin: 0 auto;">
+    <!-- Step progress -->
+    <div class="checkout-steps">
+      <div class="checkout-step done" id="cstep-cart">
+        <div class="step-circle">✓</div>
+        <span>Cart</span>
+      </div>
+      <div class="step-connector done" id="conn-1"></div>
+      <div class="checkout-step active" id="cstep-address">
+        <div class="step-circle">2</div>
+        <span>Address</span>
+      </div>
+      <div class="step-connector" id="conn-2"></div>
+      <div class="checkout-step" id="cstep-payment">
+        <div class="step-circle">3</div>
+        <span>Payment</span>
+      </div>
+      <div class="step-connector" id="conn-3"></div>
+      <div class="checkout-step" id="cstep-confirm">
+        <div class="step-circle">4</div>
+        <span>Confirm</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="checkout-layout">
+    <!-- Left: Address + Payment forms -->
+    <div>
+      <!-- Address Section -->
+      <div class="co-card" id="co-address-card">
+        <div class="co-card-title">📍 Delivery Address</div>
+
+        <div class="addr-options" id="addr-options">
+          <!-- populated by JS from user profile -->
+        </div>
+
+        <!-- Add new address toggle -->
+        <div class="new-addr-toggle" onclick="toggleNewAddrForm()">
+          <span>➕</span> Add a new address
+        </div>
+
+        <div class="new-addr-form" id="new-addr-form">
+          <div class="co-field-row">
+            <div class="co-field">
+              <label>Full Name *</label>
+              <input type="text" id="naddr-name" placeholder="Priya Sharma">
+            </div>
+            <div class="co-field">
+              <label>Phone *</label>
+              <input type="tel" id="naddr-phone" placeholder="98765 43210">
+            </div>
+          </div>
+          <div class="co-field">
+            <label>Street Address *</label>
+            <input type="text" id="naddr-street" placeholder="House no., Building, Street, Area">
+          </div>
+          <div class="co-field-row">
+            <div class="co-field">
+              <label>City *</label>
+              <input type="text" id="naddr-city" placeholder="Bengaluru">
+            </div>
+            <div class="co-field">
+              <label>Pincode *</label>
+              <input type="text" id="naddr-pincode" placeholder="560001">
+            </div>
+          </div>
+          <div class="co-field">
+            <label>State *</label>
+            <select id="naddr-state">
+              <option value="">Select state…</option>
+              <option>Andhra Pradesh</option><option>Bihar</option><option>Delhi</option>
+              <option>Gujarat</option><option>Jammu & Kashmir</option><option>Karnataka</option>
+              <option>Kerala</option><option>Madhya Pradesh</option><option>Maharashtra</option>
+              <option>Odisha</option><option>Punjab</option><option>Rajasthan</option>
+              <option>Tamil Nadu</option><option>Telangana</option><option>Uttar Pradesh</option>
+              <option>West Bengal</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Payment Section -->
+      <div class="co-card">
+        <div class="co-card-title">💳 Payment Method</div>
+        <div class="pay-options">
+          <label class="pay-option selected" onclick="selectPayment(this,'UPI')">
+            <input type="radio" name="pay-method" value="UPI" checked>
+            <span class="pay-option-icon">📱</span>
+            <div>
+              <div class="pay-option-name">UPI</div>
+              <div class="pay-option-desc">Google Pay, PhonePe, Paytm, BHIM</div>
+            </div>
+          </label>
+          <label class="pay-option" onclick="selectPayment(this,'Card')">
+            <input type="radio" name="pay-method" value="Card">
+            <span class="pay-option-icon">💳</span>
+            <div>
+              <div class="pay-option-name">Credit / Debit Card</div>
+              <div class="pay-option-desc">Visa, Mastercard, RuPay</div>
+            </div>
+          </label>
+          <label class="pay-option" onclick="selectPayment(this,'NetBanking')">
+            <input type="radio" name="pay-method" value="NetBanking">
+            <span class="pay-option-icon">🏦</span>
+            <div>
+              <div class="pay-option-name">Net Banking</div>
+              <div class="pay-option-desc">SBI, HDFC, ICICI, Axis and more</div>
+            </div>
+          </label>
+          <label class="pay-option" onclick="selectPayment(this,'EMI')">
+            <input type="radio" name="pay-method" value="EMI">
+            <span class="pay-option-icon">📆</span>
+            <div>
+              <div class="pay-option-name">EMI</div>
+              <div class="pay-option-desc">No-cost EMI on 3, 6, 12 months</div>
+            </div>
+          </label>
+          <label class="pay-option" onclick="selectPayment(this,'COD')">
+            <input type="radio" name="pay-method" value="COD">
+            <span class="pay-option-icon">💵</span>
+            <div>
+              <div class="pay-option-name">Cash on Delivery</div>
+              <div class="pay-option-desc">Pay when your order arrives</div>
+            </div>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Order summary sidebar -->
+    <div>
+      <div class="co-summary">
+        <div class="co-summary-title">Your Order</div>
+        <div id="co-items-list">
+          <!-- populated by JS -->
+        </div>
+        <div class="co-summary-divider"></div>
+        <div class="co-summary-row"><span>Subtotal</span><span id="co-subtotal">₹0</span></div>
+        <div class="co-summary-row"><span>Delivery</span><span style="color:var(--jade);font-weight:600" id="co-delivery">FREE</span></div>
+        <div class="co-promo-applied" id="co-promo-applied">🎉 APNIVA10 applied — 10% off!</div>
+        <div class="co-summary-row" id="co-discount-row" style="display:none"><span>Discount</span><span style="color:var(--jade);font-weight:600" id="co-discount">− ₹0</span></div>
+        <div class="co-summary-total"><span>Total</span><span id="co-total">₹0</span></div>
+
+        <button class="btn-place-order" id="btn-place-order" onclick="placeOrder()">
+          🔒 Place Order
+        </button>
+        <button class="btn-back-cart" onclick="showSection('cart')">← Back to Cart</button>
+        <div class="secure-note">🔒 SSL secured · 256-bit encryption</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     6c. ORDER SUCCESS PAGE
+══════════════════════════════════════════════════ -->
+<div id="sec-order-success" class="page">
+  <div class="order-result-wrap">
+    <div class="result-card">
+      <span class="result-icon">🎉</span>
+      <h2 class="result-title">Order Placed!</h2>
+      <p class="result-sub">Your order has been confirmed and will be delivered within 5 business days. You'll receive updates via SMS.</p>
+      <div class="result-order-id">Order ID: <span id="success-order-id">#APNIVA000000</span></div>
+
+      <!-- Delivery timeline -->
+      <div class="delivery-timeline">
+        <div class="tl-step">
+          <div class="tl-dot done">✓</div>
+          <div class="tl-label">Ordered</div>
+        </div>
+        <div class="tl-line done"></div>
+        <div class="tl-step">
+          <div class="tl-dot active">📦</div>
+          <div class="tl-label">Processing</div>
+        </div>
+        <div class="tl-line"></div>
+        <div class="tl-step">
+          <div class="tl-dot">🚚</div>
+          <div class="tl-label">Shipped</div>
+        </div>
+        <div class="tl-line"></div>
+        <div class="tl-step">
+          <div class="tl-dot">🏠</div>
+          <div class="tl-label">Delivered</div>
+        </div>
+      </div>
+
+      <div style="background:var(--jade-light);border-radius:var(--radius-sm);padding:14px 18px;margin-bottom:24px;font-size:13px;color:var(--jade);">
+        <strong>Expected Delivery:</strong> <span id="success-delivery-date">—</span><br>
+        <span style="font-size:12px;opacity:.8">Free delivery · No extra charges</span>
+      </div>
+
+      <div class="result-actions">
+        <button class="btn-result-primary" onclick="switchProfileTab('orders', null); showSection('profile')">Track Order</button>
+        <button class="btn-result-secondary" onclick="showSection('catalog')">Continue Shopping</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     6d. ORDER FAILURE PAGE
+══════════════════════════════════════════════════ -->
+<div id="sec-order-failure" class="page">
+  <div class="order-result-wrap">
+    <div class="result-card failure">
+      <span class="result-icon">😔</span>
+      <h2 class="result-title">Order Failed</h2>
+      <p class="result-sub">Something went wrong while placing your order. Your cart is safe — please try again.</p>
+
+      <ul class="failure-reasons">
+        <li>⚠️ <span id="failure-reason">An unexpected error occurred.</span></li>
+        <li>💡 Check your internet connection and try again</li>
+        <li>📞 Contact support if the issue persists</li>
+      </ul>
+
+      <div class="result-actions">
+        <button class="btn-result-primary" onclick="showSection('checkout')">Try Again</button>
+        <button class="btn-result-secondary" onclick="showSection('cart')">Back to Cart</button>
+      </div>
     </div>
   </div>
 </div>
@@ -698,7 +1016,7 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
 
 
 <!-- ══════════════════════════════════════════════════
-     JAVASCRIPT  — fully API-connected
+     JAVASCRIPT
 ══════════════════════════════════════════════════ -->
 <script>
 /* ─────────────────────────────────────
@@ -750,6 +1068,15 @@ let detailQty      = 1;
 let filterCategory = 'All';
 let ordersData     = [];
 
+// Promo state
+let promoApplied   = false;
+let promoCode      = '';
+let promoDiscount  = 0;   // rupee amount
+
+// Checkout state
+let selectedAddrIndex  = 0;  // index into user.addresses; -1 = new address
+let selectedPayMethod  = 'UPI';
+
 /* ─────────────────────────────────────
    STATE SPOTLIGHT DATA (static)
 ───────────────────────────────────── */
@@ -789,13 +1116,19 @@ const STATES = [
 /* ─────────────────────────────────────
    NAVIGATION
 ───────────────────────────────────── */
+const NAV_SECTIONS = ['home','catalog','detail','cart','checkout','order-success','order-failure','profile'];
+
 function showSection(s) {
-  ['home','catalog','detail','cart','profile'].forEach(x => {
+  NAV_SECTIONS.forEach(x => {
     document.getElementById('sec-'+x).classList.toggle('active', x === s);
+  });
+  // Update nav button highlights (only for top-level nav)
+  ['home','catalog','cart','profile'].forEach(x => {
     const btn = document.getElementById('nav-'+x);
     if (btn) btn.classList.toggle('active', x === s);
   });
-  if (s === 'cart') loadCart();
+  if (s === 'cart')     { loadCart(); }
+  if (s === 'checkout') { renderCheckout(); }
   updateCartBadge();
 }
 
@@ -1008,17 +1341,26 @@ function updateCartBadge() {
   document.getElementById('sum-qty').textContent = tot;
 }
 
+function cartSubtotal() {
+  return cartItems.reduce((s, i) => s + i.price * i.qty, 0);
+}
+function cartDelivery(sub) {
+  return sub >= 499 ? 0 : 49;
+}
+
 function renderCart() {
   const el = document.getElementById('cart-items-list');
   if (!cartItems.length) {
     el.innerHTML = `<div class="empty-state"><div class="empty-icon">🛒</div><h3>Your cart is empty</h3><p>Add items to get started!</p>
       <button class="btn-add" style="width:auto;padding:10px 24px;border-radius:8px;margin-top:0" onclick="showSection('catalog')">Browse Products</button></div>`;
+    // Reset summary
     document.getElementById('sum-subtotal').textContent  = '₹0';
     document.getElementById('sum-total').textContent     = '₹0';
-    document.getElementById('sum-discount').textContent  = '− ₹0';
-    document.getElementById('savings-badge').textContent = 'Add items to see savings 🛍️';
+    document.getElementById('sum-discount-row').style.display = 'none';
+    document.getElementById('savings-badge').style.display    = 'none';
     return;
   }
+
   el.innerHTML = cartItems.map(it => `
     <div class="cart-item">
       <div class="cart-item-img">${it.emoji}</div>
@@ -1038,21 +1380,232 @@ function renderCart() {
       </div>
     </div>`).join('');
 
-  const sub   = cartItems.reduce((s,i) => s + i.price*i.qty, 0);
-  const saves = cartItems.reduce((s,i) => s + ((i.mrp||i.price) - i.price)*i.qty, 0);
-  document.getElementById('sum-subtotal').textContent  = '₹' + sub.toLocaleString();
-  document.getElementById('sum-total').textContent     = '₹' + sub.toLocaleString();
-  document.getElementById('sum-discount').textContent  = '− ₹' + saves.toLocaleString();
-  document.getElementById('savings-badge').textContent = `You save ₹${saves.toLocaleString()} on this order 🎉`;
-}
+  const sub      = cartSubtotal();
+  const delivery = cartDelivery(sub);
 
-function applyPromo() {
-  const v = document.getElementById('promo-inp').value.trim().toUpperCase();
-  showToast(v === 'APNIVA10' ? 'Promo applied! 10% discount ✅' : 'Invalid promo code ❌');
+  // Recalculate promo discount based on current subtotal
+  if (promoApplied) {
+    promoDiscount = Math.round(sub * 0.1);
+  }
+
+  const total = sub - promoDiscount + delivery;
+
+  document.getElementById('sum-subtotal').textContent = '₹' + sub.toLocaleString();
+  document.getElementById('sum-delivery').textContent = delivery === 0 ? 'FREE' : '₹' + delivery;
+  document.getElementById('sum-total').textContent    = '₹' + total.toLocaleString();
+
+  // Promo row — only show if applied
+  const discRow = document.getElementById('sum-discount-row');
+  if (promoApplied && promoDiscount > 0) {
+    discRow.style.display = 'flex';
+    document.getElementById('sum-discount').textContent = '− ₹' + promoDiscount.toLocaleString();
+    document.getElementById('savings-badge').style.display = 'block';
+    document.getElementById('savings-badge').textContent   = `You save ₹${promoDiscount.toLocaleString()} with APNIVA10 🎉`;
+  } else {
+    discRow.style.display = 'none';
+    document.getElementById('savings-badge').style.display = 'none';
+  }
 }
 
 /* ─────────────────────────────────────
-   ORDERS
+   PROMO
+───────────────────────────────────── */
+function applyPromo() {
+  const v = document.getElementById('promo-inp').value.trim().toUpperCase();
+  if (v === 'APNIVA10') {
+    promoApplied  = true;
+    promoCode     = 'APNIVA10';
+    promoDiscount = Math.round(cartSubtotal() * 0.1);
+    renderCart();
+    showToast('✅ Promo applied! 10% discount');
+  } else {
+    promoApplied  = false;
+    promoCode     = '';
+    promoDiscount = 0;
+    renderCart();
+    showToast('❌ Invalid promo code');
+  }
+}
+
+/* ─────────────────────────────────────
+   GO TO CHECKOUT
+───────────────────────────────────── */
+function goToCheckout() {
+  if (!cartItems.length) { showToast('Your cart is empty!'); return; }
+  showSection('checkout');
+}
+
+/* ─────────────────────────────────────
+   CHECKOUT RENDER
+───────────────────────────────────── */
+function renderCheckout() {
+  // Build address options from user profile
+  const user = getUser();
+  const addresses = user.addresses || [];
+  const addrEl = document.getElementById('addr-options');
+
+  if (addresses.length) {
+    addrEl.innerHTML = addresses.map((a, i) => `
+      <label class="addr-option${i === 0 ? ' selected' : ''}" onclick="selectAddr(${i}, this)">
+        <input type="radio" name="addr" value="${i}" ${i === 0 ? 'checked' : ''}>
+        <div>
+          <div class="addr-option-label">${a.label || 'Address ' + (i+1)}
+            ${a.isDefault ? '<span class="addr-default-chip">Default</span>' : ''}
+          </div>
+          <div class="addr-option-text">${a.street}, ${a.city}, ${a.state} — ${a.pincode}<br>📞 ${a.phone || '—'}</div>
+        </div>
+      </label>`).join('');
+    selectedAddrIndex = 0;
+  } else {
+    addrEl.innerHTML = '<p style="font-size:13px;color:var(--warm-gray);padding:8px 0">No saved addresses. Add one below.</p>';
+    selectedAddrIndex = -1;
+    // Auto-open new form
+    document.getElementById('new-addr-form').classList.add('open');
+  }
+
+  // Render items in sidebar
+  const sub      = cartSubtotal();
+  const delivery = cartDelivery(sub);
+  const total    = sub - promoDiscount + delivery;
+
+  document.getElementById('co-items-list').innerHTML = cartItems.map(it => `
+    <div class="co-item-row">
+      <div class="co-item-emoji">${it.emoji}</div>
+      <div>
+        <div class="co-item-name">${it.name}</div>
+        <div class="co-item-qty">Qty: ${it.qty}</div>
+      </div>
+      <div class="co-item-price">₹${(it.price * it.qty).toLocaleString()}</div>
+    </div>`).join('');
+
+  document.getElementById('co-subtotal').textContent = '₹' + sub.toLocaleString();
+  document.getElementById('co-delivery').textContent = delivery === 0 ? 'FREE' : '₹' + delivery;
+  document.getElementById('co-total').textContent    = '₹' + total.toLocaleString();
+
+  const promoEl     = document.getElementById('co-promo-applied');
+  const discRow     = document.getElementById('co-discount-row');
+  if (promoApplied && promoDiscount > 0) {
+    promoEl.classList.add('show');
+    discRow.style.display = 'flex';
+    document.getElementById('co-discount').textContent = '− ₹' + promoDiscount.toLocaleString();
+  } else {
+    promoEl.classList.remove('show');
+    discRow.style.display = 'none';
+  }
+}
+
+function selectAddr(idx, el) {
+  selectedAddrIndex = idx;
+  document.querySelectorAll('.addr-option').forEach(a => a.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+function toggleNewAddrForm() {
+  const form = document.getElementById('new-addr-form');
+  form.classList.toggle('open');
+  if (form.classList.contains('open')) {
+    selectedAddrIndex = -1; // use new address
+    document.querySelectorAll('.addr-option').forEach(a => {
+      a.classList.remove('selected');
+      a.querySelector('input').checked = false;
+    });
+  }
+}
+
+function selectPayment(el, method) {
+  selectedPayMethod = method;
+  document.querySelectorAll('.pay-option').forEach(p => p.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+/* ─────────────────────────────────────
+   PLACE ORDER
+───────────────────────────────────── */
+async function placeOrder() {
+  // Build delivery address
+  let deliveryAddress;
+  const user = getUser();
+
+  if (selectedAddrIndex === -1) {
+    // New address from form
+    const name    = document.getElementById('naddr-name').value.trim();
+    const phone   = document.getElementById('naddr-phone').value.trim();
+    const street  = document.getElementById('naddr-street').value.trim();
+    const city    = document.getElementById('naddr-city').value.trim();
+    const pincode = document.getElementById('naddr-pincode').value.trim();
+    const state   = document.getElementById('naddr-state').value;
+
+    if (!name || !phone || !street || !city || !pincode || !state) {
+      showToast('⚠️ Please fill all address fields');
+      return;
+    }
+    deliveryAddress = { name, phone, street, city, state, pincode };
+  } else {
+    const saved = (user.addresses || [])[selectedAddrIndex];
+    if (!saved) { showToast('⚠️ No address selected'); return; }
+    deliveryAddress = {
+      name:    saved.name || user.name || '',
+      phone:   saved.phone || user.mobile || '',
+      street:  saved.street,
+      city:    saved.city,
+      state:   saved.state,
+      pincode: saved.pincode,
+    };
+  }
+
+  // Build order items
+  const items = cartItems.map(i => ({
+    productId: i.id,
+    quantity:  i.qty,
+    variant:   '',
+  }));
+
+  const btn = document.getElementById('btn-place-order');
+  btn.disabled = true;
+  btn.innerHTML = '⏳ Placing your order…';
+
+  try {
+    const result = await apiFetch('/orders', {
+      method: 'POST',
+      body: JSON.stringify({
+        items,
+        deliveryAddress,
+        paymentMethod: selectedPayMethod,
+        promoCode: promoApplied ? promoCode : '',
+      }),
+    });
+
+    // Clear cart after successful order
+    try { await apiFetch('/cart/clear', { method: 'DELETE' }); } catch {}
+    cartItems     = [];
+    promoApplied  = false;
+    promoCode     = '';
+    promoDiscount = 0;
+    updateCartBadge();
+
+    // Show success
+    const orderId = result.order?._id || result.order?.id || '';
+    const shortId = '#' + String(orderId).slice(-8).toUpperCase();
+    document.getElementById('success-order-id').textContent = shortId;
+
+    const delivDate = new Date();
+    delivDate.setDate(delivDate.getDate() + 5);
+    document.getElementById('success-delivery-date').textContent =
+      delivDate.toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+
+    showSection('order-success');
+
+  } catch (err) {
+    document.getElementById('failure-reason').textContent = err.message || 'Something went wrong';
+    showSection('order-failure');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '🔒 Place Order';
+  }
+}
+
+/* ─────────────────────────────────────
+   ORDERS (profile)
 ───────────────────────────────────── */
 async function loadOrders() {
   try {
@@ -1066,7 +1619,6 @@ async function loadOrders() {
     }));
     renderOrders(ordersData);
 
-    // Update stats
     const total = ordersData.reduce((s, o) => {
       const amt = parseInt((o.meta.match(/₹([\d,]+)/)||['','0'])[1].replace(/,/g,''));
       return s + amt;
@@ -1179,7 +1731,6 @@ function showToast(msg) {
    INIT
 ───────────────────────────────────── */
 (async function init() {
-  // Populate user info from localStorage
   const user = getUser();
   if (user.name) {
     const initials = user.name.split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase();
@@ -1191,13 +1742,21 @@ function showToast(msg) {
     document.getElementById('info-email').textContent              = user.email || '';
     document.getElementById('info-mobile').textContent             = user.mobile || '—';
     document.getElementById('info-role').textContent               = 'Customer';
+
+    // Populate profile address tab from saved addresses
+    const addrs = user.addresses || [];
+    if (addrs.length) {
+      const a = addrs[0];
+      document.getElementById('addr-name').textContent = user.name;
+      document.getElementById('addr-text').textContent =
+        `${a.street}, ${a.city}, ${a.state} — ${a.pincode}\n📞 ${a.phone || '—'}`;
+    }
   }
 
   renderStateSpotlight();
   renderWishlist();
   startTimer();
 
-  // Load remote data in parallel
   await Promise.all([renderHome(), renderCatalog(), loadCart(), loadOrders()]);
 })();
 </script>
