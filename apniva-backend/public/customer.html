@@ -407,7 +407,6 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
 .info-item label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .8px; color: var(--warm-gray); display: block; margin-bottom: 4px; }
 .info-item span { font-size: 14px; }
 
-/* Inline edit form */
 .info-edit-form { display: none; }
 .info-edit-form.open { display: block; }
 .info-static { }
@@ -462,7 +461,6 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
 .btn-addr-delete { color: var(--sindoor); border-color: #F5C0BC; background: var(--white); }
 .btn-addr-delete:hover { background: var(--sindoor); color: var(--white); border-color: var(--sindoor); }
 
-/* Add address form card */
 .add-addr-form { background: var(--cream); border-radius: var(--radius-sm); padding: 20px; border: 1.5px dashed var(--border); margin-top: 16px; display: none; }
 .add-addr-form.open { display: block; }
 .add-addr-form h4 { font-size: 15px; font-weight: 600; margin-bottom: 14px; color: var(--ink); }
@@ -1101,7 +1099,7 @@ input, select { font-family: var(--font-body); outline: none; border: none; }
 /* ─────────────────────────────────────
    CONFIG & AUTH HELPERS
 ───────────────────────────────────── */
-const API_BASE = 'http://localhost:5001/api';
+const API_BASE = '/api';  // changed from http://localhost:5001/api
 
 function getToken() { return localStorage.getItem('apniva_token') || ''; }
 function getUser()  {
@@ -1691,7 +1689,6 @@ async function loadOrders() {
     ordersData = data.orders || [];
     renderOrders(ordersData);
 
-    // Update stats
     const total = ordersData.reduce((s, o) => s + (o.totalAmount || 0), 0);
     document.getElementById('stat-orders').textContent = ordersData.length;
     document.getElementById('stat-spent').textContent  = total > 99999
@@ -1757,7 +1754,6 @@ async function openOrderDetail(orderId) {
     const shortId = '#' + String(o._id).slice(-6).toUpperCase();
     document.getElementById('modal-order-title').textContent = `Order ${shortId}`;
 
-    // Timeline steps
     const STATUS_ORDER = ['processing','confirmed','shipped','out_for_delivery','delivered'];
     const currentIdx = STATUS_ORDER.indexOf(o.status);
     const isCancelled = o.status === 'cancelled' || o.status === 'returned';
@@ -1778,14 +1774,12 @@ async function openOrderDetail(orderId) {
           }).join('')}
         </div>`;
 
-    // Timeline log from order.timeline
     const timelineLog = (o.timeline||[]).slice().reverse().map(t =>
       `<div style="display:flex;gap:10px;font-size:12px;color:var(--ink-mid);padding:6px 0;border-bottom:1px solid var(--border);">
         <span style="color:var(--warm-gray);flex-shrink:0">${new Date(t.time).toLocaleString('en-IN',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})}</span>
         <span>${t.message || statusLabel(t.status)}</span>
       </div>`).join('') || '<p style="font-size:13px;color:var(--warm-gray)">No timeline entries yet.</p>';
 
-    // Items
     const itemsHtml = (o.items||[]).map(it => `
       <div class="modal-item-row">
         <div class="modal-item-emoji">${it.emoji||'📦'}</div>
@@ -1796,13 +1790,11 @@ async function openOrderDetail(orderId) {
         <div class="modal-item-price">₹${Number(it.subtotal||it.price*it.quantity).toLocaleString()}</div>
       </div>`).join('');
 
-    // Delivery address
     const addr = o.deliveryAddress || {};
     const addrHtml = addr.street
       ? `<strong>${addr.name || ''}</strong>${addr.phone ? ' · 📞 '+addr.phone : ''}<br>${addr.street}, ${addr.city}, ${addr.state} — ${addr.pincode}`
       : 'No address on file';
 
-    // Amounts
     const discount = o.discountAmount || 0;
     const amountsHtml = `
       <div class="modal-amount-row"><span>Subtotal</span><span>₹${Number(o.subtotal||0).toLocaleString()}</span></div>
@@ -1812,21 +1804,18 @@ async function openOrderDetail(orderId) {
       <div style="margin-top:10px;font-size:13px;color:var(--warm-gray)">Payment: ${o.paymentMethod||'UPI'} · Status: <span style="color:${o.paymentStatus==='paid'?'var(--jade)':'var(--turmeric)'};font-weight:600">${o.paymentStatus||'—'}</span></div>
     `;
 
-    // Tracking
     const trackingHtml = o.trackingNumber
       ? `<div style="background:var(--turmeric-light);border-radius:var(--radius-sm);padding:10px 14px;font-size:13px;margin-top:8px;">
            🚚 Tracking Number: <strong>${o.trackingNumber}</strong>
          </div>`
       : '';
 
-    // Expected delivery
     const expHtml = o.expectedDelivery && o.status !== 'delivered' && !isCancelled
       ? `<div style="background:var(--jade-light);border-radius:var(--radius-sm);padding:10px 14px;font-size:13px;margin-top:8px;color:var(--jade);">
            📅 Expected by: <strong>${new Date(o.expectedDelivery).toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'long'})}</strong>
          </div>`
       : '';
 
-    // Cancel button
     const canCancel = !['delivered','cancelled','returned'].includes(o.status);
     const cancelHtml = canCancel
       ? `<button class="cancel-order-btn" onclick="cancelOrderFromModal('${o._id}', this)">Cancel This Order</button>`
@@ -1840,23 +1829,17 @@ async function openOrderDetail(orderId) {
         </div>
         <span class="order-status-pill pill-${o.status}">${statusLabel(o.status)}</span>
       </div>
-
       ${timelineHtml}
       ${trackingHtml}
       ${expHtml}
-
       <div class="modal-section-title">Items Ordered</div>
       <div class="modal-items-list">${itemsHtml}</div>
-
       <div class="modal-section-title">Delivery Address</div>
       <div class="modal-addr-box">${addrHtml}</div>
-
       <div class="modal-section-title">Order Timeline</div>
       <div style="background:var(--cream);border-radius:var(--radius-sm);padding:12px 14px;">${timelineLog}</div>
-
       <div class="modal-section-title">Payment Summary</div>
       <div class="modal-amounts">${amountsHtml}</div>
-
       ${cancelHtml}
     `;
   } catch (err) {
@@ -1928,7 +1911,6 @@ async function saveProfile() {
 
   try {
     const data = await apiFetch('/auth/profile', { method: 'PUT', body: JSON.stringify(body) });
-    // Merge updated fields into stored user
     const user = getUser();
     const updated = { ...user, name: data.user.name, mobile: data.user.mobile };
     setUser(updated);
@@ -1980,15 +1962,13 @@ async function saveNewAddress() {
   try {
     const user = getUser();
     const addresses = [...(user.addresses || []), newAddr];
-    // If this is the first address, make it default
     if (addresses.length === 1) addresses[0].isDefault = true;
 
-    const data = await apiFetch('/auth/profile', {
+    await apiFetch('/auth/profile', {
       method: 'PUT',
       body: JSON.stringify({ addresses }),
     });
 
-    // Re-fetch full profile to get server-assigned _ids
     const profile = await apiFetch('/auth/profile');
     const updatedUser = { ...user, addresses: profile.addresses || addresses };
     setUser(updatedUser);
@@ -2008,7 +1988,6 @@ async function deleteAddress(idx) {
   try {
     const user = getUser();
     const addresses = (user.addresses || []).filter((_, i) => i !== idx);
-    // Ensure at least one default if any remain
     if (addresses.length && !addresses.find(a => a.isDefault)) addresses[0].isDefault = true;
 
     await apiFetch('/auth/profile', { method: 'PUT', body: JSON.stringify({ addresses }) });
