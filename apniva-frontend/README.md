@@ -1,96 +1,165 @@
-# Apniva Frontend
+# 🚀 Apniva — India Ka Apna Market 🇮🇳
 
-India-themed online shopping platform — plain HTML/CSS/JS frontend, ready to connect to a MERN backend.
+👉 **Live Demo:** https://apniva.onrender.com/
 
-## Quick Start
+Apniva is a **dedicated e-commerce platform for Indian manufacturers**, enabling MSMEs to sell directly to customers with **fair commissions, better visibility, and higher profits**.
+
+---
+
+# 🌟 Problem We Solve
+
+Indian manufacturers face major challenges:
+
+- ❌ No Indian-only marketplace  
+- ❌ High commissions (12–18%) on existing platforms  
+- ❌ Limited reach beyond local markets  
+- ❌ Low visibility among foreign products  
+
+👉 Result: Small businesses struggle to scale online.
+
+---
+
+# 💡 Our Solution
+
+Apniva is a **Made-in-India focused marketplace** that:
+
+- 🇮🇳 Promotes Indian-origin products  
+- 🤝 Connects manufacturers directly with customers  
+- 💰 Reduces commission burden  
+- 📈 Improves discoverability for MSMEs  
+
+---
+
+# 🔥 Key Features
+
+## 🛍️ Customer Side
+- Browse Indian products
+- View product listings
+- Direct purchase experience
+
+## 🏭 Seller Side
+- Add & manage products
+- Track listings
+- Reach nationwide customers
+
+## ⚙️ Backend Capabilities
+- JWT-based Authentication
+- Product, Cart, Order management
+- Seller analytics & dashboards
+- Payout system with logic handling
+- REST APIs for full platform functionality
+
+---
+
+# 💰 Unique Innovation — Dynamic Commission Pricing
+
+Apniva introduces a **fair & dynamic commission system**:
+
+- 📉 **5–10% lower than Amazon/Flipkart**
+- 🇮🇳 Lower commission for Indian-origin products
+- 📊 Based on profit margins & category
+- ⚖️ Low margin → Low commission  
+- 📈 High margin → Higher commission  
+
+👉 Ensures **fair earnings for sellers + scalable business model**
+
+---
+
+# 🧠 Tech Stack
+
+- **Frontend:** HTML, CSS, JavaScript  
+- **Backend:** Node.js, Express.js  
+- **Database:** MongoDB (Mongoose)  
+- **Authentication:** JWT  
+- **Deployment:** Render (single-server architecture)
+
+---
+
+# 🧩 Code Architecture
 
 ```bash
-# 1. Install dev dependencies (one-time)
-npm install
-
-# 2. Start the dev server (auto-reloads on file save)
-npm run dev
-
-# 3. Or just serve statically
-npm start
+apniva/
+├── apniva-backend/
+│   ├── config/        # DB connection
+│   ├── middleware/    # Auth middleware
+│   ├── models/        # User, Product, Order, Payout schemas
+│   ├── routes/        # API routes
+│   ├── public/        # Frontend served via Express
+│   ├── server.js      # Entry point
+│   └── package.json
 ```
 
-Then open **http://localhost:3000** in your browser.
+👉 Frontend is served directly from backend using Express static middleware  
+👉 All APIs are structured under `/api/...`
 
 ---
 
-## Files
+# ⚙️ Run Locally
 
-| File | Description |
-|------|-------------|
-| `index.html` | Auth page — login/signup as Customer or Seller |
-| `customer.html` | Customer app — home, catalog, cart, profile, state spotlight |
-| `seller.html` | Seller dashboard — listings, analytics, payouts |
-
----
-
-## npm Scripts
-
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Live-reloading dev server on port 3000 |
-| `npm start` | Static server on port 3000 (no auto-reload) |
-| `npm run preview` | Static server on port 5000 |
-
----
-
-## Connecting to your MERN Backend
-
-Each HTML file is commented with `// connect backend` markers. Key integration points:
-
-### Auth (`index.html`)
-Replace `doLogin()` with a real API call:
-```js
-// POST /api/auth/login  or  POST /api/auth/register
-const res = await fetch('/api/auth/login', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ email, password, role })
-});
-const { token, user } = await res.json();
-localStorage.setItem('apniva_token', token);
-```
-
-### Products (`customer.html`)
-Replace the `PRODUCTS` array with a fetch:
-```js
-const res = await fetch('/api/products');
-const PRODUCTS = await res.json();
-```
-
-### Cart
-Replace in-memory `cartItems` array with API calls:
-```js
-// GET  /api/cart
-// POST /api/cart/add
-// PUT  /api/cart/update
-// DELETE /api/cart/remove/:id
-```
-
-### Seller Listings (`seller.html`)
-```js
-// GET    /api/seller/listings
-// POST   /api/seller/listings       (submit for approval)
-// PUT    /api/seller/listings/:id
-// DELETE /api/seller/listings/:id
-```
-
----
-
-## Recommended Next Step — Migrate to Vite + React
-
-When you're ready to add the full React component structure:
-
+## 1. Clone
 ```bash
-npm create vite@latest apniva-react -- --template react
-cd apniva-react
-npm install
-npm run dev
+git clone https://github.com/ananyakumar2005/apniva.git
+cd apniva/apniva-backend
 ```
 
-Then move logic from these HTML files into React components, using the existing CSS variables and structure as your design system.
+## 2. Install
+```bash
+npm install
+```
+
+## 3. Setup `.env`
+```env
+PORT=5001
+MONGO_URI=your_mongodb_url
+JWT_SECRET=your_secret
+CRON_SECRET=your_secret
+```
+
+## 4. Start Server
+```bash
+node server.js
+```
+
+## 5. Open
+```
+http://localhost:5001
+```
+
+---
+
+# 🚀 Deployment
+
+- Hosted on **Render**
+- Single-server architecture (Frontend + Backend combined)
+
+👉 **Live URL:** https://apniva.onrender.com/
+
+---
+
+# 📈 Future Scope
+
+- 💳 Payment integration (Razorpay/Stripe)  
+- 📊 Advanced seller analytics  
+- 📱 Mobile app version  
+- 🤖 AI-based recommendations  
+- 🌍 Expansion to B2B marketplace  
+
+---
+
+# 👨‍💻 Team
+
+- **Ananya Kumar (Frontend)**  
+- **Divyam Puri (Backend)**  
+
+---
+
+# 🙌 Final Note
+
+Apniva is not just a marketplace —  
+it’s a step towards empowering **Indian manufacturers** and building a stronger **local economy 🇮🇳**
+
+---
+
+# ⭐ Support
+
+If you like this project, give it a ⭐ on GitHub!
