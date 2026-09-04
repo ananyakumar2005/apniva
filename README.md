@@ -136,6 +136,21 @@ http://localhost:5001
 
 ---
 
+# 🖥️ **Preview**
+
+## 📸 Application Preview
+
+| Home | Spotlight |
+|------|------|
+| <img src="screenshots/LandingPage.png" width="450"> | <img src="screenshots/Spotlight.png" width="450"> |
+
+| Cart | Account |
+|------|------|
+| <img src="screenshots/Cart.png" width="450"> | <img src="screenshots/Account.png" width="450"> |
+
+
+---
+
 # 📈 Future Scope
 
 - 💳 Payment integration (Razorpay/Stripe)  
@@ -148,8 +163,8 @@ http://localhost:5001
 
 # 👨‍💻 Team
 
-- **Ananya Kumar (Frontend)**  
-- **Divyam Puri (Backend)**  
+- **Ananya Kumar**  
+- **Divyam Puri**  
 
 ---
 
